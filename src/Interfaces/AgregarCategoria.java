@@ -47,7 +47,7 @@ public class AgregarCategoria extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(42, 138, 127));
 
         jPanel3.setBackground(new java.awt.Color(25, 39, 52));
 
@@ -149,7 +149,6 @@ public class AgregarCategoria extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre de categoria");
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
