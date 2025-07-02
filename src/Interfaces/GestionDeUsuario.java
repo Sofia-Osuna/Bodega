@@ -53,8 +53,6 @@ public class GestionDeUsuario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Gestion de usuarios");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\braya\\Downloads\\utec escuinapa}.jpg")); // NOI18N
-
         jPanel2.setBackground(new java.awt.Color(25, 39, 52));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -190,7 +188,6 @@ public class GestionDeUsuario extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(188, 188, 188));
-        jTextField2.setText("Buscar proveedor");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -211,14 +208,19 @@ public class GestionDeUsuario extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(0, 0, 0));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"001", "Pedro Sanchez", "Admin", "Administrador", "sistemas", "Activo", "Editar  Eliminar"},
-                {"002", "Brayan Lopez", "kyouma", "solicitante", "Recursos Humanos", "Activo", "Editar  Eliminar"}
+
             },
             new String [] {
                 "ID", "Nombre", "Usuario", "Rol", "Área", "Estado", "Acciones"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(4).setResizable(false);
+            jTable1.getColumnModel().getColumn(5).setResizable(false);
+            jTable1.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         jComboBox1.setBackground(new java.awt.Color(42, 138, 127));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo Usuario", "Agregar usuario operador", "Agregar usuario solicitante" }));
