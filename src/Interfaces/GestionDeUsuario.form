@@ -125,11 +125,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\braya\Downloads\utec escuinapa}.jpg"/>
-                </Property>
-              </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="jPanel2">
               <Properties>
@@ -302,7 +297,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="bc" green="bc" red="bc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Buscar proveedor"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
@@ -341,35 +335,14 @@
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="2">
-                    <Column editable="true" title="ID" type="java.lang.Object">
-                      <Data value="001"/>
-                      <Data value="002"/>
-                    </Column>
-                    <Column editable="true" title="Nombre" type="java.lang.Object">
-                      <Data value="Pedro Sanchez"/>
-                      <Data value="Brayan Lopez"/>
-                    </Column>
-                    <Column editable="true" title="Usuario" type="java.lang.Object">
-                      <Data value="Admin"/>
-                      <Data value="kyouma"/>
-                    </Column>
-                    <Column editable="true" title="Rol" type="java.lang.Object">
-                      <Data value="Administrador"/>
-                      <Data value="solicitante"/>
-                    </Column>
-                    <Column editable="true" title="&#xc1;rea" type="java.lang.Object">
-                      <Data value="sistemas"/>
-                      <Data value="Recursos Humanos"/>
-                    </Column>
-                    <Column editable="true" title="Estado" type="java.lang.Object">
-                      <Data value="Activo"/>
-                      <Data value="Activo"/>
-                    </Column>
-                    <Column editable="true" title="Acciones" type="java.lang.Object">
-                      <Data value="Editar  Eliminar"/>
-                      <Data value="Editar  Eliminar"/>
-                    </Column>
+                  <Table columnCount="7" rowCount="0">
+                    <Column editable="true" title="ID" type="java.lang.Object"/>
+                    <Column editable="true" title="Nombre" type="java.lang.Object"/>
+                    <Column editable="true" title="Usuario" type="java.lang.Object"/>
+                    <Column editable="true" title="Rol" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xc1;rea" type="java.lang.Object"/>
+                    <Column editable="true" title="Estado" type="java.lang.Object"/>
+                    <Column editable="true" title="Acciones" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -389,22 +362,22 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
