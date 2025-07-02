@@ -125,7 +125,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton1.setText("Reporte");
         jButton1.setToolTipText("");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -180,7 +179,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(0, 102, 102));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton6.setText("Reporte");
         jButton6.setToolTipText("");
         jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -235,7 +233,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton11.setBackground(new java.awt.Color(0, 102, 102));
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton11.setText("Reporte");
         jButton11.setToolTipText("");
         jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -290,7 +287,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton16.setBackground(new java.awt.Color(0, 102, 102));
         jButton16.setForeground(new java.awt.Color(255, 255, 255));
-        jButton16.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton16.setText("Reporte");
         jButton16.setToolTipText("");
         jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -345,7 +341,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton21.setBackground(new java.awt.Color(0, 102, 102));
         jButton21.setForeground(new java.awt.Color(255, 255, 255));
-        jButton21.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton21.setText("Reporte");
         jButton21.setToolTipText("");
         jButton21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -400,7 +395,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton26.setBackground(new java.awt.Color(0, 102, 102));
         jButton26.setForeground(new java.awt.Color(255, 255, 255));
-        jButton26.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton26.setText("Reporte");
         jButton26.setToolTipText("");
         jButton26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -455,7 +449,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton31.setBackground(new java.awt.Color(0, 102, 102));
         jButton31.setForeground(new java.awt.Color(255, 255, 255));
-        jButton31.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton31.setText("Reporte");
         jButton31.setToolTipText("");
         jButton31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -510,7 +503,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton36.setBackground(new java.awt.Color(0, 102, 102));
         jButton36.setForeground(new java.awt.Color(255, 255, 255));
-        jButton36.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton36.setText("Reporte");
         jButton36.setToolTipText("");
         jButton36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -565,7 +557,6 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jButton41.setBackground(new java.awt.Color(0, 102, 102));
         jButton41.setForeground(new java.awt.Color(255, 255, 255));
-        jButton41.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-17 180828.png")); // NOI18N
         jButton41.setText("Reporte");
         jButton41.setToolTipText("");
         jButton41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1105,9 +1096,8 @@ public class EntradaSalida extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton46.setBackground(new java.awt.Color(0, 102, 102));
+        jButton46.setBackground(new java.awt.Color(42, 138, 127));
         jButton46.setForeground(new java.awt.Color(255, 255, 255));
-        jButton46.setIcon(new javax.swing.ImageIcon("C:\\Users\\carla\\OneDrive\\Imágenes\\Screenshots\\Captura de pantalla 2025-06-18 135753.png")); // NOI18N
         jButton46.setText("Entrada salida");
         jButton46.setToolTipText("");
         jButton46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
