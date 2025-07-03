@@ -12,12 +12,14 @@ import java.sql.*;
 public class Conexion {
     public Connection con;
     
+    public Connection conn;
+    
     public Conexion(){
         
     try{
         
-    Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bodega", "root", "");
+        Class.forName("com.mysql.jdbc.Driver");
+          conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bodega", "root", "");
         System.out.println("Conectado");
         
     }catch (Exception e) {
@@ -25,3 +27,5 @@ public class Conexion {
     }
     }
 }
+
+
