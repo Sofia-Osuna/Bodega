@@ -203,7 +203,7 @@ public class FormularioProductoGuardar extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Producto Guardado");
 
-        jButton365.setBackground(new java.awt.Color(0, 204, 153));
+        jButton365.setBackground(new java.awt.Color(42, 138, 127));
         jButton365.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton365.setForeground(new java.awt.Color(255, 255, 255));
         jButton365.setText("Ok");

@@ -113,7 +113,7 @@ public class HistorialDeMovimientos extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -170,9 +170,6 @@ public class HistorialDeMovimientos extends javax.swing.JFrame {
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"24/07/2025 10:30 ", "Entrada", "Laptop dell", "+5", "Admin"},
-                {"24/07/2025 11:15", "Salida", "Mouse inalambrico", "-2", "Sofia Osuna"},
-                {"06/06/2025 16:45", "Salida", "Teclado Mecanico", "-1", "Lorena Cardenas"},
                 {null, null, null, null, null},
                 {null, null, null, null, null}
             },
