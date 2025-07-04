@@ -122,8 +122,6 @@ public class AgregarCategoriaConfirmado extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sistema/logo uni.jpg"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\braya\\Downloads\\utec escuinapa}.jpg")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -162,6 +160,7 @@ public class AgregarCategoriaConfirmado extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setText("                    Categoria...");
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -175,7 +174,7 @@ public class AgregarCategoriaConfirmado extends javax.swing.JFrame {
         jButton365.setBackground(new java.awt.Color(42, 138, 127));
         jButton365.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton365.setForeground(new java.awt.Color(255, 255, 255));
-        jButton365.setText("Ok");
+        jButton365.setText("OK");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -209,7 +208,7 @@ public class AgregarCategoriaConfirmado extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27)
                 .addComponent(jButton365, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

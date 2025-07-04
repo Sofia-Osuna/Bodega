@@ -134,8 +134,6 @@ public class FormularioProductoGuardar extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\braya\\Downloads\\utec escuinapa}.jpg")); // NOI18N
-
         javax.swing.GroupLayout jPanel84Layout = new javax.swing.GroupLayout(jPanel84);
         jPanel84.setLayout(jPanel84Layout);
         jPanel84Layout.setHorizontalGroup(
@@ -206,7 +204,7 @@ public class FormularioProductoGuardar extends javax.swing.JFrame {
         jButton365.setBackground(new java.awt.Color(0, 204, 153));
         jButton365.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton365.setForeground(new java.awt.Color(255, 255, 255));
-        jButton365.setText("Ok");
+        jButton365.setText("Aceptar ");
 
         javax.swing.GroupLayout jPanel83Layout = new javax.swing.GroupLayout(jPanel83);
         jPanel83.setLayout(jPanel83Layout);
