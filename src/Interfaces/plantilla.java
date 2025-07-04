@@ -128,7 +128,7 @@ public class plantilla extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jButton1)
-                .addGap(30, 30, 30)
+                .addGap(34, 34, 34)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30)
                 .addComponent(jButton3)

@@ -87,9 +87,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Reporte"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="horizontalAlignment" type="int" value="2"/>
@@ -256,9 +253,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Reporte"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -427,9 +421,6 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Reporte"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="horizontalAlignment" type="int" value="2"/>
@@ -596,9 +587,6 @@
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Reporte"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -767,9 +755,6 @@
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
-                            </Property>
                             <Property name="text" type="java.lang.String" value="Reporte"/>
                             <Property name="toolTipText" type="java.lang.String" value=""/>
                             <Property name="horizontalAlignment" type="int" value="2"/>
@@ -936,9 +921,6 @@
                                 </Property>
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                </Property>
-                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                  <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Reporte"/>
                                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1107,9 +1089,6 @@
                                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                     </Property>
-                                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                      <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
-                                    </Property>
                                     <Property name="text" type="java.lang.String" value="Reporte"/>
                                     <Property name="toolTipText" type="java.lang.String" value=""/>
                                     <Property name="horizontalAlignment" type="int" value="2"/>
@@ -1277,9 +1256,6 @@
                                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                         </Property>
-                                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                          <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
-                                        </Property>
                                         <Property name="text" type="java.lang.String" value="Reporte"/>
                                         <Property name="toolTipText" type="java.lang.String" value=""/>
                                         <Property name="horizontalAlignment" type="int" value="2"/>
@@ -1432,9 +1408,6 @@
                                             </Property>
                                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                                            </Property>
-                                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                                              <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-17 180828.png"/>
                                             </Property>
                                             <Property name="text" type="java.lang.String" value="Reporte"/>
                                             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -1675,13 +1648,10 @@
         <Component class="javax.swing.JButton" name="jButton46">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="0" type="rgb"/>
+              <Color blue="7f" green="8a" red="2a" type="rgb"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\carla\OneDrive\Im&#xe1;genes\Screenshots\Captura de pantalla 2025-06-18 135753.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Entrada salida"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
