@@ -10,8 +10,6 @@ import java.sql.*;
  * @author sofiaosuna
  */
 public class Conexion {
-    public Connection con;
-    
     public Connection conn;
     
     public Conexion(){

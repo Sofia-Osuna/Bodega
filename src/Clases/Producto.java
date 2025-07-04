@@ -3,11 +3,87 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Clases;
+import Clases.Categoria;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author sofiaosuna
  */
 public class Producto {
+    int id_producto, stock, precio, id_categoria;
+    String nombre_producto;
+
+    public Producto( int stock, int precio, int id_categoria, String nombre_producto) {
+        //this.id_producto = id_producto;
+        this.stock = stock;
+        this.precio = precio;
+        this.id_categoria = id_categoria;
+        this.nombre_producto = nombre_producto;
+    }
+
+    public int getId_producto() {
+        return id_producto;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public int getId_categoria() {
+        return id_categoria;
+    }
+
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
     
+    public boolean guardar (){
+        try{
+            Conexion conexion = new Conexion ();
+            Connection con = conexion.conn;
+
+            String sql = "INSERT INTO producto (nombre_producto, stock, precio, id_categoria, estatus ) VALUES (?, ?, ?, ?, 'A')";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre_producto);
+            ps.setInt(2, stock);
+            ps.setInt(3, precio);
+             ps.setInt(4, id_categoria);
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al guardar"+e.getMessage());
+            return false;
+        }
+    }  
+    @Override
+        public String toString() {
+        return nombre_producto.toString(); 
+    }
 }
