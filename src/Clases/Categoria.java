@@ -4,6 +4,10 @@
  */
 package Clases;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sofiaosuna
@@ -34,8 +38,35 @@ public class Categoria {
     public String toString() {
         return nombre_categoria.toString();  
     }
+
+    public Categoria(String nombre_categoria) {
+        this.nombre_categoria = nombre_categoria;
+    }
+
+    public String getNombre_categoria() {
+        return nombre_categoria;
+    }
     
     
-    
-    
+     public boolean guardar (){
+        try{
+            Conexion conexion = new Conexion ();
+            Connection conn = conexion.conn;
+
+           
+            String sql = "INSERT INTO categoria (nombre_categoria,estatus ) VALUES (?,'A')";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString( 1, nombre_categoria);
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al guardar"+e.getMessage());
+            return false;
+        }
+    }  
+ 
 }
+    
+    
+    
+
