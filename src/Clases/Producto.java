@@ -76,10 +76,11 @@ public class Producto {
     public boolean guardar (){
         try{
             Conexion conexion = new Conexion ();
-            Connection con = conexion.conn;
+            Connection conn = conexion.conn;
 
+           
             String sql = "INSERT INTO producto (nombre_producto, stock, precio, id_categoria, estatus ) VALUES (?, ?, ?, ?, 'A')";
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, nombre_producto);
             ps.setInt(2, stock);
             ps.setInt(3, precio);
