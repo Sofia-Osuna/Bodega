@@ -3,10 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import Clases.Conexion;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import Clases.Categoria;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
 
+        
+        
 /**
  *
- * @author pedro
+ * @author kyouma
  */
 public class GestionCategoria extends javax.swing.JFrame {
 
@@ -15,6 +24,7 @@ public class GestionCategoria extends javax.swing.JFrame {
      */
     public GestionCategoria() {
         initComponents();
+        mostrarCategoria();
     }
 
     /**
@@ -37,18 +47,17 @@ public class GestionCategoria extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_categoria = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 153));
+        jPanel2.setBackground(new java.awt.Color(42, 138, 127));
 
         jPanel3.setBackground(new java.awt.Color(25, 39, 52));
 
@@ -97,7 +106,7 @@ public class GestionCategoria extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addGap(67, 67, 67)
                 .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 438, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addGap(23, 23, 23))
         );
@@ -120,16 +129,17 @@ public class GestionCategoria extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Gestion de categorias");
 
+sofia
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sistema/logo uni.jpg"))); // NOI18N
 
+
+master
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
+                .addGap(150, 150, 150)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,14 +147,9 @@ public class GestionCategoria extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(55, 55, 55)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -152,23 +157,30 @@ public class GestionCategoria extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("Buscar categoria...");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(25, 39, 52));
         jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton8.setText("Buscar");
 
-        jButton9.setBackground(new java.awt.Color(0, 204, 153));
+        jButton9.setBackground(new java.awt.Color(42, 138, 127));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Agregar categoria");
 
-        jTable1.setBackground(new java.awt.Color(51, 51, 51));
+ sofia
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
+
+        tabla_categoria.setBackground(new java.awt.Color(51, 51, 51));
+        tabla_categoria.setForeground(new java.awt.Color(255, 255, 255));
+        tabla_categoria.setModel(new javax.swing.table.DefaultTableModel(
+ master
             new Object [][] {
-                {"001", "Electronicos", "Disponibles"},
-                {"002", "Limpieza", "Disponible"},
                 {null, null, null},
                 {null, null, null}
             },
@@ -184,8 +196,8 @@ public class GestionCategoria extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(jTable1);
+        tabla_categoria.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tabla_categoria);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,13 +220,13 @@ public class GestionCategoria extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
         );
@@ -233,40 +245,51 @@ public class GestionCategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+    public void mostrarCategoria(){
+     DefaultTableModel modelo = new DefaultTableModel();
+     modelo.addColumn("ID_Categoria");
+     modelo.addColumn("Nombre de categoria");
+     modelo.addColumn("Estatus");
+       try{Conexion conexion = new Conexion();
+       Connection conn = conexion.conn;
+       String sql = "SELECT * FROM categoria";
+     PreparedStatement ps = conn.prepareStatement(sql);
+       ResultSet datos = ps.executeQuery();
+       
+     while (datos.next()){
+       int id = datos.getInt("id_categoria");
+       String nombre = datos.getString("nombre_categoria");
+       String estatus = datos.getString("estatus");
+       Categoria categoria = new Categoria (id,nombre,estatus);
+       modelo.addRow(new Object[]{
+           categoria.getId_categoria(), 
+           categoria.getNombre(),         
+           categoria.getEstatus(),
+       });
+       tabla_categoria.setModel(modelo);
+       }
+ }catch(Exception e){
+             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
+                     +e.getMessage());      
+ }
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    public static void main(String[] args) {
+    /* Set the Nimbus look and feel */
+    // Look and feel setting code (optional)
+    
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new GestionCategoria().setVisible(true);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GestionCategoria().setVisible(true);
-            }
-        });
-    }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -278,13 +301,12 @@ public class GestionCategoria extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabla_categoria;
     // End of variables declaration//GEN-END:variables
 }
