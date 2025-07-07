@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author pedro
+ * @author kyouma
  */
 public class AgregarCategoria extends javax.swing.JFrame {
 
@@ -241,15 +241,13 @@ public class AgregarCategoria extends javax.swing.JFrame {
         
         if(categoria.guardar()){
             JOptionPane.showMessageDialog(null, "Guardado");
-            /*
-            //Referencia a la clase lista
-            ListaUsuarios lista = new ListaUsuarios();
-            //Indicamos que se hace visible
-            lista.setVisible(true);
-            //cerramos esta ventana
-            dispose();
-            */
-        
+        GestionCategoria lista = new GestionCategoria();
+    lista.setVisible(true);
+    //indicamos que esa lista sea visible
+    lista.setVisible(true);
+   //crerramos esta ventana
+     dispose();
+   
         }else{
         //si no, se evniara este otro mensaje
         JOptionPane.showMessageDialog(null, "Error al guardar");
