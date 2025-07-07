@@ -16,8 +16,17 @@ public class Producto {
     int id_producto, stock, precio, id_categoria;
     String nombre_producto;
 
-    public Producto( int stock, int precio, int id_categoria, String nombre_producto) {
-        //this.id_producto = id_producto;
+    public Producto(int stock, int precio, int id_categoria, String nombre_producto) {
+        this.stock = stock;
+        this.precio = precio;
+        this.id_categoria = id_categoria;
+        this.nombre_producto = nombre_producto;
+    }
+    
+    
+
+    public Producto(int id_producto, int stock, int precio, int id_categoria, String nombre_producto) {
+        this.id_producto = id_producto;
         this.stock = stock;
         this.precio = precio;
         this.id_categoria = id_categoria;

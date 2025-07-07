@@ -318,16 +318,14 @@ public class FormularioProducto extends javax.swing.JFrame {
         
         if(producto.guardar()){
             JOptionPane.showMessageDialog(null, "Guardado");
-            /*
+            
             //Referencia a la clase lista
-            ListaUsuarios lista = new ListaUsuarios();
+            GestionProductos gestionp = new GestionProductos();
             //Indicamos que se hace visible
-            lista.setVisible(true);
+            gestionp.setVisible(true);
             //cerramos esta ventana
             dispose();
-            */
-        
-        }else{
+        } else {
         //si no, se evniara este otro mensaje
         JOptionPane.showMessageDialog(null, "Error al guardar");
         }
