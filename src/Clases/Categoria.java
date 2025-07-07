@@ -46,6 +46,15 @@ public class Categoria {
     public String getNombre_categoria() {
         return nombre_categoria;
     }
+
+    public Categoria(int id_categoria, String nombre_categoria) {
+        this.id_categoria = id_categoria;
+        this.nombre_categoria = nombre_categoria;
+    }
+
+    public int getId_categoria() {
+        return id_categoria;
+    }
     
     
      public boolean guardar (){
