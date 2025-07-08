@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Clases.Producto;
 import Clases.Categoria;
-
+//todo bien aqui, no mover porfas
 /**
  *
  * @author pedro

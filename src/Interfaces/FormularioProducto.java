@@ -20,7 +20,7 @@ import Clases.Producto;
  * @author pedro
  */
 public class FormularioProducto extends javax.swing.JFrame {
-
+//no mover aqui porfa
     /**
      * Creates new form FormularioProducto
      */
