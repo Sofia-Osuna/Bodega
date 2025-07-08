@@ -18,7 +18,7 @@ import java.sql.Connection;
  * @author kyouma
  */
 public class GestionCategoria extends javax.swing.JFrame {
-
+    //todo bien aqui no mover 
     /**
      * Creates new form GestionCategoria
      */
@@ -47,6 +47,7 @@ public class GestionCategoria extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -129,11 +130,6 @@ public class GestionCategoria extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Gestion de categorias");
 
-sofia
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Sistema/logo uni.jpg"))); // NOI18N
-
-
-master
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -172,14 +168,7 @@ master
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Agregar categoria");
 
- sofia
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-
-        tabla_categoria.setBackground(new java.awt.Color(51, 51, 51));
-        tabla_categoria.setForeground(new java.awt.Color(255, 255, 255));
         tabla_categoria.setModel(new javax.swing.table.DefaultTableModel(
- master
             new Object [][] {
                 {null, null, null},
                 {null, null, null}
@@ -302,6 +291,7 @@ master
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
