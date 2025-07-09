@@ -94,11 +94,11 @@ public class GestionProductos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        botonproducto = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botoncategoria = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -117,9 +117,15 @@ public class GestionProductos extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(25, 39, 52));
 
-        jButton1.setBackground(new java.awt.Color(25, 39, 52));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("Producto");
+        botonproducto.setBackground(new java.awt.Color(25, 39, 52));
+        botonproducto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonproducto.setForeground(new java.awt.Color(255, 255, 255));
+        botonproducto.setText("Producto");
+        botonproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonproductoActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(25, 39, 52));
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -133,9 +139,15 @@ public class GestionProductos extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton4.setText("Proveedores");
 
-        jButton5.setBackground(new java.awt.Color(25, 39, 52));
-        jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton5.setText("Categorias");
+        botoncategoria.setBackground(new java.awt.Color(25, 39, 52));
+        botoncategoria.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botoncategoria.setForeground(new java.awt.Color(255, 255, 255));
+        botoncategoria.setText("Categorias");
+        botoncategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoncategoriaActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(25, 39, 52));
         jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -151,7 +163,7 @@ public class GestionProductos extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jButton1)
+                .addComponent(botonproducto)
                 .addGap(40, 40, 40)
                 .addComponent(jButton2)
                 .addGap(51, 51, 51)
@@ -159,7 +171,7 @@ public class GestionProductos extends javax.swing.JFrame {
                 .addGap(55, 55, 55)
                 .addComponent(jButton4)
                 .addGap(50, 50, 50)
-                .addComponent(jButton5)
+                .addComponent(botoncategoria)
                 .addGap(67, 67, 67)
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -171,11 +183,11 @@ public class GestionProductos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(botonproducto)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton5)
+                    .addComponent(botoncategoria)
                     .addComponent(jButton6)
                     .addComponent(jButton7))
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -295,6 +307,29 @@ public class GestionProductos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void botoncategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriaActionPerformed
+         //este codigo es para que los botones funcionen
+        GestionCategoria gestionc = new GestionCategoria();
+        //Indicamos que se hace visible
+        gestionc.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botoncategoriaActionPerformed
+
+    private void botonproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonproductoActionPerformed
+        // TODO add your handling code here:
+        //este codigo es para que los botones funcionen
+        GestionProductos gestionp = new GestionProductos();
+        //Indicamos que se hace visible
+        gestionp.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
+    }//GEN-LAST:event_botonproductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -331,11 +366,11 @@ public class GestionProductos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botoncategoria;
+    private javax.swing.JButton botonproducto;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

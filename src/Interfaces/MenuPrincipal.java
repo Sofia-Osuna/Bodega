@@ -16,6 +16,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public MenuPrincipal() {
         initComponents();
     }
+    // CAMBIAR ESOS TEXTFIELD POR BOTONES
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,18 +37,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        botoncategorias = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonProducto = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
+        botonnuevoproducto = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -98,13 +99,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(25, 39, 52));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton6.setText("Categorias");
-        jButton6.setBorderPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        botoncategorias.setBackground(new java.awt.Color(25, 39, 52));
+        botoncategorias.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botoncategorias.setForeground(new java.awt.Color(255, 255, 255));
+        botoncategorias.setText("Categorias");
+        botoncategorias.setBorderPainted(false);
+        botoncategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                botoncategoriasActionPerformed(evt);
             }
         });
 
@@ -138,13 +140,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(25, 39, 52));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Producto");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonProducto.setBackground(new java.awt.Color(25, 39, 52));
+        botonProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonProducto.setForeground(new java.awt.Color(255, 255, 255));
+        botonProducto.setText("Producto");
+        botonProducto.setBorderPainted(false);
+        botonProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonProductoActionPerformed(evt);
             }
         });
 
@@ -154,7 +157,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addComponent(botonProducto)
                 .addGap(30, 30, 30)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30)
@@ -162,7 +165,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
                 .addGap(26, 26, 26)
-                .addComponent(jButton6)
+                .addComponent(botoncategorias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
@@ -174,17 +177,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(botonProducto)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
-                    .addComponent(jButton6)
+                    .addComponent(botoncategorias)
                     .addComponent(jButton7))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\braya\\Downloads\\utec escuinapa}.jpg")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -206,11 +207,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addComponent(jLabel2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Acciones Rápidas");
 
         jTextField3.setBackground(new java.awt.Color(25, 39, 52));
@@ -243,16 +244,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jTextField6.setBackground(new java.awt.Color(42, 138, 127));
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField6.setText("Nuevo Producto");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-
         jTextField7.setBackground(new java.awt.Color(25, 39, 52));
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
@@ -260,6 +251,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
+            }
+        });
+
+        botonnuevoproducto.setBackground(new java.awt.Color(42, 138, 127));
+        botonnuevoproducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonnuevoproducto.setForeground(new java.awt.Color(255, 255, 255));
+        botonnuevoproducto.setText("Nuevo Producto");
+        botonnuevoproducto.setBorderPainted(false);
+        botonnuevoproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonnuevoproductoActionPerformed(evt);
             }
         });
 
@@ -275,12 +277,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                            .addComponent(botonnuevoproducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -295,8 +297,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonnuevoproducto, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(84, 84, 84))
@@ -320,17 +322,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
@@ -344,9 +338,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void botoncategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriasActionPerformed
+        //este codigo es para que los botones funcionen
+        GestionCategoria gestionc = new GestionCategoria();
+        //Indicamos que se hace visible
+        gestionc.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_botoncategoriasActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -360,9 +362,34 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductoActionPerformed
+        //este codigo es para que los botones funcionen
+        GestionProductos gestionp = new GestionProductos();
+        //Indicamos que se hace visible
+        gestionp.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
+
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonProductoActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void botonnuevoproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonnuevoproductoActionPerformed
+        //este codigo es para que los botones funcionen
+        FormularioProducto formulariop = new FormularioProducto();
+        //Indicamos que se hace visible
+        formulariop.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonnuevoproductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,12 +427,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonProducto;
+    private javax.swing.JButton botoncategorias;
+    private javax.swing.JButton botonnuevoproducto;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -420,7 +448,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
