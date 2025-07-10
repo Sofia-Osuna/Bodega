@@ -35,20 +35,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        botonreportediarios = new javax.swing.JButton();
+        botonsalir = new javax.swing.JButton();
         botoncategorias = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonprooveedores = new javax.swing.JButton();
+        botonhistorialdemovimeintos = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         botonProducto = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         botonnuevoproducto = new javax.swing.JButton();
+        botonnuevousuario = new javax.swing.JButton();
+        botonregistrarsalida = new javax.swing.JButton();
+        botonRegistrarsalida = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -79,23 +79,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(25, 39, 52));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton4.setBackground(new java.awt.Color(25, 39, 52));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setText("Reporte Diario");
-        jButton4.setBorderPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonreportediarios.setBackground(new java.awt.Color(25, 39, 52));
+        botonreportediarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonreportediarios.setForeground(new java.awt.Color(255, 255, 255));
+        botonreportediarios.setText("Reporte Diario");
+        botonreportediarios.setBorderPainted(false);
+        botonreportediarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonreportediariosActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(25, 39, 52));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton7.setText("Salir");
-        jButton7.setBorderPainted(false);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
+        botonsalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonsalir.setText("Salir");
+        botonsalir.setBorderPainted(false);
+        botonsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                botonsalirActionPerformed(evt);
             }
         });
 
@@ -110,23 +112,25 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(25, 39, 52));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setText("Proveedores");
-        jButton5.setBorderPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonprooveedores.setBackground(new java.awt.Color(25, 39, 52));
+        botonprooveedores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonprooveedores.setForeground(new java.awt.Color(255, 255, 255));
+        botonprooveedores.setText("Proveedores");
+        botonprooveedores.setBorderPainted(false);
+        botonprooveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonprooveedoresActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(25, 39, 52));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setText("Movimientos");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonhistorialdemovimeintos.setBackground(new java.awt.Color(25, 39, 52));
+        botonhistorialdemovimeintos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonhistorialdemovimeintos.setForeground(new java.awt.Color(255, 255, 255));
+        botonhistorialdemovimeintos.setText("Movimientos");
+        botonhistorialdemovimeintos.setBorderPainted(false);
+        botonhistorialdemovimeintos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonhistorialdemovimeintosActionPerformed(evt);
             }
         });
 
@@ -161,16 +165,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jButton2)
                 .addGap(30, 30, 30)
-                .addComponent(jButton3)
+                .addComponent(botonhistorialdemovimeintos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(botonprooveedores)
                 .addGap(26, 26, 26)
                 .addComponent(botoncategorias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addContainerGap())
+                .addComponent(botonreportediarios)
+                .addGap(41, 41, 41)
+                .addComponent(botonsalir)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,11 +183,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonProducto)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
+                    .addComponent(botonhistorialdemovimeintos)
+                    .addComponent(botonreportediarios)
+                    .addComponent(botonprooveedores)
                     .addComponent(botoncategorias)
-                    .addComponent(jButton7))
+                    .addComponent(botonsalir))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -214,39 +218,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Acciones Rápidas");
 
-        jTextField3.setBackground(new java.awt.Color(25, 39, 52));
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText(" Registrar Salida");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-
-        jTextField4.setBackground(new java.awt.Color(25, 39, 52));
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText(" Registrar Entrada ");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jTextField5.setBackground(new java.awt.Color(42, 138, 127));
-        jTextField5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField5.setText("Nuevo Usuario");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
-        jTextField7.setBackground(new java.awt.Color(25, 39, 52));
         jTextField7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         jTextField7.setText("Panel principal");
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,6 +237,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonnuevousuario.setBackground(new java.awt.Color(42, 138, 127));
+        botonnuevousuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonnuevousuario.setForeground(new java.awt.Color(255, 255, 255));
+        botonnuevousuario.setText("Nuevo Usuario");
+        botonnuevousuario.setBorderPainted(false);
+        botonnuevousuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonnuevousuarioActionPerformed(evt);
+            }
+        });
+
+        botonregistrarsalida.setBackground(new java.awt.Color(25, 39, 52));
+        botonregistrarsalida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonregistrarsalida.setForeground(new java.awt.Color(255, 255, 255));
+        botonregistrarsalida.setText("Registrar Entrada");
+        botonregistrarsalida.setBorderPainted(false);
+        botonregistrarsalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonregistrarsalidaActionPerformed(evt);
+            }
+        });
+
+        botonRegistrarsalida.setBackground(new java.awt.Color(25, 39, 52));
+        botonRegistrarsalida.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonRegistrarsalida.setForeground(new java.awt.Color(255, 255, 255));
+        botonRegistrarsalida.setText("Registrar Salida");
+        botonRegistrarsalida.setBorderPainted(false);
+        botonRegistrarsalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegistrarsalidaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -277,12 +282,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                            .addComponent(botonnuevoproducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(botonnuevousuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonnuevoproducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonregistrarsalida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(botonRegistrarsalida, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -291,17 +297,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonnuevoproducto, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(84, 84, 84))
+                .addGap(26, 26, 26)
+                .addComponent(botonregistrarsalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(botonRegistrarsalida, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonnuevoproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonnuevousuario, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(192, 192, 192))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -318,25 +324,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonreportediariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonreportediariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        ReporteDiario rep = new ReporteDiario();
+        rep.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonreportediariosActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsalirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        Inicio_de_sesion inicios = new Inicio_de_sesion();
+        inicios.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_botonsalirActionPerformed
 
     private void botoncategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriasActionPerformed
         //este codigo es para que los botones funcionen
@@ -350,13 +355,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botoncategoriasActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void botonprooveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonprooveedoresActionPerformed
+       Proveedores pro = new Proveedores();
+        pro.setVisible(true);
+        dispose();
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonprooveedoresActionPerformed
+
+    private void botonhistorialdemovimeintosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimeintosActionPerformed
+        // TODO add your handling code here:
+        HistorialDeMovimientos hmovimientos = new HistorialDeMovimientos();
+        hmovimientos.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonhistorialdemovimeintosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -375,10 +387,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonProductoActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
     private void botonnuevoproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonnuevoproductoActionPerformed
         //este codigo es para que los botones funcionen
         FormularioProducto formulariop = new FormularioProducto();
@@ -390,6 +398,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_botonnuevoproductoActionPerformed
+
+    private void botonnuevousuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonnuevousuarioActionPerformed
+       
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonnuevousuarioActionPerformed
+
+    private void botonregistrarsalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonregistrarsalidaActionPerformed
+        // TODO add your handling code here:
+        RegistrarEntrada rentrada = new RegistrarEntrada();
+        rentrada.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonregistrarsalidaActionPerformed
+
+    private void botonRegistrarsalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarsalidaActionPerformed
+        // TODO add your handling code here:
+        RegistrarSalida rsalida = new RegistrarSalida();
+        rsalida.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonRegistrarsalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -428,13 +456,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonProducto;
+    private javax.swing.JButton botonRegistrarsalida;
     private javax.swing.JButton botoncategorias;
+    private javax.swing.JButton botonhistorialdemovimeintos;
     private javax.swing.JButton botonnuevoproducto;
+    private javax.swing.JButton botonnuevousuario;
+    private javax.swing.JButton botonprooveedores;
+    private javax.swing.JButton botonregistrarsalida;
+    private javax.swing.JButton botonreportediarios;
+    private javax.swing.JButton botonsalir;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -445,9 +476,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
