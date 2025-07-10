@@ -9,12 +9,12 @@ package Interfaces;
  *
  * @author carla
  */
-public class Reporte extends javax.swing.JFrame {
+public class ReporteDiario extends javax.swing.JFrame {
 
     /**
      * Creates new form Reporte
      */
-    public Reporte() {
+    public ReporteDiario() {
         initComponents();
     }
 
@@ -30,22 +30,22 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        botonproducto = new javax.swing.JButton();
+        botonusuario = new javax.swing.JButton();
+        botonhistorialdemovimientos = new javax.swing.JButton();
+        botonproveedores = new javax.swing.JButton();
+        botoncategoria = new javax.swing.JButton();
+        botonreporte = new javax.swing.JButton();
+        botonsalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,33 +55,70 @@ public class Reporte extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(25, 39, 52));
 
-        jButton1.setBackground(new java.awt.Color(25, 39, 52));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("Producto");
+        botonproducto.setBackground(new java.awt.Color(25, 39, 52));
+        botonproducto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonproducto.setForeground(new java.awt.Color(255, 255, 255));
+        botonproducto.setText("Producto");
+        botonproducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonproductoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(25, 39, 52));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setText("Usuarios");
+        botonusuario.setBackground(new java.awt.Color(25, 39, 52));
+        botonusuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonusuario.setForeground(new java.awt.Color(255, 255, 255));
+        botonusuario.setText("Usuarios");
 
-        jButton3.setBackground(new java.awt.Color(25, 39, 52));
-        jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton3.setText("Movimientos");
+        botonhistorialdemovimientos.setBackground(new java.awt.Color(25, 39, 52));
+        botonhistorialdemovimientos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonhistorialdemovimientos.setForeground(new java.awt.Color(255, 255, 255));
+        botonhistorialdemovimientos.setText("Movimientos");
+        botonhistorialdemovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonhistorialdemovimientosActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(25, 39, 52));
-        jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton4.setText("Proveedores");
+        botonproveedores.setBackground(new java.awt.Color(25, 39, 52));
+        botonproveedores.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonproveedores.setForeground(new java.awt.Color(255, 255, 255));
+        botonproveedores.setText("Proveedores");
+        botonproveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonproveedoresActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(25, 39, 52));
-        jButton5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton5.setText("Categorias");
+        botoncategoria.setBackground(new java.awt.Color(25, 39, 52));
+        botoncategoria.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botoncategoria.setForeground(new java.awt.Color(255, 255, 255));
+        botoncategoria.setText("Categorias");
+        botoncategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoncategoriaActionPerformed(evt);
+            }
+        });
 
-        jButton6.setBackground(new java.awt.Color(25, 39, 52));
-        jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton6.setText("Reporte");
+        botonreporte.setBackground(new java.awt.Color(25, 39, 52));
+        botonreporte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonreporte.setForeground(new java.awt.Color(255, 255, 255));
+        botonreporte.setText("Reporte");
+        botonreporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonreporteActionPerformed(evt);
+            }
+        });
 
-        jButton7.setBackground(new java.awt.Color(25, 39, 52));
-        jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton7.setText("Salir");
+        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
+        botonsalir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonsalir.setText("Salir");
+        botonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -89,19 +126,19 @@ public class Reporte extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jButton1)
+                .addComponent(botonproducto)
                 .addGap(40, 40, 40)
-                .addComponent(jButton2)
+                .addComponent(botonusuario)
                 .addGap(51, 51, 51)
-                .addComponent(jButton3)
+                .addComponent(botonhistorialdemovimientos)
                 .addGap(55, 55, 55)
-                .addComponent(jButton4)
+                .addComponent(botonproveedores)
                 .addGap(50, 50, 50)
-                .addComponent(jButton5)
-                .addGap(67, 67, 67)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(botoncategoria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(botonreporte)
+                .addGap(33, 33, 33)
+                .addComponent(botonsalir)
                 .addGap(23, 23, 23))
         );
         jPanel3Layout.setVerticalGroup(
@@ -109,13 +146,13 @@ public class Reporte extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(botonproducto)
+                    .addComponent(botonusuario)
+                    .addComponent(botonhistorialdemovimientos)
+                    .addComponent(botonproveedores)
+                    .addComponent(botoncategoria)
+                    .addComponent(botonreporte)
+                    .addComponent(botonsalir))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -170,9 +207,6 @@ public class Reporte extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Reporte");
 
-        jButton8.setBackground(new java.awt.Color(153, 153, 153));
-        jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-
         jButton9.setBackground(new java.awt.Color(42, 138, 127));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton9.setText("Descargar PDF");
@@ -205,8 +239,8 @@ public class Reporte extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton10)
-                .addGap(205, 205, 205)
-                .addComponent(jButton8)
+                .addGap(162, 162, 162)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106))
         );
         jPanel1Layout.setVerticalGroup(
@@ -216,12 +250,11 @@ public class Reporte extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton10))
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addComponent(jButton9)
                 .addGap(18, 18, 18))
@@ -251,6 +284,59 @@ public class Reporte extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void botonproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonproductoActionPerformed
+         //este codigo es para que los botones funcionen
+        GestionProductos gestionp = new GestionProductos();
+        //Indicamos que se hace visible
+        gestionp.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonproductoActionPerformed
+
+    private void botonhistorialdemovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimientosActionPerformed
+        HistorialDeMovimientos hmovimientos = new HistorialDeMovimientos();
+        hmovimientos.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonhistorialdemovimientosActionPerformed
+
+    private void botonproveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonproveedoresActionPerformed
+        Proveedores pro = new Proveedores();
+        pro.setVisible(true);
+        dispose();
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonproveedoresActionPerformed
+
+    private void botoncategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriaActionPerformed
+         //este codigo es para que los botones funcionen
+        GestionCategoria gestionc = new GestionCategoria();
+        //Indicamos que se hace visible
+        gestionc.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botoncategoriaActionPerformed
+
+    private void botonreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonreporteActionPerformed
+         ReporteDiario rep = new ReporteDiario();
+        rep.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonreporteActionPerformed
+
+    private void botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsalirActionPerformed
+        Inicio_de_sesion inicios = new Inicio_de_sesion();
+        inicios.setVisible(true);
+        dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonsalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,34 +354,34 @@ public class Reporte extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteDiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteDiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteDiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReporteDiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reporte().setVisible(true);
+                new ReporteDiario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botoncategoria;
+    private javax.swing.JButton botonhistorialdemovimientos;
+    private javax.swing.JButton botonproducto;
+    private javax.swing.JButton botonproveedores;
+    private javax.swing.JButton botonreporte;
+    private javax.swing.JButton botonsalir;
+    private javax.swing.JButton botonusuario;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -306,5 +392,6 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
