@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
-//para que se agregue tambien
+//para que se agregue tambienvvvvvvv
+//hgvjhgv
 /**
  *
  * @author carla
@@ -179,6 +180,11 @@ public class Reporte extends javax.swing.JFrame {
         jButton10.setBackground(new java.awt.Color(153, 153, 153));
         jButton10.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton10.setText("Total");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,7 +205,7 @@ public class Reporte extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton10)
-                .addGap(36, 36, 36)
+                .addGap(205, 205, 205)
                 .addComponent(jButton8)
                 .addGap(106, 106, 106))
         );
@@ -240,6 +246,10 @@ public class Reporte extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
