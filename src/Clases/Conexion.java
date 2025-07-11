@@ -16,8 +16,8 @@ public class Conexion {
         
     try{
         
-        Class.forName("com.mysql.jdbc.Driver");
-          conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bodega", "root", "mysql");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+          conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bodega", "root", "");
         System.out.println("Conectado");
         
     }catch (Exception e) {
