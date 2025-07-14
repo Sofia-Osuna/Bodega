@@ -3,6 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import Clases.Conexion;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import Clases.Proveedor;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+
+
+        
+
 
 /**
  *
@@ -15,6 +26,7 @@ public class Proveedores extends javax.swing.JFrame {
      */
     public Proveedores() {
         initComponents();
+        mostrarProveedor();
     }
 
     /**
@@ -42,7 +54,7 @@ public class Proveedores extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla_Proveedores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,8 +64,6 @@ public class Proveedores extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Proveedores");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\braya\\Downloads\\utec escuinapa}.jpg")); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(25, 39, 52));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,7 +197,6 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(188, 188, 188));
         jTextField2.setText("Buscar proveedor");
@@ -217,9 +226,7 @@ public class Proveedores extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(60, 63, 65));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -227,7 +234,7 @@ public class Proveedores extends javax.swing.JFrame {
                 "ID", "Nombre", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabla_Proveedores);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -279,6 +286,36 @@ public class Proveedores extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+public void mostrarProveedor(){
+     DefaultTableModel modelo = new DefaultTableModel();
+     modelo.addColumn("ID_Proveedor");
+     modelo.addColumn("Nombre");
+     modelo.addColumn("Telefono");
+   
+       try{Conexion conexion = new Conexion();
+       Connection conn = conexion.conn;
+       String sql = "SELECT * FROM Proveedor";
+     PreparedStatement ps = conn.prepareStatement(sql);
+       ResultSet datos = ps.executeQuery();
+       
+     while (datos.next()){
+       int id = datos.getInt("id_proveedor");
+       String nombre = datos.getString("nombre_proveedor");
+       String telefono = datos.getString("telefono");
+       String estatus = datos.getString("estatus");
+
+       modelo.addRow(new Object[]{id,nombre,telefono});
+       
+           
+       Tabla_Proveedores.setModel(modelo);
+       }
+ }catch(Exception e){
+             JOptionPane.showMessageDialog(null,"Error:"
+                     +e.getMessage());      
+ }
+    }
+    
+    
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -352,6 +389,7 @@ public class Proveedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabla_Proveedores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -365,7 +403,6 @@ public class Proveedores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField6;
