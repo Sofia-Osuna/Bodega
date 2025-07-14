@@ -285,32 +285,43 @@ public class CrearProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-     
-    }//GEN-LAST:event_jButton6ActionPerformed
+GestionCategoria gestcat = new GestionCategoria();
+        gestcat.setVisible (true);
+        dispose();     }//GEN-LAST:event_jButton6ActionPerformed
+
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+  ReporteDiario re = new ReporteDiario();
+        re.setVisible(true);
+        dispose();    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+Inicio_de_sesion ini = new Inicio_de_sesion();
+        ini.setVisible(true);
+        dispose();     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+Proveedores prove = new Proveedores();
+       prove.setVisible(true);
+       dispose();     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+       hismovi.setVisible(true);
+       dispose();     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+GestionDeUsuario gesusuario = new GestionDeUsuario();
+    gesusuario.setVisible(true);
+    dispose(); 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+  GestionProductos gesproducto = new GestionProductos();
+        
+        gesproducto.setVisible(true);
+     
+        dispose();      }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         String nombre = txtNombre.getText();

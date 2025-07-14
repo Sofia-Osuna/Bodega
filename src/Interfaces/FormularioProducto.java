@@ -101,18 +101,38 @@ public class FormularioProducto extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(25, 39, 52));
         jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton1.setText("Producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(25, 39, 52));
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton2.setText("Usuarios");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(25, 39, 52));
         jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton3.setText("Movimientos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(25, 39, 52));
         jButton4.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton4.setText("Proveedores");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         botoncategoria.setBackground(new java.awt.Color(25, 39, 52));
         botoncategoria.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -127,10 +147,20 @@ public class FormularioProducto extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(25, 39, 52));
         jButton6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton6.setText("Reporte");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(25, 39, 52));
         jButton7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton7.setText("Salir");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -339,16 +369,44 @@ public class FormularioProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void botoncategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriaActionPerformed
-         //este codigo es para que los botones funcionen
         GestionCategoria gestionc = new GestionCategoria();
-        //Indicamos que se hace visible
         gestionc.setVisible(true);
-        //cerramos esta ventana
         dispose();
-        //Fin del codigo para abrir nuevas ventanas
 
         // TODO add your handling code here:
     }//GEN-LAST:event_botoncategoriaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+GestionProductos gesproducto = new GestionProductos();
+        
+        gesproducto.setVisible(true);
+     
+        dispose();     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+       hismovi.setVisible(true);
+       dispose();     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+Proveedores prove = new Proveedores();
+       prove.setVisible(true);
+       dispose();     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+   ReporteDiario re = new ReporteDiario();
+        re.setVisible(true);
+        dispose();    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+Inicio_de_sesion ini = new Inicio_de_sesion();
+        ini.setVisible(true);
+        dispose();                                         
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

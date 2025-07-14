@@ -43,13 +43,13 @@ public class Proveedores extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        botonreportediario = new javax.swing.JButton();
+        botonsalir = new javax.swing.JButton();
+        botoncategorias = new javax.swing.JButton();
+        botonproveedores = new javax.swing.JButton();
+        botonhistorialdemovimientos = new javax.swing.JButton();
+        botonusuario = new javax.swing.JButton();
+        botonproducto = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
@@ -68,73 +68,80 @@ public class Proveedores extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(25, 39, 52));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton4.setBackground(new java.awt.Color(25, 39, 52));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setText("Reporte Diario");
-        jButton4.setBorderPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonreportediario.setBackground(new java.awt.Color(25, 39, 52));
+        botonreportediario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonreportediario.setForeground(new java.awt.Color(255, 255, 255));
+        botonreportediario.setText("Reporte Diario");
+        botonreportediario.setBorderPainted(false);
+        botonreportediario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonreportediarioActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(25, 39, 52));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton7.setText("Salir");
-        jButton7.setBorderPainted(false);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
+        botonsalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonsalir.setText("Salir");
+        botonsalir.setBorderPainted(false);
+        botonsalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                botonsalirActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(25, 39, 52));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton6.setText("Categorias");
-        jButton6.setBorderPainted(false);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        botoncategorias.setBackground(new java.awt.Color(25, 39, 52));
+        botoncategorias.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botoncategorias.setForeground(new java.awt.Color(255, 255, 255));
+        botoncategorias.setText("Categorias");
+        botoncategorias.setBorderPainted(false);
+        botoncategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                botoncategoriasActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(25, 39, 52));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setText("Proveedores");
-        jButton5.setBorderPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonproveedores.setBackground(new java.awt.Color(25, 39, 52));
+        botonproveedores.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonproveedores.setForeground(new java.awt.Color(255, 255, 255));
+        botonproveedores.setText("Proveedores");
+        botonproveedores.setBorderPainted(false);
+        botonproveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonproveedoresActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(25, 39, 52));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setText("Movimientos");
-        jButton3.setBorderPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonhistorialdemovimientos.setBackground(new java.awt.Color(25, 39, 52));
+        botonhistorialdemovimientos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonhistorialdemovimientos.setForeground(new java.awt.Color(255, 255, 255));
+        botonhistorialdemovimientos.setText("Movimientos");
+        botonhistorialdemovimientos.setBorderPainted(false);
+        botonhistorialdemovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonhistorialdemovimientosActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(25, 39, 52));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Usuario");
-        jButton2.setBorderPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonusuario.setBackground(new java.awt.Color(25, 39, 52));
+        botonusuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonusuario.setForeground(new java.awt.Color(255, 255, 255));
+        botonusuario.setText("Usuario");
+        botonusuario.setBorderPainted(false);
+        botonusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonusuarioActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(25, 39, 52));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Producto");
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonproducto.setBackground(new java.awt.Color(25, 39, 52));
+        botonproducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonproducto.setForeground(new java.awt.Color(255, 255, 255));
+        botonproducto.setText("Producto");
+        botonproducto.setBorderPainted(false);
+        botonproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonproductoActionPerformed(evt);
             }
         });
 
@@ -144,33 +151,33 @@ public class Proveedores extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addComponent(botonproducto)
                 .addGap(30, 30, 30)
-                .addComponent(jButton2)
+                .addComponent(botonusuario)
                 .addGap(30, 30, 30)
-                .addComponent(jButton3)
+                .addComponent(botonhistorialdemovimientos)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(botonproveedores)
                 .addGap(26, 26, 26)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addContainerGap())
+                .addComponent(botoncategorias)
+                .addGap(28, 28, 28)
+                .addComponent(botonreportediario)
+                .addGap(48, 48, 48)
+                .addComponent(botonsalir)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(botonproducto)
+                    .addComponent(botonusuario)
+                    .addComponent(botonhistorialdemovimientos)
+                    .addComponent(botonreportediario)
+                    .addComponent(botonproveedores)
+                    .addComponent(botoncategorias)
+                    .addComponent(botonsalir))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -227,6 +234,7 @@ public class Proveedores extends javax.swing.JFrame {
         });
 
         Tabla_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+
             new Object [][] {
 
             },
@@ -325,33 +333,63 @@ public void mostrarProveedor(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void botonreportediarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonreportediarioActionPerformed
+        ReporteDiario rep = new ReporteDiario();
+        rep.setVisible(true);
+        dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_botonreportediarioActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void botonsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonsalirActionPerformed
+        Inicio_de_sesion inicios = new Inicio_de_sesion();
+        inicios.setVisible(true);
+        dispose();
+        
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_botonsalirActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void botoncategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriasActionPerformed
+        //este codigo es para que los botones funcionen
+        GestionCategoria gestionc = new GestionCategoria();
+        //Indicamos que se hace visible
+        gestionc.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_botoncategoriasActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void botonproveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonproveedoresActionPerformed
+         Proveedores pro = new Proveedores();
+        pro.setVisible(true);
+        dispose();
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_botonproveedoresActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonhistorialdemovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimientosActionPerformed
+        HistorialDeMovimientos hmovimientos = new HistorialDeMovimientos();
+        hmovimientos.setVisible(true);
+        dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonhistorialdemovimientosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonusuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonusuarioActionPerformed
+
+    private void botonproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonproductoActionPerformed
+         //este codigo es para que los botones funcionen
+        GestionProductos gestionp = new GestionProductos();
+        //Indicamos que se hace visible
+        gestionp.setVisible(true);
+        //cerramos esta ventana
+        dispose();
+        //Fin del codigo para abrir nuevas ventanas
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonproductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,14 +427,14 @@ public void mostrarProveedor(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla_Proveedores;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+
+    private javax.swing.JButton botoncategorias;
+    private javax.swing.JButton botonhistorialdemovimientos;
+    private javax.swing.JButton botonproducto;
+    private javax.swing.JButton botonproveedores;
+    private javax.swing.JButton botonreportediario;
+    private javax.swing.JButton botonsalir;
+    private javax.swing.JButton botonusuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
