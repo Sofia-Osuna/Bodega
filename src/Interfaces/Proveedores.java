@@ -3,6 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import Clases.Conexion;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import Clases.Proveedor;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+
+
+        
+
 
 /**
  *
@@ -15,6 +26,7 @@ public class Proveedores extends javax.swing.JFrame {
      */
     public Proveedores() {
         initComponents();
+        mostrarProveedor();
     }
 
     /**
@@ -42,7 +54,7 @@ public class Proveedores extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla_Proveedores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -221,7 +233,8 @@ public class Proveedores extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
+
             new Object [][] {
 
             },
@@ -229,7 +242,7 @@ public class Proveedores extends javax.swing.JFrame {
                 "ID", "Nombre", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabla_Proveedores);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -281,6 +294,36 @@ public class Proveedores extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+public void mostrarProveedor(){
+     DefaultTableModel modelo = new DefaultTableModel();
+     modelo.addColumn("ID_Proveedor");
+     modelo.addColumn("Nombre");
+     modelo.addColumn("Telefono");
+   
+       try{Conexion conexion = new Conexion();
+       Connection conn = conexion.conn;
+       String sql = "SELECT * FROM Proveedor";
+     PreparedStatement ps = conn.prepareStatement(sql);
+       ResultSet datos = ps.executeQuery();
+       
+     while (datos.next()){
+       int id = datos.getInt("id_proveedor");
+       String nombre = datos.getString("nombre_proveedor");
+       String telefono = datos.getString("telefono");
+       String estatus = datos.getString("estatus");
+
+       modelo.addRow(new Object[]{id,nombre,telefono});
+       
+           
+       Tabla_Proveedores.setModel(modelo);
+       }
+ }catch(Exception e){
+             JOptionPane.showMessageDialog(null,"Error:"
+                     +e.getMessage());      
+ }
+    }
+    
+    
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -384,6 +427,7 @@ public class Proveedores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JButton botoncategorias;
     private javax.swing.JButton botonhistorialdemovimientos;
     private javax.swing.JButton botonproducto;
@@ -397,7 +441,6 @@ public class Proveedores extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField6;
