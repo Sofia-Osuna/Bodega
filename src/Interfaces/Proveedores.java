@@ -54,7 +54,7 @@ public class Proveedores extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Proveedores = new javax.swing.JTable();
+        Tabla_Proveedore = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -233,8 +233,7 @@ public class Proveedores extends javax.swing.JFrame {
             }
         });
 
-        Tabla_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
-
+        Tabla_Proveedore.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -242,7 +241,7 @@ public class Proveedores extends javax.swing.JFrame {
                 "ID", "Nombre", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(Tabla_Proveedores);
+        jScrollPane1.setViewportView(Tabla_Proveedore);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -315,7 +314,7 @@ public void mostrarProveedor(){
        modelo.addRow(new Object[]{id,nombre,telefono});
        
            
-       Tabla_Proveedores.setModel(modelo);
+       Tabla_Proveedore.setModel(modelo);
        }
  }catch(Exception e){
              JOptionPane.showMessageDialog(null,"Error:"
@@ -427,7 +426,7 @@ public void mostrarProveedor(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-
+    private javax.swing.JTable Tabla_Proveedore;
     private javax.swing.JButton botoncategorias;
     private javax.swing.JButton botonhistorialdemovimientos;
     private javax.swing.JButton botonproducto;

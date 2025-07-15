@@ -13,10 +13,10 @@ import java.sql.Connection;
  * @author sofiaosuna
  */
 public class Usuarios{
-    public int id_usuario, id_tipo_usuario;
-    public String nombre, ap, am, calle, cp, numero, telefono, clave, estatus;
-
-    public Usuarios(int id_usuario, int id_tipo_usuario, String nombre, String ap, String am, String calle, String cp, String numero, String telefono, String clave, String estatus) {
+    public int id_usuario, id_tipo_usuario, cp;
+    public String nombre, ap, am, calle,  numero, telefono, clave, estatus;
+//constructor con el id_usuario para combobox y asi
+    public Usuarios(int id_usuario, int id_tipo_usuario, String nombre, String ap, String am, String calle, int cp, String numero, String telefono, String clave, String estatus) {
         this.id_usuario = id_usuario;
         this.id_tipo_usuario = id_tipo_usuario;
         this.nombre = nombre;
@@ -29,8 +29,8 @@ public class Usuarios{
         this.clave = clave;
         this.estatus = estatus;
     }
-
-    public Usuarios(int id_tipo_usuario, String nombre, String ap, String am, String calle, String cp, String numero, String telefono, String clave) {
+//constructor sin id_usuario para registrar nuevos usuarios
+    public Usuarios(int id_tipo_usuario, String nombre, String ap, String am, String calle, int cp, String numero, String telefono, String clave) {
         this.id_tipo_usuario = id_tipo_usuario;
         this.nombre = nombre;
         this.ap = ap;
@@ -94,11 +94,11 @@ public class Usuarios{
         this.calle = calle;
     }
 
-    public String getCp() {
+    public int getCp() {
         return cp;
     }
 
-    public void setCp(String cp) {
+    public void setCp(int cp) {
         this.cp = cp;
     }
 
@@ -147,7 +147,7 @@ public boolean guardar(){
     ps.setString(2, ap);
     ps.setString(3, am);
     ps.setString(4, calle);
-    ps.setString(5, cp);
+    ps.setInt(5, cp);
     ps.setString(6, numero);
     ps.setString(7, telefono);
     ps.setString(8, clave);
@@ -162,5 +162,8 @@ return true;
 }  
 }
 
-    
+@Override
+    public String toString() {
+    return nombre.toString(); 
+}
 }
