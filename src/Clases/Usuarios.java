@@ -166,4 +166,16 @@ return true;
     public String toString() {
     return nombre.toString(); 
 }
+    
+    
+    
+    //UwU constructor para el metodo de validacion de credenciales para lo de inicio de sesión... nomas pa eso
+
+    public Usuarios(int id_usuario, int id_tipo_usuario, String nombre, String clave) {
+        this.id_usuario = id_usuario;
+        this.id_tipo_usuario = id_tipo_usuario;
+        this.nombre = nombre;
+        this.clave = clave;
+    }
+    
 }

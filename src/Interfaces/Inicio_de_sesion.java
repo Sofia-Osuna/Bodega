@@ -4,6 +4,10 @@
  */
 package Interfaces;
 
+import static Clases.Conexion.validarCredenciales;
+import Clases.Usuarios;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author braya
@@ -15,6 +19,10 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
      */
     public Inicio_de_sesion() {
         initComponents();
+        //esto de aqui es para que se centre la pantalla
+        this.setLocationRelativeTo(null);
+        //esto es para agregar un titulo a la pantalla.... se ve cool xdxd
+         this.setTitle("Sistema de Inventario - Login");
     }
 
     /**
@@ -37,7 +45,7 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        botoniniciarsesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,8 +107,13 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setText("Contraseña:");
 
-        jButton1.setBackground(new java.awt.Color(42, 138, 127));
-        jButton1.setText("Iniciar Sesión");
+        botoniniciarsesion.setBackground(new java.awt.Color(42, 138, 127));
+        botoniniciarsesion.setText("Iniciar Sesión");
+        botoniniciarsesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoniniciarsesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,7 +127,7 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(381, 381, 381)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botoniniciarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(281, 281, 281)
                                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,7 +157,7 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botoniniciarsesion, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 155, Short.MAX_VALUE))
         );
 
@@ -164,8 +177,56 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        //esto es para que cuando de enter en el usuario se cambie inmediatamente al campo de contraseña
+        jPasswordField1.requestFocus();
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void botoniniciarsesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoniniciarsesionActionPerformed
+        // TODO add your handling code here:
+        validarLogin();
+        
+    }//GEN-LAST:event_botoniniciarsesionActionPerformed
+    //metodo de validar el login
+    private void validarLogin() {
+        String usuario = jTextField1.getText().trim();
+        String contraseña = new String(jPasswordField1.getPassword());
+        
+        // Validar que los campos no estén vacíos
+        if (usuario.isEmpty() || contraseña.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor, complete todos los campos", 
+                "Campos vacíos", 
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+         // Validar credenciales en la base de datos
+        Usuarios usuarioValidado = validarCredenciales(usuario, contraseña);
+        if (usuarioValidado != null)  {
+            JOptionPane.showMessageDialog(this, 
+                "¡Bienvenido al sistema!", 
+                "Login exitoso", 
+                JOptionPane.INFORMATION_MESSAGE);
+            
+            
+            MenuPrincipal menu = new MenuPrincipal();
+        //Indicamos que se hace visible
+            menu.setVisible(true);
+            
+            this.dispose();
+            
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                "Usuario o contraseña incorrectos", 
+                "Error de autenticación", 
+                JOptionPane.ERROR_MESSAGE);
+            
+            // esto es para limpiar losssss textfiel para que se vuelvan a usar
+            jTextField1.setText("");
+            jPasswordField1.setText("");
+            jTextField1.requestFocus();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -202,7 +263,7 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botoniniciarsesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

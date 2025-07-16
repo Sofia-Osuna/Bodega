@@ -42,10 +42,10 @@ public class GestionDeUsuario extends javax.swing.JFrame {
         
         try {
            Conexion conexion = new Conexion();
-        Connection con = conexion.conn;
+        Connection conn = conexion.conn;
         
         String sql = "SELECT * FROM usuario";
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
         
         while(datos.next()){
