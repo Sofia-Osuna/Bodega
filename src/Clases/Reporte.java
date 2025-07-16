@@ -4,10 +4,22 @@
  */
 package Clases;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import javax.swing.text.Document;
+
+
 /**
  *
  * @author sofiaosuna
  */
 public class Reporte {
     
+    
+    
+    
+    
+    
+    
+
 }

@@ -15,6 +15,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+         this.setLocationRelativeTo(null);
+          this.setTitle("Menu Principal");
     }
     // CAMBIAR ESOS TEXTFIELD POR BOTONES
 
