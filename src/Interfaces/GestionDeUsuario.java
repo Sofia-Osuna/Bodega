@@ -4,6 +4,15 @@
  */
 package Interfaces;
 
+
+import Clases.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+import Clases.Usuarios;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author braya
@@ -15,9 +24,66 @@ public class GestionDeUsuario extends javax.swing.JFrame {
      */
     public GestionDeUsuario() {
         initComponents();
-        
+        mostrarUsuarios();
     }
-    
+    public void mostrarUsuarios() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        modelo.addColumn("Id_Usuario");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Ap");
+        modelo.addColumn("Am");
+        modelo.addColumn("Calle");
+        modelo.addColumn("Cp");
+        modelo.addColumn("Numero");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Clave");
+        modelo.addColumn("Estatus");
+        
+        try {
+           Conexion conexion = new Conexion();
+        Connection con = conexion.conn;
+        
+        String sql = "SELECT * FROM usuario";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet datos = ps.executeQuery();
+        
+        while(datos.next()){
+            int id_usuario = datos.getInt("id_usuario");
+            String nombre = datos.getString("nombre");
+            String ap = datos.getString("ap");
+            String am = datos.getString("am");
+            String calle = datos.getString("calle");
+            int cp = datos.getInt("cp");
+            String numero = datos.getString("numero");
+            String telefono = datos.getString("telefono");
+            String clave = datos.getString("clave");
+            int id_tipo_usuario = datos.getInt("id_tipo_usuario");
+            String estatus = datos.getString("estatus");
+            
+            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave,  estatus);
+            
+            modelo.addRow(new Object[]{
+            usuario.getId_usuario(),
+            usuario.getNombre(),
+            usuario.getAp(),
+            usuario.getAm(),
+            usuario.getCalle(),
+            usuario.getCp(),
+            usuario.getNumero(),
+            usuario.getTelefono(),
+            usuario.getClave(),
+            usuario.getEstatus(),
+            
+            });
+            tabla_usuarios.setModel(modelo);
+            
+        }
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
+                     +e.getMessage());      
+ }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +109,7 @@ public class GestionDeUsuario extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_usuarios = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -187,7 +253,6 @@ public class GestionDeUsuario extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(188, 188, 188));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -206,23 +271,15 @@ public class GestionDeUsuario extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombre", "Usuario", "Rol", "Área", "Estado", "Acciones"
+                "Id_Usuario", "Nombre", "Ap", "Am", "Cp", "Calle", "Numero", "Telefono", "Clave", "Estatus"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-        }
+        jScrollPane1.setViewportView(tabla_usuarios);
 
         jComboBox1.setBackground(new java.awt.Color(42, 138, 127));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo Usuario", "Agregar usuario operador", "Agregar usuario solicitante" }));
@@ -233,16 +290,18 @@ public class GestionDeUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 842, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(109, 109, 109)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,8 +314,8 @@ public class GestionDeUsuario extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jComboBox1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,8 +427,8 @@ GestionProductos gesproducto = new GestionProductos();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable tabla_usuarios;
     // End of variables declaration//GEN-END:variables
 }

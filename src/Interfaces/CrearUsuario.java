@@ -409,8 +409,7 @@ GestionProductos gesproducto = new GestionProductos();
         dispose();     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-GestionDeUsuario gesusuario = new GestionDeUsuario();
-    gesusuario.setVisible(true);
+    
     dispose();    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -441,7 +440,8 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void agregar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_usuarioActionPerformed
-    
+    GestionDeUsuario gesusuario = new GestionDeUsuario();
+    gesusuario.setVisible(true);
     String nombre = txtnombre.getText();
     String ap = txtapaterno.getText();
     String am = txtamaterno.getText();
