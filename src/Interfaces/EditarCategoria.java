@@ -4,32 +4,30 @@
  */
 package Interfaces;
 import Clases.Conexion;
-import javax.swing.table.DefaultTableModel;
-import java.sql.*;
-import javax.swing.JOptionPane;
 import Clases.Categoria;
+import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
-import java.sql.Connection;
-import javax.swing.JPopupMenu;
-import java.util.ArrayList;
-import javax.swing.JMenuItem;
-
-        
-        
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 /**
  *
  * @author kyouma
  */
-public class GestionCategoria extends javax.swing.JFrame {
-      public JPopupMenu menu;
-
-    //todo bien aqui no mover 
+public class EditarCategoria extends javax.swing.JFrame {
+    
+Categoria categoria ;
     /**
-     * Creates new form GestionCategoria
+     * Creates new form EditarCategoria
      */
-    public GestionCategoria() {
+    public EditarCategoria(Categoria u) {
         initComponents();
-        mostrarCategoria();
+               
+
+        this.categoria= u;
+        //mostrara el id en la consola
+        System.out.println(u.getId_categoria());
+        //mostrara el nombre en el textfield
+        txtnombrecat.setText(u.getNombre());
     }
 
     /**
@@ -52,12 +50,10 @@ public class GestionCategoria extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtnombrecat = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_categoria = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,70 +164,59 @@ public class GestionCategoria extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Gestion de categorias");
+        jLabel2.setText("Agregar categoria");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(143, 143, 143)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel2)
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setText("Nombre de categoria");
+
+        txtnombrecat.setBackground(new java.awt.Color(204, 204, 204));
+        txtnombrecat.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtnombrecat.setForeground(new java.awt.Color(51, 51, 51));
+        txtnombrecat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtnombrecatActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(25, 39, 52));
+        jButton8.setBackground(new java.awt.Color(42, 138, 127));
         jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton8.setText("Buscar");
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Actualizar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
-        jButton9.setBackground(new java.awt.Color(42, 138, 127));
+        jButton9.setBackground(new java.awt.Color(255, 102, 0));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Agregar categoria");
+        jButton9.setText("Cancelar ");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-
-        tabla_categoria.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID_Categoria", "Nombre de categoria", "Estatus"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tabla_categoria.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(tabla_categoria);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -239,30 +224,33 @@ public class GestionCategoria extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(326, 326, 326)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(391, 391, 391)
+                        .addComponent(txtnombrecat, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addGap(34, 34, 34)
+                .addComponent(txtnombrecat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,158 +267,82 @@ public class GestionCategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- GestionProductos gesproducto = new GestionProductos();
-        
+        GestionProductos gesproducto = new GestionProductos();
+
         gesproducto.setVisible(true);
-     
-        dispose();                                           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-GestionDeUsuario gesusuario = new GestionDeUsuario();
-    gesusuario.setVisible(true);
-    dispose();  
+        GestionDeUsuario gesusuario = new GestionDeUsuario();
+        gesusuario.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
-       hismovi.setVisible(true);
-       dispose();    }//GEN-LAST:event_jButton3ActionPerformed
+        HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+        hismovi.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Proveedores prove = new Proveedores();
-       prove.setVisible(true);
-       dispose(); 
+        Proveedores prove = new Proveedores();
+        prove.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-GestionCategoria gestcat = new GestionCategoria();
+        GestionCategoria gestcat = new GestionCategoria();
         gestcat.setVisible (true);
-        dispose();     }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
- ReporteDiario re = new ReporteDiario();
+        ReporteDiario re = new ReporteDiario();
         re.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
- Inicio_de_sesion ini = new Inicio_de_sesion();
+        Inicio_de_sesion ini = new Inicio_de_sesion();
         ini.setVisible(true);
-        dispose(); 
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
- AgregarCategoria agreCat = new AgregarCategoria();
-        agreCat.setVisible(true);
-        dispose(); 
-              }//GEN-LAST:event_jButton9ActionPerformed
-    public void mostrarCategoria(){
-     DefaultTableModel modelo = new DefaultTableModel();
-     modelo.addColumn("ID_Categoria");
-     modelo.addColumn("Nombre de categoria");
-     modelo.addColumn("Estatus");
+    private void txtnombrecatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombrecatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombrecatActionPerformed
 
-       try{Conexion conexion = new Conexion();
-       Connection conn = conexion.conn;
-       String sql = "SELECT * FROM categoria";
-     PreparedStatement ps = conn.prepareStatement(sql);
-       ResultSet datos = ps.executeQuery();
-              ArrayList<Categoria> gestionCategoria = new ArrayList<>();
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        String nombre = txtnombrecat.getText();
 
-     while (datos.next()){
-       int id = datos.getInt("id_categoria");
-       String nombre = datos.getString("nombre_categoria");
-       String estatus = datos.getString("estatus");
-       Categoria categoria = new Categoria (id,nombre,estatus);
-       modelo.addRow(new Object[]{
-           categoria.getId_categoria(), 
-           categoria.getNombre(),         
-           categoria.getEstatus(),
-           "Editar"
-       });
-       gestionCategoria.add(categoria);
-}
-     //Este pedazo lo pueden copiar y pegar nomas cambien las variables 
-       tabla_categoria.setModel(modelo);
-        menu = new JPopupMenu();
-       JMenuItem itemEditar = new JMenuItem("Editar");
-       JMenuItem itemEliminar = new JMenuItem("Eliminar");
-       
-       menu.add(itemEditar);
-       menu.add(itemEliminar);
-       
-       tabla_categoria.addMouseListener(new java.awt.event.MouseAdapter() {
-           public void mousePressed(java.awt.event.MouseEvent evt){
-           if (evt.isPopupTrigger() || evt.getButton()== java.awt.event.MouseEvent.BUTTON3){
-           int fila = tabla_categoria.rowAtPoint(evt.getPoint());
-           
-           if(fila>=0){
-               tabla_categoria.setRowSelectionInterval(fila,fila);
-               menu.show(tabla_categoria,    evt.getX(), evt.getY());
-           }
-           }
-       }
-       });
-     //editar 
-      itemEditar.addActionListener(e ->{
-       int fila  = tabla_categoria.getSelectedRow();
-       if (fila >= 0){    
-          Categoria u = gestionCategoria.get(fila);
-           new EditarCategoria(u).setVisible(true);
-                   
-       }
-       });
-     //eliminar
-      itemEliminar.addActionListener(e -> {
-       int fila = tabla_categoria.getSelectedRow();
-       if(fila >= 0){
-        Categoria u = gestionCategoria.get(fila);
-        int respuesta = JOptionPane.showConfirmDialog(null, "estás seguro de eliminar al usuario?","Si", JOptionPane.YES_NO_OPTION);
-           if(respuesta == JOptionPane.YES_OPTION){
-           try{
-           PreparedStatement ps2 = conn.prepareStatement("UPDATE categoria SET estatus='B' WHERE id_categoria=?");
-           ps2.setInt(1, u.getId());
-           ps2.executeUpdate();
-           mostrarCategoria();
-          }catch(Exception e2){
-          JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
-          
-          
-          }
-           
-           }
-       
-       
-              }
-       });
-     
-     
-     
- }catch(Exception e){
-             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
-                     +e.getMessage());      
- }
+        //Hacemos la instancia de la clase (la mandamos a llamar)
+        
+       //el this tal es obligatorio chavales xdxdd no se olviden de ponerlo y pa que jale debe de haber una clase que tenga el id y lo demas
+        Categoria categoria = new Categoria (nombre,this.categoria.getId());
+        /*Mandamos a ejecutar la funcion "guardar"
+
+        lo ponemos en un if para validar si se hace o no
+        */
+
+        if(categoria.actualizar()){
+            JOptionPane.showMessageDialog(null, "Guardado");
+            GestionCategoria lista = new GestionCategoria();
+            lista.setVisible(true);
+            //indicamos que esa lista sea visible
+            lista.setVisible(true);
+            //crerramos esta ventana
+            dispose();
+
+        }else{
+            //si no, se evniara este otro mensaje
+            JOptionPane.showMessageDialog(null, "Error al guardar");
+    }//GEN-LAST:event_jButton8ActionPerformed
     }
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        GestionCategoria cat= new GestionCategoria();
+        cat.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+//por aqui hay una linea de codigo que se debe de borrar por que ... pos nomas xd
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-    /* Set the Nimbus look and feel */
-    // Look and feel setting code (optional)
-    
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new GestionCategoria().setVisible(true);
-        }
-    });
-}
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -442,13 +354,11 @@ GestionCategoria gestcat = new GestionCategoria();
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTable tabla_categoria;
+    private javax.swing.JTextField txtnombrecat;
     // End of variables declaration//GEN-END:variables
 }

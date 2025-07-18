@@ -81,6 +81,8 @@ public class RegistrarEntrada extends javax.swing.JFrame {
             String telefono = datos.getString("telefono");
             String clave = datos.getString("clave");
             String estatus = datos.getString("estatus");
+            
+            
 
 
                         
