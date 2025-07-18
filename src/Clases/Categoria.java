@@ -22,6 +22,11 @@ public class Categoria {
         this.estatus = estatus;
     }
 
+    public Categoria(String nombre, int id) {
+          this.id_categoria = id;
+        this.nombre_categoria = nombre;
+    }
+
     public int getId() {
         return id_categoria;
     }
@@ -57,6 +62,7 @@ public class Categoria {
     }
     
     
+    
      public boolean guardar (){
         try{
             Conexion conexion = new Conexion ();
@@ -73,7 +79,24 @@ public class Categoria {
             return false;
         }
     }  
- 
+   public boolean actualizar (){
+        try{
+            Conexion conexion = new Conexion ();
+            Connection conn = conexion.conn;
+
+           
+            String sql = "UPDATE categoria SET nombre_categoria=? WHERE id_categoria=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString( 1, nombre_categoria);
+            ps.setInt(2, id_categoria);
+
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al actualizar"+e.getMessage());
+            return false;
+        }
+    }  
 }
     
     
