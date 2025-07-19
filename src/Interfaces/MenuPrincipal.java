@@ -373,7 +373,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonhistorialdemovimeintosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+ GestionDeUsuario gesusuario = new GestionDeUsuario();
+        gesusuario.setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void botonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonProductoActionPerformed
@@ -402,7 +404,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonnuevoproductoActionPerformed
 
     private void botonnuevousuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonnuevousuarioActionPerformed
-       
+CrearUsuario cu= new CrearUsuario();
+        cu.setVisible(true);
+        dispose();        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_botonnuevousuarioActionPerformed
