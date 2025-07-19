@@ -92,8 +92,54 @@ public class Producto {
             return false;
         }
     }  
-    @Override
-        public String toString() {
-        return nombre_producto.toString(); 
-    }
+  @Override
+public String toString() {
+    return nombre_producto + " (Stock: " + stock + ")";
+}
+
+  public boolean actualizar (){
+        try{
+            Conexion conexion = new Conexion ();
+            Connection conn = conexion.conn;
+
+           
+            String sql = "UPDATE producto SET nombre_producto=?, stock=?, precio=?, id_categoria=? WHERE id_producto=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString( 1, nombre_producto);
+            ps.setInt(2, stock);
+            ps.setInt(3, precio);
+            ps.setInt(4, id_categoria);
+            ps.setInt(5, id_producto);
+
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al actualizar"+e.getMessage());
+            return false;
+        }
+    }  
+  /*
+   public boolean Buscar (){
+        try{
+            Conexion conexion = new Conexion ();
+            Connection conn = conexion.conn;
+
+           
+            String sql = "SELECT p.*, c.nombre_categoria as nombre_categoria FROM producto p INNER JOIN categoria c ON p.id_categoria=c.id_categoria WHERE p.estatus='A'";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString( 1, nombre_producto);
+            ps.setInt(2, stock);
+            ps.setInt(3, precio);
+            ps.setInt(4, id_categoria);
+            ps.setInt(5, id_producto);
+
+            ps.executeUpdate();
+            return true;
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "No se encontro el producto o hubo un problema"+e.getMessage());
+            return false;
+        }
+    }  
+  
+  */
 }

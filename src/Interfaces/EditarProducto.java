@@ -3,30 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
-
 import Clases.Categoria;
 import Clases.Conexion;
+import Clases.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import java.sql.*;
-import javax.swing.*;
-import Clases.Producto;
-
 
 /**
  *
- * @author pedro
+ * @author sofiaosuna
  */
-public class FormularioProducto extends javax.swing.JFrame {
-//no mover aqui porfa
+public class EditarProducto extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(EditarProducto.class.getName());
+    Producto producto;
     /**
-     * Creates new form FormularioProducto
+     * Creates new form EditarProducto
      */
-    public FormularioProducto() {
+    public EditarProducto(Producto u) {
         initComponents();
+              this.producto= u;
         cargarCategoria();
+        //mostrara el id en la consola
+        System.out.println(u.getId_producto());
+        //mostrara el nombre en el textfield
+        txtnombre_producto.setText(u.getNombre_producto());
     }
     
     public void cargarCategoria(){
@@ -58,7 +61,6 @@ public class FormularioProducto extends javax.swing.JFrame {
         }
     
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -313,7 +315,7 @@ public class FormularioProducto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtprecio, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
         );
@@ -332,41 +334,26 @@ public class FormularioProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-           String nombre = txtnombre_producto.getText();
-            String stock =txtstock.getText();
-            //Ahora necesito parsear creo xdxd
-            int Stock = Integer.parseInt(stock);
-            
-            String precio = txtprecio.getText();
-            int Precio = Integer.parseInt(precio);
-            Categoria fkcategoria = (Categoria)comboCategoria.getSelectedItem();
-            int id_categoria = fkcategoria.getId();
-        
-        //Hacemos la instancia de la clase (la mandamos a llamar) para guardar
-        Producto producto = new Producto(Stock, Precio, id_categoria, nombre);
-        /*Mandamos a ejecutar la funcion "guardar"
-        
-        
-        lo ponemos en un if para validar si se hace o no
-        */
-        
-        if(producto.guardar()){
-            JOptionPane.showMessageDialog(null, "Guardado");
-            
-            //Referencia a la clase lista
-            GestionProductos gestionp = new GestionProductos();
-            //Indicamos que se hace visible
-            gestionp.setVisible(true);
-            //cerramos esta ventana
-            dispose();
-        } else {
-        //si no, se evniara este otro mensaje
-        JOptionPane.showMessageDialog(null, "Error al guardar");
-        }
-        
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        GestionProductos gesproducto = new GestionProductos();
+
+        gesproducto.setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+        hismovi.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Proveedores prove = new Proveedores();
+        prove.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void botoncategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriaActionPerformed
         GestionCategoria gestionc = new GestionCategoria();
@@ -376,72 +363,56 @@ public class FormularioProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botoncategoriaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-GestionProductos gesproducto = new GestionProductos();
-        
-        gesproducto.setVisible(true);
-     
-        dispose();     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
-       hismovi.setVisible(true);
-       dispose();     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Proveedores prove = new Proveedores();
-       prove.setVisible(true);
-       dispose();     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-   ReporteDiario re = new ReporteDiario();
+        ReporteDiario re = new ReporteDiario();
         re.setVisible(true);
-        dispose();    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-Inicio_de_sesion ini = new Inicio_de_sesion();
+        Inicio_de_sesion ini = new Inicio_de_sesion();
         ini.setVisible(true);
-        dispose();                                         
+        dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        String nombre = txtnombre_producto.getText();
+        String stock =txtstock.getText();
+        //Ahora necesito parsear creo xdxd
+        int Stock = Integer.parseInt(stock);
+
+        String precio = txtprecio.getText();
+        int Precio = Integer.parseInt(precio);
+        Categoria fkcategoria = (Categoria)comboCategoria.getSelectedItem();
+        int id_categoria = fkcategoria.getId();
+
+        //Hacemos la instancia de la clase (la mandamos a llamar) para guardar
+        Producto producto = new Producto(this.producto.getId_producto(), Stock, Precio, id_categoria, nombre);
+        /*Mandamos a ejecutar la funcion "guardar"
+
+        lo ponemos en un if para validar si se hace o no
+        */
+
+        if(producto.actualizar()){
+            JOptionPane.showMessageDialog(null, "Guardado");
+
+            //Referencia a la clase lista
+            GestionProductos gestionp = new GestionProductos();
+            //Indicamos que se hace visible
+            gestionp.setVisible(true);
+            //cerramos esta ventana
+            dispose();
+        } else {
+            //si no, se evniara este otro mensaje
+            JOptionPane.showMessageDialog(null, "Error al guardar");
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormularioProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormularioProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormularioProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormularioProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FormularioProducto().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botoncategoria;

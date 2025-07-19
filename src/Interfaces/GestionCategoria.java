@@ -338,7 +338,7 @@ GestionCategoria gestcat = new GestionCategoria();
 
        try{Conexion conexion = new Conexion();
        Connection conn = conexion.conn;
-       String sql = "SELECT * FROM categoria";
+       String sql = "SELECT * FROM categoria WHERE estatus = 'A'";
      PreparedStatement ps = conn.prepareStatement(sql);
        ResultSet datos = ps.executeQuery();
               ArrayList<Categoria> gestionCategoria = new ArrayList<>();
