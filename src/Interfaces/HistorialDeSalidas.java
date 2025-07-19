@@ -8,13 +8,14 @@ package Interfaces;
  *
  * @author pedro
  */
-public class HistorialDeMovimientos extends javax.swing.JFrame {
+public class HistorialDeSalidas extends javax.swing.JFrame {
 
     /**
      * Creates new form HistorialDeMovimientos
      */
-    public HistorialDeMovimientos() {
+    public HistorialDeSalidas() {
         initComponents();
+        
     }
 
     /**
@@ -193,11 +194,11 @@ public class HistorialDeMovimientos extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Fecha", "Tipo", "Producto", "Cantidad", "Usuario"
+                "Fecha", "Hora", "usuario operador", "Usuario solicitante"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -258,7 +259,7 @@ GestionProductos gesproducto = new GestionProductos();
         dispose();     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+HistorialDeSalidas hismovi = new HistorialDeSalidas();
        hismovi.setVisible(true);
        dispose();    }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -299,20 +300,21 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeMovimientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeMovimientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeMovimientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeMovimientos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HistorialDeMovimientos().setVisible(true);
+                new HistorialDeSalidas().setVisible(true);
             }
         });
     }
