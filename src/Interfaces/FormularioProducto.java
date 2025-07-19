@@ -35,7 +35,7 @@ public class FormularioProducto extends javax.swing.JFrame {
             Conexion conexion = new Conexion();
             Connection conn = conexion.conn;
             
-            String sql = "SELECT* From categoria";
+            String sql = "SELECT* From categoria WHERE estatus= 'A'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
             
@@ -388,7 +388,7 @@ GestionProductos gesproducto = new GestionProductos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+HistorialDeSalidas hismovi = new HistorialDeSalidas();
        hismovi.setVisible(true);
        dispose();     }//GEN-LAST:event_jButton3ActionPerformed
 

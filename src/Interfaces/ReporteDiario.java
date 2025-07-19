@@ -297,7 +297,7 @@ public class ReporteDiario extends javax.swing.JFrame {
     }//GEN-LAST:event_botonproductoActionPerformed
 
     private void botonhistorialdemovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimientosActionPerformed
-        HistorialDeMovimientos hmovimientos = new HistorialDeMovimientos();
+        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
         hmovimientos.setVisible(true);
         dispose();
         // TODO add your handling code here:

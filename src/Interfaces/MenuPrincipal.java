@@ -367,7 +367,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botonhistorialdemovimeintosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimeintosActionPerformed
         // TODO add your handling code here:
-        HistorialDeMovimientos hmovimientos = new HistorialDeMovimientos();
+        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
         hmovimientos.setVisible(true);
         dispose();
     }//GEN-LAST:event_botonhistorialdemovimeintosActionPerformed

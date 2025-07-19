@@ -413,7 +413,7 @@ GestionProductos gesproducto = new GestionProductos();
     dispose();    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
- HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+ HistorialDeSalidas hismovi = new HistorialDeSalidas();
        hismovi.setVisible(true);
        dispose();     }//GEN-LAST:event_jButton10ActionPerformed
 

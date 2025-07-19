@@ -367,7 +367,7 @@ public void mostrarProveedor(){
     }//GEN-LAST:event_botonproveedoresActionPerformed
 
     private void botonhistorialdemovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimientosActionPerformed
-        HistorialDeMovimientos hmovimientos = new HistorialDeMovimientos();
+        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
         hmovimientos.setVisible(true);
         dispose();
         // TODO add your handling code here:

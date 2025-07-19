@@ -338,7 +338,7 @@ Proveedores prove = new Proveedores();
        dispose();     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+HistorialDeSalidas hismovi = new HistorialDeSalidas();
        hismovi.setVisible(true);
        dispose();         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -368,36 +368,35 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
         DetalleSalida dsalida = new DetalleSalida(id_salida, id_producto, cantidad);
                   
                    
-        if(dsalida.guardar()){
-            JOptionPane.showMessageDialog(null, "Guardado");
-            //esto es para que se "limpien" los campos y se actualice  el combo box
-            txtcantidad.setText(" ");
+        if (dsalida.guardar()) {
+            JOptionPane.showMessageDialog(null, "Producto agregado exitosamente");
+            
+            // Limpiar los campos
+            txtcantidad.setText("");
+            
+            // Recargar productos (para actualizar stock disponible)
             comboproducto.removeAllItems();
             cargarProductos();
             
-              int opcion = JOptionPane.showConfirmDialog(null, 
-                    "¿Desea agregar otro producto a esta salida?", 
-                    "Confirmar", 
-                    JOptionPane.YES_NO_OPTION);
-                
-                if (opcion == JOptionPane.NO_OPTION) {
-                    // Si no desea agregar más productos, cerrar la ventana
-                    JOptionPane.showMessageDialog(null, "Salida completada exitosamente");
-                    dispose();
-                }else {
-                    AgregarProductoS agregar = new AgregarProductoS(idSalidaGenerado);
-                    
-                }
+            // Preguntar si desea agregar otro producto
+            int opcion = JOptionPane.showConfirmDialog(null, 
+                "¿Desea agregar otro producto a esta salida?", 
+                "Confirmar", 
+                JOptionPane.YES_NO_OPTION);
             
-            /*Referencia a la clase lista
-            GestionProductos gestionp = new GestionProductos();
-            //Indicamos que se hace visible
-            gestionp.setVisible(true);
-            cerramos esta ventana*/
-           
+            if (opcion == JOptionPane.NO_OPTION) {
+                // Si no desea agregar más productos, mostrar mensaje y cerrar
+                JOptionPane.showMessageDialog(null, "Salida completada exitosamente");
+                dispose();
+                
+                // Opcional: Regresar a la ventana de movimientos o principal
+                HistorialDeSalidas historial = new HistorialDeSalidas();
+                historial.setVisible(true);
+            }
+            // Si selecciona YES, la ventana permanece abierta para agregar más productos
+            
         } else {
-        //si no, se evniara este otro mensaje
-        JOptionPane.showMessageDialog(null, "Error al guardar");
+            JOptionPane.showMessageDialog(null, "Error al guardar el producto");
         }
         
     }//GEN-LAST:event_botonguardarActionPerformed
