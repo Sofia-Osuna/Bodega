@@ -34,7 +34,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
         Conexion conexion = new Conexion();
             Connection conn = conexion.conn;
             
-            String sql = "SELECT* FROM usuario";
+            String sql = "SELECT* FROM usuario WHERE estatus = 'A'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
             
@@ -437,26 +437,21 @@ public class RegistrarSalida extends javax.swing.JFrame {
         
         //Hacemos la instancia de la clase (la mandamos a llamar)
         SalidaProducto salidap = new SalidaProducto(id_usuario_op, id_usuario_so, fecha_salida);
-        /*Mandamos a ejecutar la funcion "guardar"
+       
+        int idSalidaGenerado = salidap.guardar();
         
-        
-        lo ponemos en un if para validar si se hace o no
-        */
-        
-        if(salidap.guardar()){
-            JOptionPane.showMessageDialog(null, "Guardado");
+        if (idSalidaGenerado > 0) {
+            JOptionPane.showMessageDialog(null, "Salida registrada exitosamente con ID: " + idSalidaGenerado);
             
-            //Referencia a la clase lista
-            AgregarProductoS agregar = new AgregarProductoS();
-            //Indicamos que se hace visible
+            // Crear instancia de AgregarProductoS y pasar el ID de la salida
+            AgregarProductoS agregar = new AgregarProductoS(idSalidaGenerado);
             agregar.setVisible(true);
-            //cerramos esta ventana
+            
+            // Cerrar esta ventana
             dispose();
-        } else {
-        //si no, se evniara este otro mensaje
-        JOptionPane.showMessageDialog(null, "Error al guardar");
         }
-
+        
+       
         // TODO add your handling code here:
     }//GEN-LAST:event_botonagregarprodActionPerformed
 

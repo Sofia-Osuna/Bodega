@@ -6,10 +6,15 @@ package Interfaces;
 
 import Clases.Producto;
 import Clases.Conexion;
+import Clases.DetalleSalida;
+import static com.mysql.cj.conf.PropertyKey.logger;
+
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,6 +23,7 @@ import javax.swing.JOptionPane;
 public class AgregarProductoS extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AgregarProductoS.class.getName());
+    int id_salida;
 
     /**
      * Creates new form AgregarProductoS
@@ -25,7 +31,25 @@ public class AgregarProductoS extends javax.swing.JFrame {
     public AgregarProductoS() {
         initComponents();
         cargarProductos();
+        this.setLocationRelativeTo(null);
+        this.id_salida = -1;
     }
+    
+     // Nuevo constructor que recibe el ID de la salida.... no sabia esto la verdad, pero aver si funciona alv
+    public AgregarProductoS(int idSalida) {
+        initComponents();
+        cargarProductos();
+        this.id_salida = idSalida;
+        
+        // Opcional: Mostrar el ID de la salida en la ventana
+        this.setTitle("Agregar Productos - Salida ID: " + idSalida);
+    }
+    
+    /*necesito usar esto AAAHHHHHHHH
+    AgregarProductoS(int id_salidaGenerado) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+    */
     
       public void cargarProductos(){
         
@@ -33,7 +57,7 @@ public class AgregarProductoS extends javax.swing.JFrame {
             Conexion conexion = new Conexion();
             Connection conn = conexion.conn;
             
-            String sql = "SELECT* From producto";
+            String sql = "SELECT* From producto WHERE estatus='A' AND stock>0";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
             
@@ -43,7 +67,7 @@ public class AgregarProductoS extends javax.swing.JFrame {
             int stock = datos.getInt("stock");
             int precio = datos.getInt("precio");
             int id_categoria = datos.getInt("id_categoria");
-            String estatus = datos.getString("estatus");
+            //String estatus = datos.getString("estatus"); checar el constructor
             
             
             Producto pro = new Producto (id_producto, stock, precio, id_categoria, nombre_producto);
@@ -83,7 +107,7 @@ public class AgregarProductoS extends javax.swing.JFrame {
         comboproducto = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txtcantidad = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        botonguardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -229,11 +253,11 @@ public class AgregarProductoS extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel2.setText("Seleccione el producto");
 
-        jButton8.setBackground(new java.awt.Color(42, 138, 127));
-        jButton8.setText("Agregar Producto");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        botonguardar.setBackground(new java.awt.Color(42, 138, 127));
+        botonguardar.setText("Agregar Producto");
+        botonguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                botonguardarActionPerformed(evt);
             }
         });
 
@@ -257,7 +281,7 @@ public class AgregarProductoS extends javax.swing.JFrame {
                 .addGap(229, 229, 229))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(113, 113, 113)
-                .addComponent(jButton8)
+                .addComponent(botonguardar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -273,7 +297,7 @@ public class AgregarProductoS extends javax.swing.JFrame {
                     .addComponent(comboproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(144, 144, 144)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(154, Short.MAX_VALUE))
         );
 
@@ -333,9 +357,50 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
         dispose();        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        Producto prod = (Producto)comboproducto.getSelectedItem();
+        int id_producto = prod.getId_producto();
+                
+        String cant =txtcantidad.getText();
+        int cantidad = Integer.parseInt(cant);
+                  
+        DetalleSalida dsalida = new DetalleSalida(id_salida, id_producto, cantidad);
+                  
+                   
+        if(dsalida.guardar()){
+            JOptionPane.showMessageDialog(null, "Guardado");
+            //esto es para que se "limpien" los campos y se actualice  el combo box
+            txtcantidad.setText(" ");
+            comboproducto.removeAllItems();
+            cargarProductos();
+            
+              int opcion = JOptionPane.showConfirmDialog(null, 
+                    "¿Desea agregar otro producto a esta salida?", 
+                    "Confirmar", 
+                    JOptionPane.YES_NO_OPTION);
+                
+                if (opcion == JOptionPane.NO_OPTION) {
+                    // Si no desea agregar más productos, cerrar la ventana
+                    JOptionPane.showMessageDialog(null, "Salida completada exitosamente");
+                    dispose();
+                }else {
+                    AgregarProductoS agregar = new AgregarProductoS(idSalidaGenerado);
+                    
+                }
+            
+            /*Referencia a la clase lista
+            GestionProductos gestionp = new GestionProductos();
+            //Indicamos que se hace visible
+            gestionp.setVisible(true);
+            cerramos esta ventana*/
+           
+        } else {
+        //si no, se evniara este otro mensaje
+        JOptionPane.showMessageDialog(null, "Error al guardar");
+        }
+        
+    }//GEN-LAST:event_botonguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,6 +428,7 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonguardar;
     private javax.swing.JComboBox<Producto> comboproducto;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -371,7 +437,6 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

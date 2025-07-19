@@ -4,11 +4,16 @@
  */
 package Clases;
 
+import com.mysql.cj.xdevapi.Statement;
 import java.sql.Connection;
+import java.sql.ResultSet;
+
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+
 
 /**
  *
@@ -30,9 +35,9 @@ public class SalidaProducto {
         this.hora_salida = hora_salida;
         this.estatus = estatus;
     }
-   
+    
     //constructor si el id_salida para nuevos registros
-
+/*
     public SalidaProducto( int id_usuario_op, int id_usuario_so, String fecha_salida) {
        
         this.id_usuario_op = id_usuario_op;
@@ -42,7 +47,10 @@ public class SalidaProducto {
         //this.estatus = estatus;
     }
 
-   
+   */
+    
+    
+    
     
 
     public int getId_salida() {
@@ -94,6 +102,8 @@ public class SalidaProducto {
         this.estatus = estatus;
     }
     
+    
+    /*
      public boolean guardar (){
         try{
             Conexion conexion = new Conexion ();
@@ -103,14 +113,70 @@ public class SalidaProducto {
             String sql = "INSERT INTO salida (fecha_salida, hora_salida, id_usuario_operador, id_usuario_solicitante, estatus) VALUES (?,NOW(),?,?,'A')";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, fecha_salida);
-           
             ps.setInt(2, id_usuario_op);
              ps.setInt(3, id_usuario_so);
             ps.executeUpdate();
             return true;
+            
+            
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Error al guardar"+e.getMessage());
             return false;
         }
-    }  
+    } 
+
+     */
+     //constructor para nuevos registrossss que incluyo lo de la hora automaticamente
+      public SalidaProducto(int id_usuario_operador, int id_usuario_solicitante, String fecha_salida) {
+        this.id_usuario_op = id_usuario_operador;
+        this.id_usuario_so = id_usuario_solicitante;
+        this.fecha_salida = fecha_salida;
+        this.estatus = "A"; 
+        
+        // Generar hora automáticamente
+        LocalTime horaActual = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        this.hora_salida = horaActual.format(formatter);
+    }
+    
+    // Método para guardar y devolver el ID generado
+    public int guardar() {
+        try {
+            Conexion conexion = new Conexion();
+            Connection conn = conexion.conn;
+            
+            String sql = "INSERT INTO salida (fecha_salida, hora_salida, id_usuario_operador, id_usuario_solicitante, estatus) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS);
+            
+            ps.setString(1, fecha_salida);
+            ps.setString(2, hora_salida);
+            ps.setInt(3, id_usuario_op);
+            ps.setInt(4, id_usuario_so);
+            ps.setString(5, estatus);
+            
+            int filasAfectadas = ps.executeUpdate();
+            
+            if (filasAfectadas > 0) {
+                // Obtener el ID generado
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    this.id_salida = rs.getInt(1);
+                    rs.close();
+                    ps.close();
+                    conn.close();
+                    return this.id_salida; // Devolver el ID generado
+                }
+            }
+            
+            ps.close();
+            conn.close();
+            return -1; // Error
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar salida: " + e.getMessage());
+            return -1;
+        }
+    }
+
+     
 }
