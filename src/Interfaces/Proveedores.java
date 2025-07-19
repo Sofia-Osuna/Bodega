@@ -374,8 +374,9 @@ public void mostrarProveedor(){
     }//GEN-LAST:event_botonhistorialdemovimientosActionPerformed
 
     private void botonusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonusuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonusuarioActionPerformed
+GestionDeUsuario gesusuario = new GestionDeUsuario();
+    gesusuario.setVisible(true);
+    dispose();       }//GEN-LAST:event_botonusuarioActionPerformed
 
     private void botonproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonproductoActionPerformed
          //este codigo es para que los botones funcionen

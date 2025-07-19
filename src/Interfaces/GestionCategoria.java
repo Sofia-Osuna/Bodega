@@ -391,7 +391,7 @@ GestionCategoria gestcat = new GestionCategoria();
        int fila = tabla_categoria.getSelectedRow();
        if(fila >= 0){
         Categoria u = gestionCategoria.get(fila);
-        int respuesta = JOptionPane.showConfirmDialog(null, "estás seguro de eliminar al usuario?","Si", JOptionPane.YES_NO_OPTION);
+        int respuesta = JOptionPane.showConfirmDialog(null, "estás seguro de eliminar a la categoria?","Si", JOptionPane.YES_NO_OPTION);
            if(respuesta == JOptionPane.YES_OPTION){
            try{
            PreparedStatement ps2 = conn.prepareStatement("UPDATE categoria SET estatus='B' WHERE id_categoria=?");
