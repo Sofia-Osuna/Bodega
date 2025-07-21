@@ -3,18 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
-import Clases.Categoria;
+
 import Clases.Conexion;
-import Clases.Usuarios;
 import Clases.TipoUsuario;
+import Clases.Usuarios;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-
-
-
-
-
 
 
 
@@ -22,19 +17,32 @@ import javax.swing.JOptionPane;
  *
  * @author pedro
  */
-public class CrearUsuario extends javax.swing.JFrame {
+public class EditarUsuario extends javax.swing.JFrame {
+Usuarios usuario;
 
     /**
-     * Creates new form CrearUsuario
+     * Creates new form EditarUsuario
      */
-    public CrearUsuario() {
+    public EditarUsuario(Usuarios u) {
         initComponents();
         cargarTipoUsuario();
+        this.usuario = u;
+        System.out.println(u.getId_usuario());
+        txtnombre.setText(u.getNombre());
+        txtapaterno.setText(u.getAp());
+        txtamaterno.setText(u.getAm());
+        txtnombrecalle.setText(u.getCalle());
+        txtcp.setText(String.valueOf(u.getCp()));
+        txtnumerocalle.setText(u.getNumero());
+        txttelefono.setText(u.getTelefono());
+        txtclave.setText(u.getClave());
         
+        
+        
+       
         
     }
-    
-     public void cargarTipoUsuario(){
+      public void cargarTipoUsuario(){
         
          try{
             Conexion conexion = new Conexion();
@@ -63,7 +71,8 @@ public class CrearUsuario extends javax.swing.JFrame {
         }
     
     }
-    
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,7 +110,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         txtnumerocalle = new javax.swing.JTextField();
         txtclave = new javax.swing.JPasswordField();
         txttelefono = new javax.swing.JTextField();
-        agregar_usuario = new javax.swing.JButton();
+        editar_usuario = new javax.swing.JButton();
         txttipo_usuario = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
@@ -202,7 +211,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                 .addComponent(jButton13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -240,7 +249,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -267,10 +276,10 @@ public class CrearUsuario extends javax.swing.JFrame {
             }
         });
 
-        agregar_usuario.setText("Agregar Usuario");
-        agregar_usuario.addActionListener(new java.awt.event.ActionListener() {
+        editar_usuario.setText("Actualizar Datos");
+        editar_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregar_usuarioActionPerformed(evt);
+                editar_usuarioActionPerformed(evt);
             }
         });
 
@@ -282,7 +291,7 @@ public class CrearUsuario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(agregar_usuario)
+                .addComponent(editar_usuario)
                 .addGap(231, 231, 231))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(73, 73, 73)
@@ -336,15 +345,15 @@ public class CrearUsuario extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -369,7 +378,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtcp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnumerocalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtcontraseña)
                     .addComponent(jLabel11)
@@ -380,7 +389,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                     .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txttipo_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(agregar_usuario)
+                .addComponent(editar_usuario)
                 .addGap(25, 25, 25))
         );
 
@@ -388,127 +397,97 @@ public class CrearUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-GestionProductos gesproducto = new GestionProductos();
-        
+        GestionProductos gesproducto = new GestionProductos();
+
         gesproducto.setVisible(true);
-     
-        dispose();     }//GEN-LAST:event_jButton8ActionPerformed
+
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-    
-    dispose();    }//GEN-LAST:event_jButton9ActionPerformed
+    GestionDeUsuario gesusuario = new GestionDeUsuario();
+    gesusuario.setVisible(true);
+    dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
- HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
-       hismovi.setVisible(true);
-       dispose();     }//GEN-LAST:event_jButton10ActionPerformed
+        HistorialDeMovimientos hismovi = new HistorialDeMovimientos();
+        hismovi.setVisible(true);
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-  ReporteDiario re = new ReporteDiario();
+        ReporteDiario re = new ReporteDiario();
         re.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-Proveedores prove = new Proveedores();
-       prove.setVisible(true);
-       dispose();     }//GEN-LAST:event_jButton12ActionPerformed
+        Proveedores prove = new Proveedores();
+        prove.setVisible(true);
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-GestionCategoria gestcat = new GestionCategoria();
+        GestionCategoria gestcat = new GestionCategoria();
         gestcat.setVisible (true);
-        dispose();     }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-Inicio_de_sesion ini = new Inicio_de_sesion();
+        Inicio_de_sesion ini = new Inicio_de_sesion();
         ini.setVisible(true);
-        dispose();   
+        dispose();
     }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void agregar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_usuarioActionPerformed
-    
-    String nombre = txtnombre.getText();
-    String ap = txtapaterno.getText();
-    String am = txtamaterno.getText();
-    String calle = txtnombrecalle.getText();
-    String cpp = txtcp.getText();
-    int cp = Integer.parseInt(cpp);
-    String numero = txtnumerocalle.getText();
-    String telefono = txttelefono.getText();
-    String clave = txtclave.getText();
-    TipoUsuario fktipousuario = (TipoUsuario)txttipo_usuario.getSelectedItem();
-    int id_tipo_usuario = fktipousuario.getId_tipo_usuario();
-    
-    Usuarios usuarios = new Usuarios( id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave);
-    
-    
-    if(usuarios.guardar()){
-            JOptionPane.showMessageDialog(null,"Usuario guardado");
-            
-            
-    }else{
-        JOptionPane.showMessageDialog(null,"Hubo un error al guardar" );
-    }
-    
-        
-        
-    }//GEN-LAST:event_agregar_usuarioActionPerformed
 
     private void txtapaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapaternoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtapaternoActionPerformed
 
+    private void editar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar_usuarioActionPerformed
+        String nombre = txtnombre.getText();
+        String ap = txtapaterno.getText();
+        String am = txtamaterno.getText();
+        String calle = txtnombrecalle.getText();
+        String cpp = txtcp.getText();
+        int cp = Integer.parseInt(cpp);
+        String numero = txtnumerocalle.getText();
+        String telefono = txttelefono.getText();
+        String clave = txtclave.getText();
+        TipoUsuario fktipousuario = (TipoUsuario)txttipo_usuario.getSelectedItem();
+        int id_tipo_usuario = fktipousuario.getId_tipo_usuario();
+        
+        Usuarios usuario2 = new Usuarios(usuario.getId_usuario(), id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave, "A");
+        
+
+        if(usuario2.actualizar()){
+            JOptionPane.showMessageDialog(null,"Datos Actualizados");
+            
+            
+            
+
+        }else{
+            JOptionPane.showMessageDialog(null,"Hubo un error al guardar" );
+        }
+
+    }//GEN-LAST:event_editar_usuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrearUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CrearUsuario().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agregar_usuario;
+    private javax.swing.JButton editar_usuario;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -540,6 +519,4 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
     private javax.swing.JTextField txttelefono;
     private javax.swing.JComboBox<TipoUsuario> txttipo_usuario;
     // End of variables declaration//GEN-END:variables
-
-    
 }
