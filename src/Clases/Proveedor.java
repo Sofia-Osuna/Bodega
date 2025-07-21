@@ -84,4 +84,22 @@ public Proveedor(int id, String nombre,String telefono, String estatus){
             return false;
         }
         }
+    public boolean actualizar (){
+        try{
+            Conexion conexion = new Conexion();
+            Connection conn = conexion.conn;
+            
+            String sql ="UPDATE proveedor SET nombre_proveedor=?, telefono=? WHERE id_proveedor=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nombre_proveedor);
+             ps.setString(2,telefono);
+            ps.setInt(3,id_proveedor);
+            ps.executeUpdate();
+            return true;
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Error al guardar"+e.getMessage());
+            return false;
+        }
+        }
     }
