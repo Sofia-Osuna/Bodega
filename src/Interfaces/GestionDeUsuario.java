@@ -11,14 +11,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import Clases.Usuarios;
+import static java.awt.SystemColor.menu;
+import java.util.ArrayList;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 /**
  *
  * @author braya
  */
 public class GestionDeUsuario extends javax.swing.JFrame {
-
+public JPopupMenu menu;
     /**
      * Creates new form GestionDeUsuario
      */
@@ -47,6 +51,7 @@ public class GestionDeUsuario extends javax.swing.JFrame {
         String sql = "SELECT * FROM usuario";
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
+        ArrayList<Usuarios> GestionDeUsuario = new ArrayList<>();
         
         while(datos.next()){
             int id_usuario = datos.getInt("id_usuario");
@@ -62,7 +67,7 @@ public class GestionDeUsuario extends javax.swing.JFrame {
             String estatus = datos.getString("estatus");
             
             Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave,  estatus);
-            
+           
             modelo.addRow(new Object[]{
             usuario.getId_usuario(),
             usuario.getNombre(),
@@ -74,11 +79,61 @@ public class GestionDeUsuario extends javax.swing.JFrame {
             usuario.getTelefono(),
             usuario.getClave(),
             usuario.getEstatus(),
-            
+            "Editar"
             });
-            tabla_usuarios.setModel(modelo);
             
+            GestionDeUsuario.add(usuario);
         }
+        tabla_usuarios.setModel(modelo);
+        menu = new JPopupMenu();
+        JMenuItem itemEditar = new JMenuItem("Editar");
+        JMenuItem itemEliminar = new JMenuItem("Eliminar");
+        
+        menu.add(itemEditar);
+        menu.add(itemEliminar);
+        
+        tabla_usuarios.addMouseListener(new java.awt.event.MouseAdapter(){
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+        if (evt.isPopupTrigger() || evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
+            int fila = tabla_usuarios.rowAtPoint(evt.getPoint());
+            
+            if (fila>=0){
+                tabla_usuarios.setRowSelectionInterval(fila,fila);
+                menu.show(tabla_usuarios, evt.getX(), evt.getY());
+            }
+        }
+            }
+        public void mouseReleased(java.awt.event.MouseEvent evt){
+            mousePressed(evt);
+        }
+        });
+        //Editar 
+        itemEditar.addActionListener(e ->{
+        int fila = tabla_usuarios.getSelectedRow();
+        if (fila >= 0){
+            Usuarios u = GestionDeUsuario.get(fila);
+            new EditarUsuario(u).setVisible(true);
+        }
+        });
+        //Eliminar 
+        itemEliminar.addActionListener(e ->{
+            int fila = tabla_usuarios.getSelectedRow();
+            if(fila >=0){
+                Usuarios u = GestionDeUsuario.get(fila);
+                int respuesta = JOptionPane.showConfirmDialog(null, "Estas seguro de que quieres eliminar al usuario?", "Si", JOptionPane.YES_NO_OPTION);
+                if(respuesta == JOptionPane.YES_OPTION){
+                    try{
+                    PreparedStatement ps2 = conn.prepareStatement(
+                   "DELETE FROM usuario WHERE id_usuario=?");
+                    ps2.setInt(1, u.getId_usuario());
+                    ps2.executeUpdate();
+                    mostrarUsuarios();
+                     }catch(Exception e2){
+                      JOptionPane.showMessageDialog(null, "Error al guardar"+e2.getMessage());
+                     }
+                }
+            }
+        });
         }catch(Exception e){
              JOptionPane.showMessageDialog(null,"Error al cargar los datos"
                      +e.getMessage());      
@@ -314,8 +369,8 @@ public class GestionDeUsuario extends javax.swing.JFrame {
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jComboBox1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
