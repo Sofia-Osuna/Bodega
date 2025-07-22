@@ -5,7 +5,10 @@
 package Clases;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 /**
  *
@@ -71,8 +74,8 @@ public class EntradaProducto {
      
     
     
-    
-        public boolean guardar() {
+    /*
+      public boolean guardar() {
              try{
        Conexion conexion = new Conexion ();
             Connection conn = conexion.conn;
@@ -86,7 +89,53 @@ public class EntradaProducto {
             JOptionPane.showMessageDialog(null, "Error al guardar"+e.getMessage());
             return false;
         }
-             
-}     
+           
+}       
+*/
+    
+    public EntradaProducto(int id_usuario_operador, String fecha_salida) {
+        this.id_usuario_operador = id_usuario_operador;
+        this.fecha_entrada = fecha_salida;
+        this.estatus = "A"; 
+        
+        // Generar hora automáticamente
+        LocalTime horaActual = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        this.hora_entrada = horaActual.format(formatter);
+    }
+    public int guardar() {
+        try {
+            Conexion conexion = new Conexion();
+            Connection conn = conexion.conn;
+            
+            String sql = "INSERT INTO entrada (fecha_entrada, hora_entrada, id_usuario_operador, id_proveedor, estatus) VALUES (NOW(), NOW(), ?, ?, 'A')";
+            PreparedStatement ps = conn.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS);
+            
+            ps.setInt(1, id_usuario_operador);
+            ps.setInt(2, id_proveedor );
+            
+            int filasAfectadas = ps.executeUpdate();
+            
+            if (filasAfectadas > 0) {
+                // Obtener el ID generado
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    this.id_entrada = rs.getInt(1);
+                    rs.close();
+                    ps.close();
+                    conn.close();
+                    return this.id_entrada; // Devolver el ID generado
+                }
+            }
+            
+            ps.close();
+            conn.close();
+            return -1; // Error
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar salida: " + e.getMessage());
+            return -1;
         }
-
+    }
+    
+        }
