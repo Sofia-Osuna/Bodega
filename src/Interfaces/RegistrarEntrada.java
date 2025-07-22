@@ -394,13 +394,20 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     Usuarios usuario = (Usuarios) ComboOperador.getSelectedItem();
         int id_usuario_operador= usuario.getId_usuario(); 
        
-                
-         EntradaProducto entrada = new EntradaProducto(id_proveedor,id_usuario_operador);
-         if(entrada.guardar()){
-            JOptionPane.showMessageDialog(null,"guardado");
-          
-        }else{
-            JOptionPane.showMessageDialog(null,"Error al guardar");
+     
+         EntradaProducto entrada = new EntradaProducto(id_usuario_operador,id_proveedor);
+         
+    int idEntradaGenerado = entrada.guardar();
+        
+        if (idEntradaGenerado > 0) {
+            JOptionPane.showMessageDialog(null, "Salida registrada exitosamente con ID: " + idEntradaGenerado);
+            
+            // Crear instancia de AgregarProductoS y pasar el ID de la salida
+            DeProductos agregar = new DeProductos (idEntradaGenerado);
+            agregar.setVisible(true);
+            
+            // Cerrar esta ventana
+            dispose();
         }
 
     }//GEN-LAST:event_jButton8ActionPerformed
