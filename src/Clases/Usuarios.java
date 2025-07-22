@@ -177,5 +177,32 @@ return true;
         this.nombre = nombre;
         this.clave = clave;
     }
+    public boolean actualizar(){
+        try{
     
+        Conexion conexion = new Conexion ();
+        Connection conn = conexion.conn;
+        
+        String sql = "UPDATE usuario SET nombre=?, ap=?, am=?, calle=?, cp=?, numero=?, telefono=?, clave=?, id_tipo_usuario=?, estatus=? WHERE id_usuario=?";              
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, nombre);
+        ps.setString(2, ap);
+        ps.setString(3, am);
+        ps.setString(4, calle);
+        ps.setInt(5, cp);
+        ps.setString(6, numero);
+        ps.setString(7, telefono);
+        ps.setString(8, clave);
+        ps.setInt(9, id_tipo_usuario);
+        ps.setString(10, estatus);
+        ps.setInt(11, id_usuario);
+        
+        
+        ps.executeUpdate();
+        return true;
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Error al actualizar"+e.getMessage());
+        return false;
+       }
+    }    
 }

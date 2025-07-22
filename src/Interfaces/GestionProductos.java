@@ -601,7 +601,7 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
     private void botonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarActionPerformed
         // TODO add your handling code here:
         
-        buscarProductos();
+      
         
     }//GEN-LAST:event_botonbuscarActionPerformed
 
