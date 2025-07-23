@@ -35,7 +35,7 @@ public class RegistrarEntrada extends javax.swing.JFrame {
             Conexion conexion = new Conexion();
             Connection conn = conexion.conn;
             
-            String sql = "SELECT * From Proveedor";
+            String sql = "SELECT * From proveedor";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet datos = ps.executeQuery();
             
@@ -362,10 +362,19 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+                //este codigo es para que los botones funcionen
+        GestionCategoria gestionc = new GestionCategoria();
+        //Indicamos que se hace visible
+        gestionc.setVisible(true);
+        //cerramos esta ventana
+        dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
      // TODO add your handling code here:
+      ReporteDiario rep = new ReporteDiario();
+        rep.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -374,18 +383,34 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
+        hmovimientos.setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
+        hmovimientos.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        GestionDeUsuario gesusuario = new GestionDeUsuario();
+        gesusuario.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+               //este codigo es para que los botones funcionen
+        GestionProductos gestionp = new GestionProductos();
+        //Indicamos que se hace visible
+        gestionp.setVisible(true);
+        //cerramos esta ventana
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -395,12 +420,12 @@ public class RegistrarEntrada extends javax.swing.JFrame {
         int id_usuario_operador= usuario.getId_usuario(); 
        
      
-         EntradaProducto entrada = new EntradaProducto(id_usuario_operador,id_proveedor);
+         EntradaProducto entrada = new EntradaProducto(id_proveedor, id_usuario_operador);
          
     int idEntradaGenerado = entrada.guardar();
         
         if (idEntradaGenerado > 0) {
-            JOptionPane.showMessageDialog(null, "Salida registrada exitosamente con ID: " + idEntradaGenerado);
+            JOptionPane.showMessageDialog(null, "Entrada registrada exitosamente con ID: " + idEntradaGenerado);
             
             // Crear instancia de AgregarProductoS y pasar el ID de la salida
             DeProductos agregar = new DeProductos (idEntradaGenerado);
