@@ -98,10 +98,7 @@ public class EntradaProducto {
         this.fecha_entrada = fecha_salida;
         this.estatus = "A"; 
         
-        // Generar hora automáticamente
-        LocalTime horaActual = LocalTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        this.hora_entrada = horaActual.format(formatter);
+       
     }
     public int guardar() {
         try {
@@ -133,7 +130,7 @@ public class EntradaProducto {
             return -1; // Error
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar salida: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al guardar entrada: " + e.getMessage());
             return -1;
         }
     }
