@@ -54,7 +54,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
              String estatus = datos.getString("estatus");
             
             
-            Usuarios usuario = new Usuarios (id_usuario, id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave, estatus);
+            Usuarios usuario = new Usuarios (id_usuario, id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave);
             combosolicitante.addItem(usuario);
            
             
@@ -96,7 +96,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
              String estatus = datos.getString("estatus");
             
             
-            Usuarios usuario = new Usuarios (id_usuario, id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave, estatus);
+            Usuarios usuario = new Usuarios (id_usuario, id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave);
            
             combooperador.addItem(usuario);
             
@@ -297,6 +297,11 @@ public class RegistrarSalida extends javax.swing.JFrame {
 
         botoncancelar.setBackground(new java.awt.Color(255, 102, 0));
         botoncancelar.setText("Cancelar");
+        botoncancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botoncancelarActionPerformed(evt);
+            }
+        });
 
         botonagregarprod.setBackground(new java.awt.Color(25, 39, 52));
         botonagregarprod.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -454,6 +459,17 @@ public class RegistrarSalida extends javax.swing.JFrame {
        
         // TODO add your handling code here:
     }//GEN-LAST:event_botonagregarprodActionPerformed
+
+    private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
+        // TODO add your handling code here:
+         fecha.setText("");
+         combosolicitante.removeAllItems();
+         combooperador.removeAllItems();
+         
+         MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botoncancelarActionPerformed
 
     /**
      * @param args the command line arguments

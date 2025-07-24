@@ -16,7 +16,7 @@ public class Usuarios{
     public int id_usuario, id_tipo_usuario, cp;
     public String nombre, ap, am, calle,  numero, telefono, clave, estatus;
 //constructor con el id_usuario para combobox y asi
-    public Usuarios(int id_usuario, int id_tipo_usuario, String nombre, String ap, String am, String calle, int cp, String numero, String telefono, String clave, String estatus) {
+    public Usuarios(int id_usuario, int id_tipo_usuario, String nombre, String ap, String am, String calle, int cp, String numero, String telefono, String clave) {
         this.id_usuario = id_usuario;
         this.id_tipo_usuario = id_tipo_usuario;
         this.nombre = nombre;
@@ -183,7 +183,7 @@ return true;
         Conexion conexion = new Conexion ();
         Connection conn = conexion.conn;
         
-        String sql = "UPDATE usuario SET nombre=?, ap=?, am=?, calle=?, cp=?, numero=?, telefono=?, clave=?, id_tipo_usuario=?, estatus=? WHERE id_usuario=?";              
+        String sql = "UPDATE usuario SET nombre=?, ap=?, am=?, calle=?, cp=?, numero=?, telefono=?, clave=?, id_tipo_usuario=?, estatus='A' WHERE id_usuario=?";              
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, nombre);
         ps.setString(2, ap);
@@ -194,8 +194,8 @@ return true;
         ps.setString(7, telefono);
         ps.setString(8, clave);
         ps.setInt(9, id_tipo_usuario);
-        ps.setString(10, estatus);
-        ps.setInt(11, id_usuario);
+      
+        ps.setInt(10, id_usuario);
         
         
         ps.executeUpdate();
