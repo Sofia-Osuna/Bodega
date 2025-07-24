@@ -3,14 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
-
 import Clases.Categoria;
 import Clases.Conexion;
 import Clases.Producto;
 import Clases.SalidaProducto;
-import Clases.TipoUsuario;
-import Clases.Usuarios;
-
+// Agrega este import si la clase está en el mismo paquete
+// Si está en otro paquete, cambia la ruta
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,87 +20,19 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author pedro
+ * @author sofiaosuna
  */
-public class HistorialDeSalidas extends javax.swing.JFrame {
-
+public class GestioDetallesSalida extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GestioDetallesSalida.class.getName());
+    SalidaProducto salida;
     /**
-     * Creates new form HistorialDeMovimientos
+     * Creates new form GestioDetallesSalida
      */
-    public HistorialDeSalidas() {
+    public GestioDetallesSalida(SalidaProducto g) {
         initComponents();
-        MostrarSalidas();
+         this.salida= g;
     }
-    
-    public void MostrarSalidas(){
-        DefaultTableModel modelo = new DefaultTableModel();
-    
-
-    modelo.addColumn("Fecha");
-    modelo.addColumn("Hora");
-    modelo.addColumn("Usuario operador");
-    modelo.addColumn("Usuario solicitante");
-    modelo.addColumn("detalles");
-    //voy a intentar no mostrar el id
-    try {
-        Conexion conexion = new Conexion();
-        Connection con = conexion.conn;
-        
-        String sql = "SELECT s.fecha_salida, s.hora_salida, (SELECT CONCAT(u.nombre, ' ', u.ap, ' ', u.am, ' ') FROM usuario u WHERE u.id_usuario= s.id_usuario_operador) AS 'usuario_op', (SELECT CONCAT(u.nombre, ' ', u.ap, ' ', u.am, ' ') FROM usuario u WHERE u.id_usuario= s.id_usuario_solicitante)  AS 'us_sol'  FROM salida s GROUP BY s.fecha_salida, s.hora_salida, s.id_usuario_operador, s.id_usuario_solicitante;";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet datos = ps.executeQuery();
-        //Array aqui
-         ArrayList<SalidaProducto> historialSal = new ArrayList<>();
-        
-        while(datos.next()){
-          
-            String fecha_salida = datos.getString("fecha_salida");
-            String hora_salida = datos.getString("hora_salida");
-            String us_op = datos.getString("usuario_op");
-            String us_so = datos.getString("us_sol");
-            
-            SalidaProducto salida = new SalidaProducto(fecha_salida,  hora_salida);
-            
-            modelo.addRow(new Object[]{
-                
-                salida.getFecha_salida(),
-                salida.getHora_salida(),
-                us_op,
-                us_so,
-                "ver detalles"
-                
-                });
-             historialSal.add(salida);
-        }
-        tabla_salidas.setModel(modelo);
-        
-                 // esto es para ir a la pagina para checar los detalles
-        tabla_salidas.addMouseListener(new java.awt.event.MouseAdapter(){
-        public void mouseClicked(java.awt.event.MouseEvent evt){
-             int row = tabla_salidas.rowAtPoint(evt.getPoint());
-             int col = tabla_salidas.columnAtPoint(evt.getPoint());
-
-             if(col == 4){
-                 //necesito buscar una manera de que me lleve a la otra pantalla, pero no para editar, una vez en la otra parte de
-                 //la gestion de productos ahi si necesito checar los detalles
-                   SalidaProducto u = historialSal.get(row);
-                  new GestioDetallesSalida(u).setVisible(true);
-                   
-                   
-            }
-        }
-    }); 
-            
-        
-      
-        }
-     catch (Exception e){
-         JOptionPane.showMessageDialog(null, "Error al cargar los datos"+e.getMessage());
-
-     }
-    
-    }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,8 +55,6 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_salidas = new javax.swing.JTable();
 
@@ -268,16 +196,6 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jButton8.setBackground(new java.awt.Color(25, 39, 52));
-        jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Registrar entrada");
-
-        jButton9.setBackground(new java.awt.Color(25, 39, 52));
-        jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Registrar salida");
-
         tabla_salidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -295,12 +213,6 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(190, 190, 190))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
                 .addContainerGap())
@@ -309,13 +221,9 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(141, 141, 141)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -333,51 +241,53 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-GestionProductos gesproducto = new GestionProductos();
-        
+        GestionProductos gesproducto = new GestionProductos();
+
         gesproducto.setVisible(true);
-        dispose();     }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-GestionProductos gesproducto = new GestionProductos();
-        
+        GestionProductos gesproducto = new GestionProductos();
+
         gesproducto.setVisible(true);
-        dispose();     }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-HistorialDeSalidas hismovi = new HistorialDeSalidas();
-       hismovi.setVisible(true);
-       dispose();    }//GEN-LAST:event_jButton3ActionPerformed
+        HistorialDeSalidas hismovi = new HistorialDeSalidas();
+        hismovi.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Proveedores prove = new Proveedores();
-       prove.setVisible(true);
-       dispose();    }//GEN-LAST:event_jButton4ActionPerformed
+        Proveedores prove = new Proveedores();
+        prove.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-Proveedores prove = new Proveedores();
-       prove.setVisible(true);
-       dispose();    }//GEN-LAST:event_jButton5ActionPerformed
+        Proveedores prove = new Proveedores();
+        prove.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
- ReporteDiario re = new ReporteDiario();
+        ReporteDiario re = new ReporteDiario();
         re.setVisible(true);
-        dispose();    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-Inicio_de_sesion ini = new Inicio_de_sesion();
+        Inicio_de_sesion ini = new Inicio_de_sesion();
         ini.setVisible(true);
-        dispose();    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    
+    /*
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -385,25 +295,14 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HistorialDeSalidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HistorialDeSalidas().setVisible(true);
-            }
-        });
-    }
+        /* Create and display the form */ /*
+        java.awt.EventQueue.invokeLater(() -> new GestioDetallesSalida().setVisible(true));
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -413,8 +312,6 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

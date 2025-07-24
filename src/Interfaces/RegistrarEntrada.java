@@ -87,7 +87,7 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
                         
 
-            Usuarios usu = new Usuarios(id,id_tipo_usuario,nombres,ap,am,calle,cp,numero,telefono,clave,estatus);
+            Usuarios usu = new Usuarios(id,id_tipo_usuario,nombres,ap,am,calle,cp,numero,telefono,clave);
             ComboOperador.addItem(usu);
             
             }

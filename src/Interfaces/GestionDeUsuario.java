@@ -69,7 +69,7 @@ public JPopupMenu menu;
             int id_tipo_usuario = datos.getInt("id_tipo_usuario");
             String estatus = datos.getString("estatus");
             
-            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave,  estatus);
+            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave);
            
             modelo.addRow(new Object[]{
             usuario.getId_usuario(),
@@ -182,7 +182,7 @@ public JPopupMenu menu;
             int id_tipo_usuario = datos.getInt("id_tipo_usuario");
             String estatus = datos.getString("estatus"); 
             
-            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave,  estatus);
+            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave);
             
             modelo.addRow(new Object[]{
                 

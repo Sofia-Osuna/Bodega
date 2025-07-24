@@ -466,7 +466,7 @@ Usuarios usuario;
         TipoUsuario fktipousuario = (TipoUsuario)txttipo_usuario.getSelectedItem();
         int id_tipo_usuario = fktipousuario.getId_tipo_usuario();
         
-        Usuarios usuario2 = new Usuarios(usuario.getId_usuario(), id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave, "A");
+        Usuarios usuario2 = new Usuarios(usuario.getId_usuario(), id_tipo_usuario, nombre, ap, am, calle, cp, numero, telefono, clave);
         
 
         if(usuario2.actualizar()){

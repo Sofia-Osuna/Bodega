@@ -210,7 +210,6 @@ public class Proveedores extends javax.swing.JFrame {
 
         txtbuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtbuscar.setForeground(new java.awt.Color(188, 188, 188));
-        txtbuscar.setText("Buscar proveedor");
         txtbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtbuscarActionPerformed(evt);
@@ -305,7 +304,7 @@ public void mostrarProveedor(){
    
        try{Conexion conexion = new Conexion();
        Connection conn = conexion.conn;
-       String sql = "SELECT * FROM Proveedor WHERE estatus='A'";
+       String sql = "SELECT * FROM proveedor WHERE estatus='A'";
      PreparedStatement ps = conn.prepareStatement(sql);
        ResultSet datos = ps.executeQuery();
                  ArrayList<Proveedor>Proveedores= new ArrayList<>();
@@ -396,7 +395,8 @@ public void buscarProveedor() {
         Connection conn = conexion.conn;
 
         String nombre_buscar = txtbuscar.getText().trim();
-        String sql = "SELECT * FROM Proveedor WHERE estatus='A' AND nombre_proveedor=?";
+        
+        String sql = "SELECT * FROM proveedor WHERE estatus='A' AND nombre_proveedor=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, nombre_buscar);
 

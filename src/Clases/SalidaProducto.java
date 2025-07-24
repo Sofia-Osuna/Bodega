@@ -26,28 +26,24 @@ public class SalidaProducto {
     
   //constructor completo 
 
-    public SalidaProducto(int id_salida,  int id_usuario_op, int id_usuario_so, String fecha_salida, String hora_salida, String estatus) {
+    public SalidaProducto(int id_salida,  int id_usuario_op, int id_usuario_so, String fecha_salida, String hora_salida) {
         this.id_salida = id_salida;
         
         this.id_usuario_op = id_usuario_op;
         this.id_usuario_so = id_usuario_so;
         this.fecha_salida = fecha_salida;
         this.hora_salida = hora_salida;
-        this.estatus = estatus;
-    }
-    
-    //constructor si el id_salida para nuevos registros
-/*
-    public SalidaProducto( int id_usuario_op, int id_usuario_so, String fecha_salida) {
-       
-        this.id_usuario_op = id_usuario_op;
-        this.id_usuario_so = id_usuario_so;
-        this.fecha_salida = fecha_salida;
-        //this.hora_salida = hora_salida;
         //this.estatus = estatus;
     }
+    
+    
 
-   */
+    //este constructor es solo para mostrar los datos en la gestion de salidas
+    public SalidaProducto(String fecha_salida, String hora_salida) {
+       
+        this.fecha_salida = fecha_salida;
+        this.hora_salida = hora_salida;
+    }
     
     
     
