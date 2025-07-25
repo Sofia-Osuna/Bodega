@@ -48,12 +48,12 @@ public class Proveedores extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         botonreportediario = new javax.swing.JButton();
-        botonsalir = new javax.swing.JButton();
         botoncategorias = new javax.swing.JButton();
         botonproveedores = new javax.swing.JButton();
         botonhistorialdemovimientos = new javax.swing.JButton();
         botonusuario = new javax.swing.JButton();
         botonproducto = new javax.swing.JButton();
+        botonsalir = new javax.swing.JButton();
         txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Proveedores = new javax.swing.JTable();
@@ -83,17 +83,6 @@ public class Proveedores extends javax.swing.JFrame {
             }
         });
 
-        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
-        botonsalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setText("Salir");
-        botonsalir.setBorderPainted(false);
-        botonsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonsalirActionPerformed(evt);
-            }
-        });
-
         botoncategorias.setBackground(new java.awt.Color(25, 39, 52));
         botoncategorias.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botoncategorias.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +108,7 @@ public class Proveedores extends javax.swing.JFrame {
         botonhistorialdemovimientos.setBackground(new java.awt.Color(25, 39, 52));
         botonhistorialdemovimientos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonhistorialdemovimientos.setForeground(new java.awt.Color(255, 255, 255));
-        botonhistorialdemovimientos.setText("Movimientos");
+        botonhistorialdemovimientos.setText("Menu principal");
         botonhistorialdemovimientos.setBorderPainted(false);
         botonhistorialdemovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,17 +147,15 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(botonproducto)
                 .addGap(30, 30, 30)
                 .addComponent(botonusuario)
-                .addGap(30, 30, 30)
-                .addComponent(botonhistorialdemovimientos)
                 .addGap(18, 18, 18)
                 .addComponent(botonproveedores)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(botoncategorias)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(botonreportediario)
-                .addGap(48, 48, 48)
-                .addComponent(botonsalir)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botonhistorialdemovimientos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,10 +167,20 @@ public class Proveedores extends javax.swing.JFrame {
                     .addComponent(botonhistorialdemovimientos)
                     .addComponent(botonreportediario)
                     .addComponent(botonproveedores)
-                    .addComponent(botoncategorias)
-                    .addComponent(botonsalir))
+                    .addComponent(botoncategorias))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
+        botonsalir.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonsalir.setText("Salir");
+        botonsalir.setBorderPainted(false);
+        botonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -193,18 +190,26 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonsalir)
+                .addGap(48, 48, 48))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(botonsalir)))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -509,8 +514,8 @@ public void buscarProveedor() {
     }//GEN-LAST:event_botonproveedoresActionPerformed
 
     private void botonhistorialdemovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimientosActionPerformed
-        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
-        hmovimientos.setVisible(true);
+       MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonhistorialdemovimientosActionPerformed

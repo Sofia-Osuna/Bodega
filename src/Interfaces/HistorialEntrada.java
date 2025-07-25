@@ -3,6 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import Clases.Conexion;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import Clases.EntradaProducto;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import javax.swing.JPopupMenu;
+import java.util.ArrayList;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -15,6 +25,7 @@ public class HistorialEntrada extends javax.swing.JFrame {
      */
     public HistorialEntrada() {
         initComponents();
+        mostrarEntrada();
     }
 
     /**
@@ -38,10 +49,8 @@ public class HistorialEntrada extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        tabla_entrada = new javax.swing.JTable();
         jButton9 = new javax.swing.JButton();
-        txtbuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -174,14 +183,14 @@ public class HistorialEntrada extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_entrada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -192,35 +201,13 @@ public class HistorialEntrada extends javax.swing.JFrame {
                 "proveedor", "usuario operador", "fecha entrada", "hora entrada", "estatus"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton8.setBackground(new java.awt.Color(25, 39, 52));
-        jButton8.setText("Buscar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
+        jScrollPane1.setViewportView(tabla_entrada);
 
         jButton9.setBackground(new java.awt.Color(25, 39, 52));
         jButton9.setText("Agregar Entrada");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
-            }
-        });
-
-        txtbuscar.setBackground(new java.awt.Color(204, 204, 204));
-        txtbuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtbuscar.setForeground(new java.awt.Color(102, 102, 102));
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
-        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtbuscarKeyTyped(evt);
             }
         });
 
@@ -231,27 +218,19 @@ public class HistorialEntrada extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(151, 151, 151))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1092, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1092, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(112, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(205, 205, 205))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
@@ -303,23 +282,79 @@ public class HistorialEntrada extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+  RegistrarEntrada e = new RegistrarEntrada();
+ e.setVisible(true);
+        dispose();     
     }//GEN-LAST:event_jButton9ActionPerformed
+public void mostrarEntrada(){
+    DefaultTableModel modelo = new DefaultTableModel();
+     modelo.addColumn("Proveedor");
+     modelo.addColumn("Usuario operador");
+     modelo.addColumn("Fecha entrada");
+     modelo.addColumn("Hora entrada");
+     modelo.addColumn("detalle");
+     
+      try{Conexion conexion = new Conexion();
+       Connection conn = conexion.conn;
+       String sql = "SELECT p.nombre_proveedor, u.nombre, e.fecha_entrada, e.hora_entrada\n" +
+"FROM entrada e INNER JOIN usuario u ON u.id_usuario=e.id_usuario_operador INNER JOIN proveedor p ON e.id_proveedor=p.id_proveedor\n" +
+"WHERE u.id_tipo_usuario= '1' AND e.estatus='A'";
+     PreparedStatement ps = conn.prepareStatement(sql);
+       ResultSet datos = ps.executeQuery();
+              ArrayList<EntradaProducto> Historial= new ArrayList<>();
+              
+                      while(datos.next()){
+          
+                String Proveedor = datos.getString("nombre_proveedor");
+            String Usuario_operador = datos.getString("nombre");
+            String Fecha_entrada = datos.getString("Fecha_entrada");
+            String Hora_entrada = datos.getString("Hora_entrada");
+            
+            EntradaProducto entrada = new EntradaProducto(Fecha_entrada,Hora_entrada);
+            
+            modelo.addRow(new Object[]{
+                
+                Proveedor,
+                Usuario_operador,     
+                entrada.getFecha_entrada(),
+                entrada.getHora_entrada(),
+                
+                "ver detalles"
+                
+                });
+            Historial.add(entrada);
+        }
+     tabla_entrada.setModel(modelo);
+    
+     
+     
+      tabla_entrada.addMouseListener(new java.awt.event.MouseAdapter(){
+        public void mouseClicked(java.awt.event.MouseEvent evt){
+             int row = tabla_entrada.rowAtPoint(evt.getPoint());
+             int col = tabla_entrada.columnAtPoint(evt.getPoint());
 
-    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarActionPerformed
-
-    private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_txtbuscarKeyTyped
-
+             if(col == 4){
+                 //necesito buscar una manera de que me lleve a la otra pantalla, pero no para editar, una vez en la otra parte de
+                 //la gestion de productos ahi si necesito checar los detalles
+                   EntradaProducto u = Historial.get(row);
+                  new EntradaDetalle(u).setVisible(true);
+                   
+                   
+            }
+        }
+    }); 
+              
+              
+              
+              
+              
+ }catch(Exception e){
+             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
+                     +e.getMessage());      
+ }
+}
+     
     /**
      * @param args the command line arguments
      */
@@ -363,14 +398,12 @@ public class HistorialEntrada extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField txtbuscar;
+    private javax.swing.JTable tabla_entrada;
     // End of variables declaration//GEN-END:variables
 }

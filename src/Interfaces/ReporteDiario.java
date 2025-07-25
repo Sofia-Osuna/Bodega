@@ -36,10 +36,10 @@ public class ReporteDiario extends javax.swing.JFrame {
         botonproveedores = new javax.swing.JButton();
         botoncategoria = new javax.swing.JButton();
         botonreporte = new javax.swing.JButton();
-        botonsalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        botonsalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
@@ -69,11 +69,16 @@ public class ReporteDiario extends javax.swing.JFrame {
         botonusuario.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         botonusuario.setForeground(new java.awt.Color(255, 255, 255));
         botonusuario.setText("Usuarios");
+        botonusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonusuarioActionPerformed(evt);
+            }
+        });
 
         botonhistorialdemovimientos.setBackground(new java.awt.Color(25, 39, 52));
         botonhistorialdemovimientos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         botonhistorialdemovimientos.setForeground(new java.awt.Color(255, 255, 255));
-        botonhistorialdemovimientos.setText("Movimientos");
+        botonhistorialdemovimientos.setText("Menu principal");
         botonhistorialdemovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonhistorialdemovimientosActionPerformed(evt);
@@ -110,16 +115,6 @@ public class ReporteDiario extends javax.swing.JFrame {
             }
         });
 
-        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
-        botonsalir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
-        botonsalir.setText("Salir");
-        botonsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonsalirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -129,17 +124,15 @@ public class ReporteDiario extends javax.swing.JFrame {
                 .addComponent(botonproducto)
                 .addGap(40, 40, 40)
                 .addComponent(botonusuario)
-                .addGap(51, 51, 51)
-                .addComponent(botonhistorialdemovimientos)
-                .addGap(55, 55, 55)
+                .addGap(18, 18, 18)
                 .addComponent(botonproveedores)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addComponent(botoncategoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(botonreporte)
-                .addGap(33, 33, 33)
-                .addComponent(botonsalir)
-                .addGap(23, 23, 23))
+                .addGap(18, 18, 18)
+                .addComponent(botonhistorialdemovimientos)
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,14 +144,23 @@ public class ReporteDiario extends javax.swing.JFrame {
                     .addComponent(botonhistorialdemovimientos)
                     .addComponent(botonproveedores)
                     .addComponent(botoncategoria)
-                    .addComponent(botonreporte)
-                    .addComponent(botonsalir))
+                    .addComponent(botonreporte))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Reporte");
+
+        botonsalir.setBackground(new java.awt.Color(25, 39, 52));
+        botonsalir.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        botonsalir.setForeground(new java.awt.Color(255, 255, 255));
+        botonsalir.setText("Salir");
+        botonsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonsalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -170,7 +172,9 @@ public class ReporteDiario extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonsalir)
+                .addGap(26, 26, 26))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -179,8 +183,10 @@ public class ReporteDiario extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(55, 55, 55))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(botonsalir))
+                        .addGap(52, 52, 52))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,8 +303,8 @@ public class ReporteDiario extends javax.swing.JFrame {
     }//GEN-LAST:event_botonproductoActionPerformed
 
     private void botonhistorialdemovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonhistorialdemovimientosActionPerformed
-        HistorialDeSalidas hmovimientos = new HistorialDeSalidas();
-        hmovimientos.setVisible(true);
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setVisible(true);
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonhistorialdemovimientosActionPerformed
@@ -336,6 +342,12 @@ public class ReporteDiario extends javax.swing.JFrame {
         dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonsalirActionPerformed
+
+    private void botonusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonusuarioActionPerformed
+GestionDeUsuario gesusuario = new GestionDeUsuario();
+        gesusuario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_botonusuarioActionPerformed
 
     /**
      * @param args the command line arguments

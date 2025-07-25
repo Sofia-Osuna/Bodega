@@ -57,6 +57,8 @@ public class DetalleEntrada {
     public int getStockDisponible() {
         return stockDisponible;
     }
+   
+
     
      public boolean guardar() {
         Connection conn = null;
