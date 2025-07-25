@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author sofiaosuna
@@ -61,6 +62,11 @@ public class EntradaProducto {
     public EntradaProducto(int id_proveedor, int id_usuario_operador) {
         this.id_proveedor = id_proveedor;
         this.id_usuario_operador = id_usuario_operador;
+    }
+
+    public EntradaProducto(String fecha_entrada, String hora_entrada) {
+        this.fecha_entrada = fecha_entrada;
+        this.hora_entrada = hora_entrada;
     }
 
     
