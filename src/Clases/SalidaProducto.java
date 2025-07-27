@@ -39,8 +39,8 @@ public class SalidaProducto {
     
 
     //este constructor es solo para mostrar los datos en la gestion de salidas
-    public SalidaProducto(String fecha_salida, String hora_salida) {
-       
+    public SalidaProducto(int id_salida, String fecha_salida, String hora_salida) {
+        this.id_salida = id_salida;
         this.fecha_salida = fecha_salida;
         this.hora_salida = hora_salida;
     }

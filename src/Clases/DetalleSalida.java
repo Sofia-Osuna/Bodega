@@ -49,6 +49,19 @@ public class DetalleSalida {
         this.id_salida = id_salida;
     }
 
+    
+    //holaaa constructor para mostrar los detalles.. en gestion de detallesss, no tiene el id de salida no el de producto, 
+    //ni el stock disponible
+
+    public DetalleSalida(int id_detalle_salida,  int cantidad, String estatus) {
+        this.id_detalle_salida = id_detalle_salida;
+        
+        this.cantidad = cantidad;
+        this.estatus = estatus;
+    }
+   
+    
+
     public int getId_detalle_salida() {
         return id_detalle_salida;
     }
@@ -101,7 +114,7 @@ public class DetalleSalida {
             Conexion conexion = new Conexion();
             conn = conexion.conn;
             
-            // Verificar que tenemos un id_salida válido.....tal vez quito esto
+            // Verificar que haya un id valido, por ejemplo que no este nulo
             if (this.id_salida <= 0) {
                 JOptionPane.showMessageDialog(null, "Error: ID de salida no válido");
                 return false;
@@ -112,13 +125,13 @@ public class DetalleSalida {
                 return false;
             }
 
-            // Insertar el detalle de salida - SQL CORREGIDO
-            String sql = "INSERT INTO detalle_salida (id_salida, id_producto, cantidad, estatus) VALUES (?, ?, ?, ?)";
+            
+            String sql = "INSERT INTO detalle_salida (id_salida, id_producto, cantidad, estatus) VALUES (?, ?, ?, ?, 'A')";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, this.id_salida);
             ps.setInt(2, this.id_producto);
             ps.setInt(3, this.cantidad);
-            ps.setString(4, "A"); // Estatus activo
+          
             
             int filasAfectadas = ps.executeUpdate();
             ps.close();
@@ -147,8 +160,7 @@ public class DetalleSalida {
 
     
       
-      
-      // Método para verificar si hay suficiente stock
+ 
     private boolean verificarStock() {
         try {
             Conexion conexion = new Conexion();
@@ -212,4 +224,33 @@ public class DetalleSalida {
         } 
     }
       
+ 
+ 
+     public boolean actualizar() {
+        Connection conn = null;
+        try {
+            Conexion conexion = new Conexion();
+            conn = conexion.conn;
+            
+           
+
+           
+            String sql = "UPDATE detalle_salida SET id_salida=?, id_producto=?, cantidad=? WHERE id_detalle_salida=? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, this.id_salida);
+            ps.setInt(2, this.id_producto);
+            ps.setInt(3, this.cantidad);
+            ps.setInt(4, this.id_detalle_salida);
+            
+                  ps.executeUpdate();
+            return true;
+            
+        
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar detalle: " + e.getMessage());
+            return false;
+        } 
+    }
+
 }

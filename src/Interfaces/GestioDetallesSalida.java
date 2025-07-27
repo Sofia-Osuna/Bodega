@@ -5,8 +5,11 @@
 package Interfaces;
 import Clases.Categoria;
 import Clases.Conexion;
+import Clases.DetalleSalida;
 import Clases.Producto;
 import Clases.SalidaProducto;
+import Interfaces.EditarProducto;
+import static java.awt.SystemColor.menu;
 // Agrega este import si la clase está en el mismo paquete
 // Si está en otro paquete, cambia la ruta
 import java.sql.Connection;
@@ -25,15 +28,133 @@ import javax.swing.table.DefaultTableModel;
 public class GestioDetallesSalida extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GestioDetallesSalida.class.getName());
-    SalidaProducto salida;
+   
+      public JPopupMenu menu;
     /**
      * Creates new form GestioDetallesSalida
      */
-    public GestioDetallesSalida(SalidaProducto g) {
+    public GestioDetallesSalida( ) {
         initComponents();
-         this.salida= g;
+         mostrarDetalles();
+         
+    }
+    public void mostrarDetalles(){
+        DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("fecha");
+    modelo.addColumn("hora");
+    modelo.addColumn("producto");
+    modelo.addColumn("cantidad");
+    modelo.addColumn("estatus");
+    modelo.addColumn("Acciones");
+    
+    try {
+        Conexion conexion = new Conexion();
+        Connection con = conexion.conn;
+        
+        String sql ="SELECT s.fecha_salida, s.hora_salida, ds.id_detalle_salida, p.nombre_producto, ds.cantidad, ds.estatus FROM salida s INNER JOIN detalle_salida ds ON s.id_salida=ds.id_salida INNER JOIN producto p ON ds.id_producto=p.id_producto;";
+        PreparedStatement ps = con.prepareStatement(sql);
+        ResultSet datos = ps.executeQuery();
+        //Array aqui
+         ArrayList<DetalleSalida> detalle = new ArrayList<>();
+        
+        while(datos.next()){
+           
+            String fecha = datos.getString("s.fecha_salida");
+            String hora = datos.getString("s.hora_salida");
+            int id_detalle = datos.getInt("ds.id_detalle_salida");
+            String producto = datos.getString("p.nombre_producto");
+            int cantidad = datos.getInt("ds.cantidad");
+            String estatus = datos.getString("ds.estatus");
+            
+           
+            
+            //En los parentesis se tiene que acomodar los nombre de las variables en el orden que viene en el constructor
+            
+           DetalleSalida detalleS = new DetalleSalida(id_detalle, cantidad, estatus);
+            //a ver sin objeto alv
+            modelo.addRow(new Object[]{
+            
+                fecha,
+                hora,
+                
+                producto,
+                cantidad,
+                estatus,
+                "Editar"
+                
+                });
+             detalle.add(detalleS);
+        }
+        tabla_detalles.setModel(modelo);
+            
+        
+       menu = new JPopupMenu();
+       JMenuItem itemEditar = new JMenuItem("Editar");
+       JMenuItem itemEliminar = new JMenuItem("Eliminar");
+       
+       menu.add(itemEditar);
+       menu.add(itemEliminar);
+       
+       tabla_detalles.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mousePressed(java.awt.event.MouseEvent evt){
+           if (evt.isPopupTrigger() || evt.getButton()== java.awt.event.MouseEvent.BUTTON3){
+           int fila = tabla_detalles.rowAtPoint(evt.getPoint());
+           
+           if(fila>=0){
+               tabla_detalles.setRowSelectionInterval(fila,fila);
+               menu.show(tabla_detalles,    evt.getX(), evt.getY());
+           }
+           }
+       }
+       });
+        
+       //editar 
+      itemEditar.addActionListener(e ->{
+       int fila  = tabla_detalles.getSelectedRow();
+       if (fila >= 0){    
+          DetalleSalida u = detalle.get(fila);
+           new EditarDetalleSal(u).setVisible(true);
+                   
+       }
+       });
+      
+       //eliminar
+      itemEliminar.addActionListener(e -> {
+       int fila = tabla_detalles.getSelectedRow();
+       if(fila >= 0){
+        //Producto u = GestionProductos.get(fila);
+        DetalleSalida u = detalle.get(fila);
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿estás seguro de eliminar este detalle?","Si", JOptionPane.YES_NO_OPTION);
+           if(respuesta == JOptionPane.YES_OPTION){
+           try{
+               //no se porque el conn me lo pide como con.... checar eso
+           PreparedStatement ps2 = con.prepareStatement("UPDATE detalle_salida SET estatus='B' WHERE id_detalle_salida=?");
+           ps2.setInt(1, u.getId_detalle_salida());
+           //ps2.setInt(1, u.getId());
+           ps2.executeUpdate();
+           mostrarDetalles();
+          }catch(Exception e2){
+          JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
+          
+          
+          }
+           
+           }
+       
+       
+              }
+       });
+     
+      
+        }
+     catch (Exception e){
+         JOptionPane.showMessageDialog(null, "Error al cargar los datos"+e.getMessage());
+
+     }
+    
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +177,7 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla_salidas = new javax.swing.JTable();
+        tabla_detalles = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,16 +317,16 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        tabla_salidas.setModel(new javax.swing.table.DefaultTableModel(
+        tabla_detalles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {}
             },
             new String [] {
-                "Fecha", "Hora", "usuario operador", "Usuario solicitante"
+
             }
         ));
-        jScrollPane1.setViewportView(tabla_salidas);
+        jScrollPane1.setViewportView(tabla_detalles);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -281,7 +402,7 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
-    /*
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -300,9 +421,9 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */ /*
+        /* Create and display the form */ 
         java.awt.EventQueue.invokeLater(() -> new GestioDetallesSalida().setVisible(true));
-    }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -318,6 +439,6 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla_salidas;
+    private javax.swing.JTable tabla_detalles;
     // End of variables declaration//GEN-END:variables
 }
