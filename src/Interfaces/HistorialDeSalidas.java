@@ -48,20 +48,21 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
         Conexion conexion = new Conexion();
         Connection con = conexion.conn;
         
-        String sql = "SELECT s.fecha_salida, s.hora_salida, (SELECT CONCAT(u.nombre, ' ', u.ap, ' ', u.am, ' ') FROM usuario u WHERE u.id_usuario= s.id_usuario_operador) AS 'usuario_op', (SELECT CONCAT(u.nombre, ' ', u.ap, ' ', u.am, ' ') FROM usuario u WHERE u.id_usuario= s.id_usuario_solicitante)  AS 'us_sol'  FROM salida s GROUP BY s.fecha_salida, s.hora_salida, s.id_usuario_operador, s.id_usuario_solicitante;";
+        String sql = "SELECT s.id_salida, s.fecha_salida, s.hora_salida, (SELECT CONCAT(u.nombre, ' ', u.ap, ' ', u.am, ' ') FROM usuario u WHERE u.id_usuario= s.id_usuario_operador) AS 'usuario_op', (SELECT CONCAT(u.nombre, ' ', u.ap, ' ', u.am, ' ') FROM usuario u WHERE u.id_usuario= s.id_usuario_solicitante)  AS 'us_sol'  FROM salida s GROUP BY s.fecha_salida, s.hora_salida, s.id_usuario_operador, s.id_usuario_solicitante";
         PreparedStatement ps = con.prepareStatement(sql);
+        
         ResultSet datos = ps.executeQuery();
         //Array aqui
          ArrayList<SalidaProducto> historialSal = new ArrayList<>();
         
         while(datos.next()){
-          
+            int id_salida = datos.getInt("s.id_salida");
             String fecha_salida = datos.getString("fecha_salida");
             String hora_salida = datos.getString("hora_salida");
             String us_op = datos.getString("usuario_op");
             String us_so = datos.getString("us_sol");
             
-            SalidaProducto salida = new SalidaProducto(fecha_salida,  hora_salida);
+            SalidaProducto salida = new SalidaProducto(id_salida,fecha_salida,  hora_salida);
             
             modelo.addRow(new Object[]{
                 
@@ -77,21 +78,22 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
         tabla_salidas.setModel(modelo);
         
                  // esto es para ir a la pagina para checar los detalles
+      // Event listener para clic en la tabla
         tabla_salidas.addMouseListener(new java.awt.event.MouseAdapter(){
-        public void mouseClicked(java.awt.event.MouseEvent evt){
-             int row = tabla_salidas.rowAtPoint(evt.getPoint());
-             int col = tabla_salidas.columnAtPoint(evt.getPoint());
+            public void mouseClicked(java.awt.event.MouseEvent evt){
+                int row = tabla_salidas.rowAtPoint(evt.getPoint());
+                int col = tabla_salidas.columnAtPoint(evt.getPoint());
 
-             if(col == 4){
-                 //necesito buscar una manera de que me lleve a la otra pantalla, pero no para editar, una vez en la otra parte de
-                 //la gestion de productos ahi si necesito checar los detalles
-                   SalidaProducto u = historialSal.get(row);
-                  new GestioDetallesSalida(u).setVisible(true);
-                   
-                   
+                // Si hace clic en la columna "Detalles" (columna 4)
+                if(col == 4 && row >= 0){
+                    SalidaProducto salidaSeleccionada = historialSal.get(row);
+                    // Abrir la ventana de detalles pasando el objeto SalidaProducto
+                    new GestioDetallesSalida().setVisible(true);
+                    // Opcional: cerrar la ventana actual
+                    dispose();
+                }
             }
-        }
-    }); 
+        });
             
         
       

@@ -207,11 +207,9 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
                 "Login exitoso", 
                 JOptionPane.INFORMATION_MESSAGE);
             
-            
+            //estas tres 
             MenuPrincipal menu = new MenuPrincipal();
-        //Indicamos que se hace visible
             menu.setVisible(true);
-            
             this.dispose();
             
         } else {
