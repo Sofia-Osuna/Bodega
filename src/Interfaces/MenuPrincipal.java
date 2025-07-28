@@ -461,11 +461,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarsalidaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+HistorialEntrada entrada = new HistorialEntrada();
+        entrada.setVisible(true);
+        dispose();    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+HistorialDeSalidas salida = new HistorialDeSalidas();
+ salida.setVisible(true);
+ dispose();
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
