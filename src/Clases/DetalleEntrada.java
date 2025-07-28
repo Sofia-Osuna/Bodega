@@ -57,6 +57,12 @@ public class DetalleEntrada {
     public int getStockDisponible() {
         return stockDisponible;
     }
+
+    public DetalleEntrada(int id_detalle_entrada, int cantidad, String estatus) {
+        this.id_detalle_entrada = id_detalle_entrada;
+        this.cantidad = cantidad;
+        this.estatus = estatus;
+    }
    
 
     

@@ -168,7 +168,7 @@ public class ReporteDiario extends javax.swing.JFrame {
         botonreporte.setBackground(new java.awt.Color(25, 39, 52));
         botonreporte.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         botonreporte.setForeground(new java.awt.Color(255, 255, 255));
-        botonreporte.setText("Reporte");
+        botonreporte.setText("Reporte diario");
         botonreporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonreporteActionPerformed(evt);
@@ -192,7 +192,7 @@ public class ReporteDiario extends javax.swing.JFrame {
                 .addComponent(botonreporte)
                 .addGap(18, 18, 18)
                 .addComponent(botonhistorialdemovimientos)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
