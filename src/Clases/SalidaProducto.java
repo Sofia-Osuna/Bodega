@@ -4,7 +4,6 @@
  */
 package Clases;
 
-import com.mysql.cj.xdevapi.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
