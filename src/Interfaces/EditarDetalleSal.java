@@ -374,52 +374,6 @@ public class EditarDetalleSal extends javax.swing.JFrame {
         // TODO add your handling code here:
         // El método botonguardarActionPerformed corregido
     
-        try {
-            Producto prod = (Producto) comboproducto.getSelectedItem();
-            int id_producto = prod.getId_producto();
-
-            String cant = txtcantidad.getText().trim();
-            
-            if (cant.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Por favor ingrese una cantidad");
-                return;
-            }
-            
-            int cantidad = Integer.parseInt(cant);
-            
-            if (cantidad <= 0) {
-                JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor a 0");
-                return;
-            }
-
-            // Actualizar los datos del detalle
-            this.detalle.setId_producto(id_producto);
-            this.detalle.setCantidad(cantidad);
-
-            if (this.detalle.actualizar()) {
-                JOptionPane.showMessageDialog(null, "Detalle actualizado exitosamente");
-
-                // Limpiar los campos
-                txtcantidad.setText("");
-
-                // Recargar productos (para actualizar stock disponible)
-                comboproducto.removeAllItems();
-                cargarDatos();
-                
-                // Volver a la ventana de gestión
-                GestioDetallesSalida ds = new GestioDetallesSalida();
-                ds.setVisible(true);
-                dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Error al actualizar el detalle");
-            }
-            
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido para la cantidad");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-        }
     
 
     }//GEN-LAST:event_botonguardarActionPerformed

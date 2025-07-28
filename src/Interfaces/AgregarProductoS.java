@@ -390,14 +390,14 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
             comboproducto.removeAllItems();
             cargarProductos();
             
-            // Preguntar si desea agregar otro producto
+          
             int opcion = JOptionPane.showConfirmDialog(null, 
                 "¿Desea agregar otro producto a esta salida?", 
                 "Confirmar", 
                 JOptionPane.YES_NO_OPTION);
             
             if (opcion == JOptionPane.NO_OPTION) {
-                // Si no desea agregar más productos, mostrar mensaje y cerrar
+                
                 JOptionPane.showMessageDialog(null, "Salida completada exitosamente");
                 dispose();
                 

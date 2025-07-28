@@ -109,6 +109,16 @@ public class DetalleSalida {
 
     //guardar el detalle??
       public boolean guardar() {
+          //derrepente dejo de guardar, me decia que no se especificaba el parametro cuatro, auque tenia bien la consulta xdxd, y aguegue
+          //esto y ahora parece funcionar... esto me lo dio la ia xd
+           System.out.println("==================== DEBUG DETALLE SALIDA ====================");
+    System.out.println("Método guardar() llamado");
+    System.out.println("this.id_salida = " + this.id_salida);
+    System.out.println("this.id_producto = " + this.id_producto);
+    System.out.println("this.cantidad = " + this.cantidad);
+    System.out.println("this.estatus = " + this.estatus);
+    System.out.println("==============================================================");
+    
         Connection conn = null;
         try {
             Conexion conexion = new Conexion();
@@ -125,12 +135,12 @@ public class DetalleSalida {
                 return false;
             }
 
-            
-            String sql = "INSERT INTO detalle_salida (id_salida, id_producto, cantidad, estatus) VALUES (?, ?, ?, ?, 'A')";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, this.id_salida);
-            ps.setInt(2, this.id_producto);
-            ps.setInt(3, this.cantidad);
+             String sql = "INSERT INTO detalle_salida (id_salida, id_producto, cantidad, estatus) VALUES (?, ?, ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, this.id_salida);
+        ps.setInt(2, this.id_producto);
+        ps.setInt(3, this.cantidad);
+        ps.setString(4, "A"); // Cuarto parámetro
           
             
             int filasAfectadas = ps.executeUpdate();
@@ -225,55 +235,6 @@ public class DetalleSalida {
     }
       
  
- public boolean actualizar() {
-    Connection conn = null;
-    try {
-        Conexion conexion = new Conexion();
-        conn = conexion.conn;
-        
-        //aqui estoy 'agarrando' la info anterior para editarla
-        String sqlAnterior = "SELECT cantidad, id_producto FROM detalle_salida WHERE id_detalle_salida = ?";
-        PreparedStatement psAnterior = conn.prepareStatement(sqlAnterior);
-        psAnterior.setInt(1, this.id_detalle_salida);
-        ResultSet rsAnterior = psAnterior.executeQuery();
-        
-        int cantidadAnterior = 0;
-        int productoAnterior = 0;
-        
-        if (rsAnterior.next()) {
-            cantidadAnterior = rsAnterior.getInt("cantidad");
-            productoAnterior = rsAnterior.getInt("id_producto");
-        }
-        rsAnterior.close();
-        psAnterior.close();
-        
-       
-        // Actualizar el detalle (solo cantidad y producto, NO el id_salida)
-        String sql = "UPDATE detalle_salida SET id_producto=?, cantidad=? WHERE id_detalle_salida=?";
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setInt(1, this.id_producto);
-        ps.setInt(2, this.cantidad);
-        ps.setInt(3, this.id_detalle_salida);
-        
-        int filasAfectadas = ps.executeUpdate();
-        ps.close();
-        
-       
-        
-        return false;
-        
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al actualizar detalle: " + e.getMessage());
-        return false;
-    } finally {
-        try {
-            if (conn != null && !conn.isClosed()) {
-                conn.close();
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al cerrar conexión: " + e.getMessage());
-        }
-    }
-}
+
 
 }
