@@ -30,6 +30,7 @@ public class GestionCategoria extends javax.swing.JFrame {
     public GestionCategoria() {
         initComponents();
         mostrarCategoria();
+        buscarProductos();
     }
 
     /**
@@ -54,7 +55,7 @@ public class GestionCategoria extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
+        txtbuscar = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_categoria = new javax.swing.JTable();
@@ -204,9 +205,14 @@ public class GestionCategoria extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(25, 39, 52));
-        jButton8.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton8.setText("Buscar");
+        txtbuscar.setBackground(new java.awt.Color(25, 39, 52));
+        txtbuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtbuscar.setText("Buscar");
+        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscarActionPerformed(evt);
+            }
+        });
 
         jButton9.setBackground(new java.awt.Color(42, 138, 127));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -247,7 +253,7 @@ public class GestionCategoria extends javax.swing.JFrame {
                 .addGap(117, 117, 117)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -263,7 +269,7 @@ public class GestionCategoria extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,6 +341,10 @@ GestionCategoria gestcat = new GestionCategoria();
         agreCat.setVisible(true);
         dispose(); 
               }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarActionPerformed
     public void mostrarCategoria(){
      DefaultTableModel modelo = new DefaultTableModel();
      modelo.addColumn("ID_Categoria");
@@ -423,6 +433,53 @@ GestionCategoria gestcat = new GestionCategoria();
                      +e.getMessage());      
  }
     }
+     public void buscarProductos(){
+        DefaultTableModel modelo = new DefaultTableModel();
+    modelo.addColumn("ID");
+    modelo.addColumn("Nombre");
+    modelo.addColumn("estatus");
+    
+    try {
+        Conexion conexion = new Conexion();
+        Connection con = conexion.conn;
+        String nombre_buscar = txtbuscar.getText().trim();
+        
+        String sql = "SELECT c.nombre_categoria as nombre_categoria FROM categoria c  WHERE c.estatus='A' AND c.nombre_categoria=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+          ps.setString( 1, nombre_buscar);
+        ResultSet datos = ps.executeQuery();
+      
+        
+        //Array aqui
+         ArrayList<Categoria> gestionCategoria= new ArrayList<>();
+        
+        while(datos.next()){         
+            int id_categoria = datos.getInt("id_categoria");
+            String nombre_categoria = datos.getString("nombre_categoria");
+            String estatus = datos.getString("estatus");
+            
+           
+            
+            //En los parentesis se tiene que acomodar los nombre de las variables en el orden que viene en el constructor
+            
+            Categoria categoria = new Categoria(id_categoria, nombre_categoria, estatus);
+           
+            
+            modelo.addRow(new Object[]{
+            
+             
+                categoria.getNombre(),
+                
+                
+                });
+             gestionCategoria.add(categoria);
+        }
+        
+        }catch(Exception e){
+             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
+                     +e.getMessage());      
+ }
+     }
     /**
      * @param args the command line arguments
      */
@@ -446,7 +503,6 @@ GestionCategoria gestcat = new GestionCategoria();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
@@ -456,5 +512,6 @@ GestionCategoria gestcat = new GestionCategoria();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabla_categoria;
+    private javax.swing.JButton txtbuscar;
     // End of variables declaration//GEN-END:variables
 }
