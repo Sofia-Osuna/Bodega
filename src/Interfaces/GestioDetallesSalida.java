@@ -51,7 +51,7 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
         Conexion conexion = new Conexion();
         Connection con = conexion.conn;
         
-        String sql ="SELECT s.fecha_salida, s.hora_salida, ds.id_detalle_salida, p.nombre_producto, ds.cantidad, ds.estatus FROM salida s INNER JOIN detalle_salida ds ON s.id_salida=ds.id_salida INNER JOIN producto p ON ds.id_producto=p.id_producto;";
+        String sql ="SELECT s.fecha_salida, s.hora_salida, ds.id_detalle_salida, p.nombre_producto, ds.cantidad, ds.estatus FROM salida s INNER JOIN detalle_salida ds ON s.id_salida=ds.id_salida INNER JOIN producto p ON ds.id_producto=p.id_producto WHERE ds.estatus='A' ";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
         //Array aqui
@@ -89,10 +89,10 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
             
         
        menu = new JPopupMenu();
-       JMenuItem itemEditar = new JMenuItem("Editar");
+      ;
        JMenuItem itemEliminar = new JMenuItem("Eliminar");
        
-       menu.add(itemEditar);
+     
        menu.add(itemEliminar);
        
        tabla_detalles.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,15 +108,7 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
        }
        });
         
-       //editar 
-      itemEditar.addActionListener(e ->{
-       int fila  = tabla_detalles.getSelectedRow();
-       if (fila >= 0){    
-          DetalleSalida u = detalle.get(fila);
-           new EditarDetalleSal(u).setVisible(true);
-                   
-       }
-       });
+     
       
        //eliminar
       itemEliminar.addActionListener(e -> {
@@ -438,28 +430,6 @@ public static void main(String args[]) {
      */
     
     
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */ 
-        java.awt.EventQueue.invokeLater(() -> new GestioDetallesSalida().setVisible(true));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

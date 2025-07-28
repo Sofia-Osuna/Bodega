@@ -338,7 +338,7 @@ public void mostrarEntrada(){
                  //necesito buscar una manera de que me lleve a la otra pantalla, pero no para editar, una vez en la otra parte de
                  //la gestion de productos ahi si necesito checar los detalles
                    EntradaProducto u = Historial.get(row);
-                  new EntradaDetalle(u).setVisible(true);
+                  //new EntradaDetalle(u).setVisible(true);
                    
                    
             }

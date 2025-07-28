@@ -25,41 +25,62 @@ public class EditarDetalleSal extends javax.swing.JFrame {
      */
     public EditarDetalleSal( DetalleSalida u) {
         initComponents();
-        cargarProductos();
+        cargarDatos();
+        
         this.detalle=u;
     }
-     public void cargarProductos(){
-        
-         try{
+      private void cargarDatos() {
+        try {
             Conexion conexion = new Conexion();
             Connection conn = conexion.conn;
             
-            String sql = "SELECT* From producto WHERE estatus='A' AND stock>0";
+            String sql = "SELECT ds.id_producto, ds.cantidad, p.nombre_producto " +
+                        "FROM detalle_salida ds " +
+                        "INNER JOIN producto p ON ds.id_producto = p.id_producto " +
+                        "WHERE ds.id_detalle_salida = ?";
+            
             PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet datos = ps.executeQuery();
+            ps.setInt(1, this.detalle.getId_detalle_salida());
+            ResultSet rs = ps.executeQuery();
             
-            while(datos.next()){
-            int id_producto = datos.getInt("id_producto");
-            String nombre_producto = datos.getString("nombre_producto");
-            int stock = datos.getInt("stock");
-            int precio = datos.getInt("precio");
-            int id_categoria = datos.getInt("id_categoria");
-            //String estatus = datos.getString("estatus"); checar el constructor
-            
-            
-            Producto pro = new Producto (id_producto, stock, precio, id_categoria, nombre_producto);
-            comboproducto.addItem(pro);
-            
+            if (rs.next()) {
+                int idProductoActual = rs.getInt("id_producto");
+                int cantidadActual = rs.getInt("cantidad");
+                
+                // Establecer la cantidad en el campo de texto
+                txtcantidad.setText(String.valueOf(cantidadActual));
+                
+                // Seleccionar el producto actual en el combo
+                for (int i = 0; i < comboproducto.getItemCount(); i++) {
+                    Producto producto = (Producto) comboproducto.getItemAt(i);
+                    if (producto.getId_producto() == idProductoActual) {
+                        comboproducto.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                
+                // Actualizar el detalle con el id_salida correcto
+                String sqlSalida = "SELECT id_salida FROM detalle_salida WHERE id_detalle_salida = ?";
+                PreparedStatement psSalida = conn.prepareStatement(sqlSalida);
+                psSalida.setInt(1, this.detalle.getId_detalle_salida());
+                ResultSet rsSalida = psSalida.executeQuery();
+                
+                if (rsSalida.next()) {
+                    this.detalle.setId_salida(rsSalida.getInt("id_salida"));
+                }
+                
+                rsSalida.close();
+                psSalida.close();
             }
-            datos.close();
+            
+            rs.close();
             ps.close();
             conn.close();
             
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error"+e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar datos: " + e.getMessage());
         }
-    
-    } 
+    }
 
 
     /**
@@ -142,6 +163,7 @@ public class EditarDetalleSal extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(25, 39, 52));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Usuario");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -238,7 +260,7 @@ public class EditarDetalleSal extends javax.swing.JFrame {
         jLabel2.setText("Seleccione el producto");
 
         botonguardar.setBackground(new java.awt.Color(42, 138, 127));
-        botonguardar.setText("Agregar Producto");
+        botonguardar.setText("Actualizar");
         botonguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonguardarActionPerformed(evt);
@@ -257,22 +279,22 @@ public class EditarDetalleSal extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
-                        .addComponent(comboproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comboproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(229, 229, 229))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(botonguardar)
+                .addGap(385, 385, 385)
+                .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
@@ -280,9 +302,9 @@ public class EditarDetalleSal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboproducto, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addComponent(botonguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addGap(151, 151, 151))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -350,50 +372,57 @@ public class EditarDetalleSal extends javax.swing.JFrame {
 
     private void botonguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonguardarActionPerformed
         // TODO add your handling code here:
-        Producto prod = (Producto)comboproducto.getSelectedItem();
-        int id_producto = prod.getId_producto();
+        // El método botonguardarActionPerformed corregido
+    
+        try {
+            Producto prod = (Producto) comboproducto.getSelectedItem();
+            int id_producto = prod.getId_producto();
 
-        String cant =txtcantidad.getText();
-        int cantidad = Integer.parseInt(cant);
+            String cant = txtcantidad.getText().trim();
+            
+            if (cant.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor ingrese una cantidad");
+                return;
+            }
+            
+            int cantidad = Integer.parseInt(cant);
+            
+            if (cantidad <= 0) {
+                JOptionPane.showMessageDialog(null, "La cantidad debe ser mayor a 0");
+                return;
+            }
 
-        DetalleSalida dsalida = new DetalleSalida(this.detalle.getId_detalle_salida(), id_producto, cantidad);
+            // Actualizar los datos del detalle
+            this.detalle.setId_producto(id_producto);
+            this.detalle.setCantidad(cantidad);
 
-        if (dsalida.actualizar()) {
-            JOptionPane.showMessageDialog(null, "Producto agregado exitosamente");
+            if (this.detalle.actualizar()) {
+                JOptionPane.showMessageDialog(null, "Detalle actualizado exitosamente");
 
-            // Limpiar los campos
-            txtcantidad.setText("");
+                // Limpiar los campos
+                txtcantidad.setText("");
 
-            // Recargar productos (para actualizar stock disponible)
-            comboproducto.removeAllItems();
-            cargarProductos();
-            GestioDetallesSalida ds = new GestioDetallesSalida();
-            ds.setVisible(true);
-            dispose();
-/*
-            // Preguntar si desea agregar otro producto
-            int opcion = JOptionPane.showConfirmDialog(null,
-                "¿Desea agregar otro producto a esta salida?",
-                "Confirmar",
-                JOptionPane.YES_NO_OPTION);
-
-            if (opcion == JOptionPane.NO_OPTION) {
-                // Si no desea agregar más productos, mostrar mensaje y cerrar
-                JOptionPane.showMessageDialog(null, "Salida completada exitosamente");
+                // Recargar productos (para actualizar stock disponible)
+                comboproducto.removeAllItems();
+                cargarDatos();
+                
+                // Volver a la ventana de gestión
+                GestioDetallesSalida ds = new GestioDetallesSalida();
+                ds.setVisible(true);
                 dispose();
 
-                // Opcional: Regresar a la ventana de movimientos o principal
-                HistorialDeSalidas historial = new HistorialDeSalidas();
-                historial.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Error al actualizar el detalle");
             }
-            // Si selecciona YES, la ventana permanece abierta para agregar más productos
-*/
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al guardar el producto");
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese un número válido para la cantidad");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
+    
 
     }//GEN-LAST:event_botonguardarActionPerformed
-
     /**
      * @param args the command line arguments
      */
