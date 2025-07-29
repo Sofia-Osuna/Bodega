@@ -23,6 +23,7 @@ public class Inicio_de_sesion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //esto es para agregar un titulo a la pantalla.... se ve cool xdxd
          this.setTitle("Sistema de Inventario - Login");
+         
     }
 
     /**

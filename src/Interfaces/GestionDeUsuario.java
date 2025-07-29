@@ -30,6 +30,7 @@ public JPopupMenu menu;
         initComponents();
         mostrarUsuarios();
         buscarUsuarios();
+        this.setLocationRelativeTo(null);
     }
     public void mostrarUsuarios() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -50,7 +51,7 @@ public JPopupMenu menu;
         Connection conn = conexion.conn;
         //texto
         
-        String sql = "SELECT * FROM usuario  ";
+        String sql = "SELECT * FROM usuario WHERE estatus='A'  ";
         PreparedStatement ps = conn.prepareStatement(sql);
         //parametro
         ResultSet datos = ps.executeQuery();
@@ -69,7 +70,7 @@ public JPopupMenu menu;
             int id_tipo_usuario = datos.getInt("id_tipo_usuario");
             String estatus = datos.getString("estatus");
             
-            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave);
+            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, cp,  nombre, ap, am, calle, numero, telefono,clave,estatus);
            
             modelo.addRow(new Object[]{
             usuario.getId_usuario(),
@@ -126,8 +127,7 @@ public JPopupMenu menu;
                 int respuesta = JOptionPane.showConfirmDialog(null, "Estas seguro de que quieres eliminar al usuario?", "Si", JOptionPane.YES_NO_OPTION);
                 if(respuesta == JOptionPane.YES_OPTION){
                     try{
-                    PreparedStatement ps2 = conn.prepareStatement(
-                   "DELETE FROM usuario WHERE id_usuario=?");
+                    PreparedStatement ps2 = conn.prepareStatement("UPDATE usuario SET estatus='B' WHERE id_usuario=?");
                     ps2.setInt(1, u.getId_usuario());
                     ps2.executeUpdate();
                     mostrarUsuarios();
@@ -160,11 +160,9 @@ public JPopupMenu menu;
         try{
         Conexion conexion = new Conexion();
         Connection conn = conexion.conn;  
-        String nombre_usuario = txtbuscarusuario.getText().trim();
         
         String sql = "SELECT * FROM usuario WHERE estatus='A' AND nombre = ?";
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString( 1, nombre_usuario);
         ResultSet datos = ps.executeQuery();
         
         ArrayList<Usuarios> GestionDeUsuario = new ArrayList<>();
@@ -242,8 +240,7 @@ public JPopupMenu menu;
                 int respuesta = JOptionPane.showConfirmDialog(null, "Estas seguro de que quieres eliminar al usuario?", "Si", JOptionPane.YES_NO_OPTION);  
                 if(respuesta == JOptionPane.YES_OPTION){
                     try{
-                     PreparedStatement ps2 = conn.prepareStatement(
-                   "DELETE FROM usuario WHERE id_usuario=?"); 
+                     PreparedStatement ps2 = conn.prepareStatement("UPDATE usuario SET estatus='B' WHERE id_usuario=?");
                    ps2.setInt(1, u.getId_usuario());
                     ps2.executeUpdate();
                     mostrarUsuarios();
@@ -280,11 +277,9 @@ public JPopupMenu menu;
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        txtbuscarusuario = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_usuarios = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        boton_buscar = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -432,14 +427,6 @@ public JPopupMenu menu;
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        txtbuscarusuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtbuscarusuario.setForeground(new java.awt.Color(188, 188, 188));
-        txtbuscarusuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarusuarioActionPerformed(evt);
-            }
-        });
-
         tabla_usuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -450,14 +437,11 @@ public JPopupMenu menu;
         ));
         jScrollPane1.setViewportView(tabla_usuarios);
 
-        jComboBox1.setBackground(new java.awt.Color(42, 138, 127));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nuevo Usuario", "Agregar usuario operador", "Agregar usuario solicitante" }));
-
-        boton_buscar.setBackground(new java.awt.Color(25, 39, 52));
-        boton_buscar.setText("Buscar");
-        boton_buscar.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setBackground(new java.awt.Color(42, 138, 127));
+        jButton8.setText("registrar usuario");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_buscarActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -467,30 +451,20 @@ public JPopupMenu menu;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(txtbuscarusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(boton_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(162, 162, 162)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(220, 220, 220))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtbuscarusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(boton_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
@@ -547,13 +521,12 @@ GestionProductos gesproducto = new GestionProductos();
      
         dispose();    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtbuscarusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarusuarioActionPerformed
-        buscarUsuarios();
-    }//GEN-LAST:event_txtbuscarusuarioActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+ CrearUsuario cu= new CrearUsuario();
+    cu.setVisible(true);
+    dispose();   
 
-    private void boton_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_buscarActionPerformed
-        buscarUsuarios();
-    }//GEN-LAST:event_boton_buscarActionPerformed
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -591,7 +564,6 @@ GestionProductos gesproducto = new GestionProductos();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_buscar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -599,7 +571,7 @@ GestionProductos gesproducto = new GestionProductos();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -607,6 +579,5 @@ GestionProductos gesproducto = new GestionProductos();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_usuarios;
-    private javax.swing.JTextField txtbuscarusuario;
     // End of variables declaration//GEN-END:variables
 }

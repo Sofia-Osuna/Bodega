@@ -23,6 +23,8 @@ public class EditarProducto extends javax.swing.JFrame {
      * Creates new form EditarProducto
      */
     public EditarProducto(Producto u) {
+       this.setLocationRelativeTo(null);
+
         initComponents();
               this.producto= u;
         cargarCategoria();

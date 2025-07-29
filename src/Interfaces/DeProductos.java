@@ -19,8 +19,11 @@ import javax.swing.JOptionPane;
  */
 public class DeProductos extends javax.swing.JFrame {
     
+    
  private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AgregarProductoS.class.getName());
+ 
     int id_entrada;
+    
     /**
      * Creates new form DeProductos
      */

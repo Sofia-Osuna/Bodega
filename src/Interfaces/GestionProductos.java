@@ -36,7 +36,7 @@ public class GestionProductos extends javax.swing.JFrame {
     public GestionProductos() {
         initComponents();
         mostrarProductos();
-        
+        this.setLocationRelativeTo(null);
     }
     
     public void mostrarProductos(){
@@ -129,9 +129,8 @@ public class GestionProductos extends javax.swing.JFrame {
            if(respuesta == JOptionPane.YES_OPTION){
            try{
                //no se porque el conn me lo pide como con.... checar eso
-           PreparedStatement ps2 = con.prepareStatement("UPDATE producto SET estatus='B' WHERE id_producto=?");
+           PreparedStatement ps2 = con.prepareStatement("UPDATE producto SET estatus='B' WHERE id_producto=?;");
            ps2.setInt(1, u.getId_producto());
-           //ps2.setInt(1, u.getId());
            ps2.executeUpdate();
            mostrarProductos();
           }catch(Exception e2){
@@ -167,11 +166,10 @@ public class GestionProductos extends javax.swing.JFrame {
     try {
         Conexion conexion = new Conexion();
         Connection con = conexion.conn;
-        String nombre_buscar = txtbuscar.getText().trim();
+       
         
         String sql = "SELECT p.*, c.nombre_categoria as nombre_categoria FROM producto p INNER JOIN categoria c ON p.id_categoria=c.id_categoria WHERE p.estatus='A' AND p.nombre_producto=?";
         PreparedStatement ps = con.prepareStatement(sql);
-          ps.setString( 1, nombre_buscar);
         ResultSet datos = ps.executeQuery();
       
         
@@ -299,8 +297,6 @@ public class GestionProductos extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_productos = new javax.swing.JTable();
-        txtbuscar = new javax.swing.JTextField();
-        botonbuscar = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -455,30 +451,6 @@ public class GestionProductos extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabla_productos);
 
-        txtbuscar.setBackground(new java.awt.Color(204, 204, 204));
-        txtbuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtbuscar.setForeground(new java.awt.Color(102, 102, 102));
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
-        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtbuscarKeyTyped(evt);
-            }
-        });
-
-        botonbuscar.setBackground(new java.awt.Color(25, 39, 52));
-        botonbuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        botonbuscar.setForeground(new java.awt.Color(255, 255, 255));
-        botonbuscar.setText("Buscar");
-        botonbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonbuscarActionPerformed(evt);
-            }
-        });
-
         jButton9.setBackground(new java.awt.Color(42, 138, 127));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
@@ -502,11 +474,7 @@ public class GestionProductos extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(botonbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(902, 902, 902)
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -515,11 +483,8 @@ public class GestionProductos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );
@@ -537,10 +502,6 @@ public class GestionProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void botoncategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncategoriaActionPerformed
          //este codigo es para que los botones funcionen
@@ -598,18 +559,6 @@ Proveedores prove = new Proveedores();
 Inicio_de_sesion ini = new Inicio_de_sesion();
         ini.setVisible(true);
         dispose();     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void botonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbuscarActionPerformed
-        // TODO add your handling code here:
-        
-      
-        
-    }//GEN-LAST:event_botonbuscarActionPerformed
-
-    private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_txtbuscarKeyTyped
     
     /**
      * @param args the command line arguments
@@ -647,7 +596,6 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonbuscar;
     private javax.swing.JButton botoncategoria;
     private javax.swing.JButton botonproducto;
     private javax.swing.JButton jButton2;
@@ -663,7 +611,6 @@ Inicio_de_sesion ini = new Inicio_de_sesion();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_productos;
-    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 
 }

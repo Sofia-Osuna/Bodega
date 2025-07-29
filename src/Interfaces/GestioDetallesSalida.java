@@ -36,6 +36,7 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
     public GestioDetallesSalida( ) {
         initComponents();
          mostrarDetalles();
+         this.setLocationRelativeTo(null);
          
     }
     public void mostrarDetalles(){

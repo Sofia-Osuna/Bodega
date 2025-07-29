@@ -27,6 +27,7 @@ public class RegistrarEntrada extends javax.swing.JFrame {
         initComponents();
         cargarProveedor();
         cargarUsuario();
+        this.setLocationRelativeTo(null);
     }
    
       public void cargarProveedor(){
