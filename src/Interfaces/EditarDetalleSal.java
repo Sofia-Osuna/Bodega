@@ -23,10 +23,13 @@ public class EditarDetalleSal extends javax.swing.JFrame {
     /**
      * Creates new form EditarDetalleSal
      */
+    
+
     public EditarDetalleSal( DetalleSalida u) {
         initComponents();
         cargarDatos();
-        
+                        this.setLocationRelativeTo(null);
+
         this.detalle=u;
     }
       private void cargarDatos() {

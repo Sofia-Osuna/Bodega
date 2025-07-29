@@ -31,6 +31,7 @@ public class Proveedores extends javax.swing.JFrame {
     public Proveedores() {
         initComponents();
         mostrarProveedor();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -54,10 +55,8 @@ public class Proveedores extends javax.swing.JFrame {
         botonusuario = new javax.swing.JButton();
         botonproducto = new javax.swing.JButton();
         botonsalir = new javax.swing.JButton();
-        txtbuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Proveedores = new javax.swing.JTable();
-        botonb = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -213,14 +212,6 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        txtbuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtbuscar.setForeground(new java.awt.Color(188, 188, 188));
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
-
         Tabla_Proveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -230,15 +221,6 @@ public class Proveedores extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(Tabla_Proveedores);
-
-        botonb.setBackground(new java.awt.Color(25, 39, 52));
-        botonb.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botonb.setText("buscar");
-        botonb.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonbActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(42, 138, 127));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -255,11 +237,7 @@ public class Proveedores extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(botonb, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
+                .addGap(694, 694, 694)
                 .addComponent(jButton1)
                 .addContainerGap(202, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -272,12 +250,8 @@ public class Proveedores extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(18, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -295,10 +269,6 @@ public class Proveedores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtbuscarActionPerformed
 public void mostrarProveedor(){
      DefaultTableModel modelo = new DefaultTableModel();
      modelo.addColumn("ID_Proveedor");
@@ -399,11 +369,9 @@ public void buscarProveedor() {
         Conexion conexion = new Conexion();
         Connection conn = conexion.conn;
 
-        String nombre_buscar = txtbuscar.getText().trim();
         
         String sql = "SELECT * FROM proveedor WHERE estatus='A' AND nombre_proveedor=?";
         PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, nombre_buscar);
 
         ResultSet datos = ps.executeQuery();
         ArrayList<Proveedor> Proveedores = new ArrayList<>();
@@ -538,10 +506,6 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
         // TODO add your handling code here:
     }//GEN-LAST:event_botonproductoActionPerformed
 
-    private void botonbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonbActionPerformed
-      
-    }//GEN-LAST:event_botonbActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        CrearProveedor crearProv = new CrearProveedor();
         crearProv.setVisible(true);
@@ -587,7 +551,6 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla_Proveedores;
-    private javax.swing.JButton botonb;
     private javax.swing.JButton botoncategorias;
     private javax.swing.JButton botonhistorialdemovimientos;
     private javax.swing.JButton botonproducto;
@@ -602,6 +565,5 @@ GestionDeUsuario gesusuario = new GestionDeUsuario();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtbuscar;
     // End of variables declaration//GEN-END:variables
 }

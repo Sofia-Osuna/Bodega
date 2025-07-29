@@ -28,7 +28,7 @@ public class EntradaDetalle extends javax.swing.JFrame {
     public EntradaDetalle() {
         initComponents();
               mostrarDetalles();
-
+this.setLocationRelativeTo(null);
     }
      public void mostrarDetalles(){
         DefaultTableModel modelo = new DefaultTableModel();

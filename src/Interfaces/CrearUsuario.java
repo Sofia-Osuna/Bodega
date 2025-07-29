@@ -30,6 +30,9 @@ public class CrearUsuario extends javax.swing.JFrame {
     public CrearUsuario() {
         initComponents();
         cargarTipoUsuario();
+
+        this.setLocationRelativeTo(null);
+
         
         
     }

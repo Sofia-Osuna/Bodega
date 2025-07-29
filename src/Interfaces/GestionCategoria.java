@@ -31,6 +31,7 @@ public class GestionCategoria extends javax.swing.JFrame {
         initComponents();
         mostrarCategoria();
         buscarProductos();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -290,10 +291,6 @@ public class GestionCategoria extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
  GestionProductos gesproducto = new GestionProductos();
         
@@ -337,14 +334,18 @@ GestionCategoria gestcat = new GestionCategoria();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
- AgregarCategoria agreCat = new AgregarCategoria();
+        AgregarCategoria agreCat = new AgregarCategoria();
         agreCat.setVisible(true);
-        dispose(); 
-              }//GEN-LAST:event_jButton9ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtbuscarActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
     public void mostrarCategoria(){
      DefaultTableModel modelo = new DefaultTableModel();
      modelo.addColumn("ID_Categoria");

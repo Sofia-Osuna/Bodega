@@ -25,7 +25,8 @@ public class EditarProveedores extends javax.swing.JFrame {
      */
     public EditarProveedores(Proveedor u) {
         initComponents();
-        
+                        this.setLocationRelativeTo(null);
+
         this. proveedor= u;
           System.out.println(u.getId_proveedor());
            txtNombre.setText(u.getNombre_proveedor());
