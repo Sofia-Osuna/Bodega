@@ -19,6 +19,8 @@ public class CrearProveedor extends javax.swing.JFrame {
      */
     public CrearProveedor() {
         initComponents();
+        this.setLocationRelativeTo(null);
+          this.setTitle("Registrar Provedores");
     }
 
     /**

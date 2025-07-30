@@ -122,16 +122,13 @@ public class SalidaProducto {
 
      */
      //constructor para nuevos registrossss que incluyo lo de la hora automaticamente
-      public SalidaProducto(int id_usuario_operador, int id_usuario_solicitante, String fecha_salida) {
+      public SalidaProducto(int id_usuario_operador, int id_usuario_solicitante) {
         this.id_usuario_op = id_usuario_operador;
         this.id_usuario_so = id_usuario_solicitante;
-        this.fecha_salida = fecha_salida;
-        this.estatus = "A"; 
+       
+       
         
-        // Generar hora automáticamente
-        LocalTime horaActual = LocalTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        this.hora_salida = horaActual.format(formatter);
+       
     }
     
     // Método para guardar y devolver el ID generado
@@ -140,14 +137,13 @@ public class SalidaProducto {
             Conexion conexion = new Conexion();
             Connection conn = conexion.conn;
             
-            String sql = "INSERT INTO salida (fecha_salida, hora_salida, id_usuario_operador, id_usuario_solicitante, estatus) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO salida (fecha_salida, hora_salida, id_usuario_operador, id_usuario_solicitante, estatus) VALUES (NOW(), NOW(), ?, ?, 'A')";
             PreparedStatement ps = conn.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS);
             
-            ps.setString(1, fecha_salida);
-            ps.setString(2, hora_salida);
-            ps.setInt(3, id_usuario_op);
-            ps.setInt(4, id_usuario_so);
-            ps.setString(5, estatus);
+          
+            ps.setInt(1, id_usuario_op);
+            ps.setInt(2, id_usuario_so);
+            
             
             int filasAfectadas = ps.executeUpdate();
             

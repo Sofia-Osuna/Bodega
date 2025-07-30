@@ -28,6 +28,8 @@ public class EntradaDetalle extends javax.swing.JFrame {
     public EntradaDetalle() {
         initComponents();
               mostrarDetalles();
+               this.setLocationRelativeTo(null);
+          this.setTitle("Lista de los productos que entraron");
 
     }
      public void mostrarDetalles(){

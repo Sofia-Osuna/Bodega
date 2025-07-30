@@ -45,11 +45,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="txtbuscar" min="-2" pref="329" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="botonb" min="-2" pref="166" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="694" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="202" max="32767" attributes="0"/>
               </Group>
@@ -65,14 +61,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="botonb" alignment="1" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtbuscar" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" pref="35" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="317" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
@@ -315,19 +305,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtbuscar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bc" green="bc" red="bc" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtbuscarActionPerformed"/>
-          </Events>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -370,20 +347,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="botonb">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="34" green="27" red="19" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="buscar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonbActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">

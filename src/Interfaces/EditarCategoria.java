@@ -28,6 +28,8 @@ Categoria categoria ;
         System.out.println(u.getId_categoria());
         //mostrara el nombre en el textfield
         txtnombrecat.setText(u.getNombre());
+         this.setLocationRelativeTo(null);
+          this.setTitle("Editar una Categoria");
     }
 
     /**

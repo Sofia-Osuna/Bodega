@@ -45,20 +45,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="txtbuscarusuario" min="-2" pref="329" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="boton_buscar" min="-2" pref="136" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" min="-2" pref="145" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="990" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="990" max="-2" attributes="0"/>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -67,16 +55,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtbuscarusuario" pref="33" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Component id="boton_buscar" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace pref="69" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="342" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
@@ -298,19 +277,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtbuscarusuario">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bc" green="bc" red="bc" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtbuscarusuarioActionPerformed"/>
-          </Events>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -395,34 +361,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="7f" green="8a" red="2a" type="rgb"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Nuevo Usuario"/>
-                <StringItem index="1" value="Agregar usuario operador"/>
-                <StringItem index="2" value="Agregar usuario solicitante"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JButton" name="boton_buscar">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="34" green="27" red="19" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Buscar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boton_buscarActionPerformed"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

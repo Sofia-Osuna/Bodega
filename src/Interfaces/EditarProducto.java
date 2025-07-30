@@ -30,6 +30,12 @@ public class EditarProducto extends javax.swing.JFrame {
         System.out.println(u.getId_producto());
         //mostrara el nombre en el textfield
         txtnombre_producto.setText(u.getNombre_producto());
+        txtstock.setText(String.valueOf(u.getStock()));
+        txtprecio.setText(String.valueOf(u.getPrecio()));
+        
+         this.setLocationRelativeTo(null);
+          this.setTitle("Editar un producto");
+       
     }
     
     public void cargarCategoria(){
@@ -388,6 +394,7 @@ public class EditarProducto extends javax.swing.JFrame {
         int id_categoria = fkcategoria.getId();
 
         //Hacemos la instancia de la clase (la mandamos a llamar) para guardar
+        
         Producto producto = new Producto(this.producto.getId_producto(), Stock, Precio, id_categoria, nombre);
         /*Mandamos a ejecutar la funcion "guardar"
 
