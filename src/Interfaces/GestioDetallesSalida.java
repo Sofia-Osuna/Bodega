@@ -36,7 +36,10 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
     public GestioDetallesSalida( ) {
         initComponents();
          mostrarDetalles();
-         this.setLocationRelativeTo(null);
+
+          this.setLocationRelativeTo(null);
+          this.setTitle ("Lista de los productos que salieron");
+
          
     }
     public void mostrarDetalles(){

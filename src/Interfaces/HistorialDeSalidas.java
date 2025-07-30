@@ -33,6 +33,9 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
         initComponents();
         MostrarSalidas();
         this.setLocationRelativeTo(null);
+
+        this.setTitle("Historial de las salidas");
+
     }
     
     public void MostrarSalidas(){

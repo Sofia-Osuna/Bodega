@@ -26,7 +26,9 @@ public class HistorialEntrada extends javax.swing.JFrame {
     public HistorialEntrada() {
         initComponents();
         mostrarEntrada();
-                this.setLocationRelativeTo(null);
+
+        this.setLocationRelativeTo(null);
+        this.setTitle("historial de las entradas");
 
     }
 

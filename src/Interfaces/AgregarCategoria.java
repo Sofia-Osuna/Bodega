@@ -21,7 +21,7 @@ public class AgregarCategoria extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-
+          this.setTitle("Registrar una Categoria");
     }
 //todo bien aqui parece..... no mover 
     /**

@@ -32,7 +32,8 @@ public class DeProductos extends javax.swing.JFrame {
         cargarProductos();
         this.setLocationRelativeTo(null);
         this.id_entrada = -1;
-        
+         this.setLocationRelativeTo(null);
+          this.setTitle("Agregar Productos a una Entrada");
     }
  public DeProductos(int idEntrada) {
         initComponents();

@@ -31,6 +31,9 @@ public class EditarProveedores extends javax.swing.JFrame {
           System.out.println(u.getId_proveedor());
            txtNombre.setText(u.getNombre_proveedor());
             txtTelefono.setText(u.getTelefono());
+            
+             this.setLocationRelativeTo(null);
+          this.setTitle("Editar a un proveedor");
     }
 
     /**
@@ -206,7 +209,6 @@ public class EditarProveedores extends javax.swing.JFrame {
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(188, 188, 188));
-        txtNombre.setText("Proveedor...");
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);

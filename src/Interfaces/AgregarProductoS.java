@@ -33,6 +33,8 @@ public class AgregarProductoS extends javax.swing.JFrame {
         cargarProductos();
         this.setLocationRelativeTo(null);
         this.id_salida = -1;
+        this.setLocationRelativeTo(null);
+          this.setTitle("Agregar Detalles  una Salida");
     }
     
      // Nuevo constructor que recibe el ID de la salida.... no sabia esto la verdad, pero aver si funciona alv

@@ -30,10 +30,15 @@ public class GestionCategoria extends javax.swing.JFrame {
     public GestionCategoria() {
         initComponents();
         mostrarCategoria();
-        buscarProductos();
+
+       
         this.setLocationRelativeTo(null);
+          this.setTitle ("Gestion de las categoria");
+
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,8 +60,8 @@ public class GestionCategoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        txtbuscar = new javax.swing.JButton();
+
+
         jButton9 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_categoria = new javax.swing.JTable();
@@ -197,23 +202,7 @@ public class GestionCategoria extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
-        txtbuscar.setBackground(new java.awt.Color(25, 39, 52));
-        txtbuscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        txtbuscar.setText("Buscar");
-        txtbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtbuscarActionPerformed(evt);
-            }
-        });
 
         jButton9.setBackground(new java.awt.Color(42, 138, 127));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -251,11 +240,8 @@ public class GestionCategoria extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(1097, 1097, 1097)
+
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -268,10 +254,9 @@ public class GestionCategoria extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
@@ -348,7 +333,7 @@ GestionCategoria gestcat = new GestionCategoria();
     }//GEN-LAST:event_jTextField1ActionPerformed
     public void mostrarCategoria(){
      DefaultTableModel modelo = new DefaultTableModel();
-     modelo.addColumn("ID_Categoria");
+     
      modelo.addColumn("Nombre de categoria");
      modelo.addColumn("Estatus");
 
@@ -365,7 +350,7 @@ GestionCategoria gestcat = new GestionCategoria();
        String estatus = datos.getString("estatus");
        Categoria categoria = new Categoria (id,nombre,estatus);
        modelo.addRow(new Object[]{
-           categoria.getId_categoria(), 
+          
            categoria.getNombre(),         
            categoria.getEstatus(),
            "Editar"
@@ -434,53 +419,9 @@ GestionCategoria gestcat = new GestionCategoria();
                      +e.getMessage());      
  }
     }
-     public void buscarProductos(){
-        DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("ID");
-    modelo.addColumn("Nombre");
-    modelo.addColumn("estatus");
+
     
-    try {
-        Conexion conexion = new Conexion();
-        Connection con = conexion.conn;
-        String nombre_buscar = txtbuscar.getText().trim();
-        
-        String sql = "SELECT c.nombre_categoria as nombre_categoria FROM categoria c  WHERE c.estatus='A' AND c.nombre_categoria=?";
-        PreparedStatement ps = con.prepareStatement(sql);
-          ps.setString( 1, nombre_buscar);
-        ResultSet datos = ps.executeQuery();
-      
-        
-        //Array aqui
-         ArrayList<Categoria> gestionCategoria= new ArrayList<>();
-        
-        while(datos.next()){         
-            int id_categoria = datos.getInt("id_categoria");
-            String nombre_categoria = datos.getString("nombre_categoria");
-            String estatus = datos.getString("estatus");
-            
-           
-            
-            //En los parentesis se tiene que acomodar los nombre de las variables en el orden que viene en el constructor
-            
-            Categoria categoria = new Categoria(id_categoria, nombre_categoria, estatus);
-           
-            
-            modelo.addRow(new Object[]{
-            
-             
-                categoria.getNombre(),
-                
-                
-                });
-             gestionCategoria.add(categoria);
-        }
-        
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
-                     +e.getMessage());      
- }
-     }
+
     /**
      * @param args the command line arguments
      */
@@ -511,7 +452,6 @@ GestionCategoria gestcat = new GestionCategoria();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabla_categoria;
     private javax.swing.JButton txtbuscar;
     // End of variables declaration//GEN-END:variables

@@ -28,6 +28,9 @@ public class RegistrarSalida extends javax.swing.JFrame {
         cargarUsuariosSol();
         cargarUsuariosOP();
         this.setLocationRelativeTo(null);
+
+        this.setTitle("Registrar una salida");
+
     }
 
     public void cargarUsuariosSol(){
@@ -136,8 +139,6 @@ public class RegistrarSalida extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         combooperador = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        fecha = new javax.swing.JFormattedTextField();
         botoncancelar = new javax.swing.JButton();
         botonagregarprod = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -297,9 +298,6 @@ public class RegistrarSalida extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("Usuario operador");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setText("Fecha:");
-
         botoncancelar.setBackground(new java.awt.Color(255, 102, 0));
         botoncancelar.setText("Cancelar");
         botoncancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -340,15 +338,6 @@ public class RegistrarSalida extends javax.swing.JFrame {
                         .addGap(201, 201, 201)
                         .addComponent(botoncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(330, 330, 330))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(395, 395, 395))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(134, 134, 134)
@@ -364,11 +353,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addGap(200, 200, 200)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -454,16 +439,16 @@ MenuPrincipal menu = new MenuPrincipal();
             int id_usuario_op = usuarioop.getId_usuario();
             Usuarios usuariosol = (Usuarios)combosolicitante.getSelectedItem();
             int id_usuario_so = usuariosol.getId_usuario();
-            String fecha_salida = fecha.getText();
+           
             
         
         //Hacemos la instancia de la clase (la mandamos a llamar)
-        SalidaProducto salidap = new SalidaProducto(id_usuario_op, id_usuario_so, fecha_salida);
+        SalidaProducto salidap = new SalidaProducto(id_usuario_op, id_usuario_so);
        
         int idSalidaGenerado = salidap.guardar();
         
         if (idSalidaGenerado > 0) {
-            JOptionPane.showMessageDialog(null, "Salida registrada exitosamente con ID: " + idSalidaGenerado);
+            JOptionPane.showMessageDialog(null, "Salida registrada exitosamente  ");
             
             // Crear instancia de AgregarProductoS y pasar el ID de la salida
             AgregarProductoS agregar = new AgregarProductoS(idSalidaGenerado);
@@ -479,7 +464,7 @@ MenuPrincipal menu = new MenuPrincipal();
 
     private void botoncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botoncancelarActionPerformed
         // TODO add your handling code here:
-         fecha.setText("");
+      
          combosolicitante.removeAllItems();
          combooperador.removeAllItems();
          
@@ -528,7 +513,6 @@ MenuPrincipal menu = new MenuPrincipal();
     private javax.swing.JButton botoncancelar;
     private javax.swing.JComboBox<Usuarios> combooperador;
     private javax.swing.JComboBox<Usuarios> combosolicitante;
-    private javax.swing.JFormattedTextField fecha;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -539,7 +523,6 @@ MenuPrincipal menu = new MenuPrincipal();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

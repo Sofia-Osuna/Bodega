@@ -32,6 +32,9 @@ public class Proveedores extends javax.swing.JFrame {
         initComponents();
         mostrarProveedor();
         this.setLocationRelativeTo(null);
+
+        this.setTitle("Gestion de los proveedores");
+
     }
 
     /**
@@ -251,7 +254,9 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(18, 31, Short.MAX_VALUE)
+
+                .addGap(18, 35, Short.MAX_VALUE)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -359,94 +364,7 @@ public void mostrarProveedor(){
  }
     }
 
-public void buscarProveedor() {
-    DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("ID_Proveedor");
-    modelo.addColumn("Nombre");
-    modelo.addColumn("Telefono");
 
-    try {
-        Conexion conexion = new Conexion();
-        Connection conn = conexion.conn;
-
-        
-        String sql = "SELECT * FROM proveedor WHERE estatus='A' AND nombre_proveedor=?";
-        PreparedStatement ps = conn.prepareStatement(sql);
-
-        ResultSet datos = ps.executeQuery();
-        ArrayList<Proveedor> Proveedores = new ArrayList<>();
-
-        while (datos.next()) {
-            int id = datos.getInt("id_proveedor");
-            String nombre = datos.getString("nombre_proveedor");
-            String telefono = datos.getString("telefono");
-            String estatus = datos.getString("estatus");
-
-            Proveedor proveedor = new Proveedor(id, nombre, telefono, estatus);
-            modelo.addRow(new Object[]{id, nombre, telefono});
-            Proveedores.add(proveedor);
-        }
-
-        Tabla_Proveedores.setModel(modelo);
-
-        JPopupMenu menu = new JPopupMenu();
-        JMenuItem itemEditar = new JMenuItem("Editar");
-        JMenuItem itemEliminar = new JMenuItem("Eliminar");
-        menu.add(itemEditar);
-        menu.add(itemEliminar);
-
-        Tabla_Proveedores.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                if (evt.isPopupTrigger() || evt.getButton() == java.awt.event.MouseEvent.BUTTON3) {
-                    int fila = Tabla_Proveedores.rowAtPoint(evt.getPoint());
-                    if (fila >= 0) {
-                        Tabla_Proveedores.setRowSelectionInterval(fila, fila);
-                        menu.show(Tabla_Proveedores, evt.getX(), evt.getY());
-                    }
-                }
-            }
-        });
-
-        // Acción al presionar editar
-        itemEditar.addActionListener(e -> {
-            int fila = Tabla_Proveedores.getSelectedRow();
-            if (fila >= 0) {
-                Proveedor u = Proveedores.get(fila);
-                new EditarProveedores(u).setVisible(true);
-            }
-        });
-
-       
-        itemEliminar.addActionListener(e -> {
-            int fila = Tabla_Proveedores.getSelectedRow();
-            if (fila >= 0) {
-                Proveedor u = Proveedores.get(fila);
-                int respuesta = JOptionPane.showConfirmDialog(null,
-                        "¿Estás seguro de eliminar al usuario?", "Sí", JOptionPane.YES_NO_OPTION);
-                if (respuesta == JOptionPane.YES_OPTION) {
-                    try {
-                        
-                        PreparedStatement ps2 = conn.prepareStatement(
-                                "UPDATE proveedor SET estatus='B' WHERE id_proveedor=?");
-                        ps2.setInt(1, u.getId_proveedor());
-                        ps2.executeUpdate();
-                        mostrarProveedor(); 
-                    } catch (Exception e2) {
-                        JOptionPane.showMessageDialog(null, "Error al eliminar: " + e2.getMessage());
-                    }
-                }
-            }
-        });
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-    }
-}
-
-
-
-
-     
     private void botonreportediarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonreportediarioActionPerformed
         ReporteDiario rep = new ReporteDiario();
         rep.setVisible(true);

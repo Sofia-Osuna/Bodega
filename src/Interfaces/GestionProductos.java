@@ -37,11 +37,15 @@ public class GestionProductos extends javax.swing.JFrame {
         initComponents();
         mostrarProductos();
         this.setLocationRelativeTo(null);
+
+        this.setTitle("Gestion de los productos");
+        
+
     }
     
     public void mostrarProductos(){
         DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("ID");
+ 
     modelo.addColumn("Nombre");
     modelo.addColumn("Stock");
     modelo.addColumn("Precio");
@@ -76,7 +80,7 @@ public class GestionProductos extends javax.swing.JFrame {
             
             modelo.addRow(new Object[]{
             
-                producto.getId_producto(),
+             
                 producto.getNombre_producto(),
                 producto.getStock(),
                 producto.getPrecio(),
@@ -154,125 +158,9 @@ public class GestionProductos extends javax.swing.JFrame {
     }
     
     
-        public void buscarProductos(){
-        DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("ID");
-    modelo.addColumn("Nombre");
-    modelo.addColumn("Stock");
-    modelo.addColumn("Precio");
-    modelo.addColumn("Categoria");
-    modelo.addColumn("Acciones");
-    
-    try {
-        Conexion conexion = new Conexion();
-        Connection con = conexion.conn;
-       
-        
-        String sql = "SELECT p.*, c.nombre_categoria as nombre_categoria FROM producto p INNER JOIN categoria c ON p.id_categoria=c.id_categoria WHERE p.estatus='A' AND p.nombre_producto=?";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet datos = ps.executeQuery();
-      
-        
-        //Array aqui
-         ArrayList<Producto> gestionProducto = new ArrayList<>();
-        
-        while(datos.next()){
-            int id_producto = datos.getInt("id_producto");
-            String nombre_producto = datos.getString("nombre_producto");
-            int stock = datos.getInt("stock");
-            int precio = datos.getInt("precio");
-            int id_categoria = datos.getInt("id_categoria");
-            String nombre_categoria = datos.getString("nombre_categoria");
-            String estatus = datos.getString("estatus");
-            
-           
-            
-            //En los parentesis se tiene que acomodar los nombre de las variables en el orden que viene en el constructor
-            
-            Categoria categoria = new Categoria(id_categoria, nombre_categoria, estatus);
-            Producto producto = new Producto(id_producto, stock, precio, id_categoria, nombre_producto);
-            
-            modelo.addRow(new Object[]{
-            
-                producto.getId_producto(),
-                producto.getNombre_producto(),
-                producto.getStock(),
-                producto.getPrecio(),
-                categoria.getNombre(),
-                "Editar"
-                
-                });
-             gestionProducto.add(producto);
-        }
-        tabla_productos.setModel(modelo);
-            
-        
-       menu = new JPopupMenu();
-       JMenuItem itemEditar = new JMenuItem("Editar");
-       JMenuItem itemEliminar = new JMenuItem("Eliminar");
-       
-       menu.add(itemEditar);
-       menu.add(itemEliminar);
-       
-       tabla_productos.addMouseListener(new java.awt.event.MouseAdapter() {
-           public void mousePressed(java.awt.event.MouseEvent evt){
-           if (evt.isPopupTrigger() || evt.getButton()== java.awt.event.MouseEvent.BUTTON3){
-           int fila = tabla_productos.rowAtPoint(evt.getPoint());
-           
-           if(fila>=0){
-               tabla_productos.setRowSelectionInterval(fila,fila);
-               menu.show(tabla_productos,    evt.getX(), evt.getY());
-           }
-           }
-       }
-       });
-       
-       //editar 
-      itemEditar.addActionListener(e ->{
-       int fila  = tabla_productos.getSelectedRow();
-       if (fila >= 0){    
-          Producto u = gestionProducto.get(fila);
-           new EditarProducto(u).setVisible(true);
-                   
-       }
-       });
-      
-       //eliminar
-      itemEliminar.addActionListener(e -> {
-       int fila = tabla_productos.getSelectedRow();
-       if(fila >= 0){
-        //Producto u = GestionProductos.get(fila);
-        Producto u = gestionProducto.get(fila);
-        int respuesta = JOptionPane.showConfirmDialog(null, "¿estás seguro de eliminar este producto?","Si", JOptionPane.YES_NO_OPTION);
-           if(respuesta == JOptionPane.YES_OPTION){
-           try{
-               //no se porque el conn me lo pide como con.... checar eso
-           PreparedStatement ps2 = con.prepareStatement("UPDATE producto SET estatus='B' WHERE id_producto=?");
-           ps2.setInt(1, u.getId_producto());
-           //ps2.setInt(1, u.getId());
-           ps2.executeUpdate();
-           mostrarProductos();
-          }catch(Exception e2){
-          JOptionPane.showMessageDialog(null,"Error al guardar"+e2.getMessage());
-          
-          
-          }
-           
-           }
-       
-       
-              }
-       });
-      
-        }
-     catch (Exception e){
-         JOptionPane.showMessageDialog(null, "Error al cargar los datos"+e.getMessage());
 
-     }
-    
-    }
-    
-    
+
+        
         
     /** This method is called from within the constructor to
      * initialize the form.
@@ -484,7 +372,9 @@ public class GestionProductos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+
+                .addGap(37, 37, 37)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );

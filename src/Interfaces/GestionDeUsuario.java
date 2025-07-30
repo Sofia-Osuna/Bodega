@@ -29,22 +29,24 @@ public JPopupMenu menu;
     public GestionDeUsuario() {
         initComponents();
         mostrarUsuarios();
-        buscarUsuarios();
+
         this.setLocationRelativeTo(null);
+        this.setTitle("Gestion de Los usuarios");
+       
+
     }
     public void mostrarUsuarios() {
         DefaultTableModel modelo = new DefaultTableModel();
         
-        modelo.addColumn("Id_Usuario");
+       
         modelo.addColumn("Nombre");
         modelo.addColumn("Ap");
         modelo.addColumn("Am");
         modelo.addColumn("Calle");
-        modelo.addColumn("Cp");
+        modelo.addColumn("Codigo postal");
         modelo.addColumn("Numero");
         modelo.addColumn("Telefono");
-        modelo.addColumn("Clave");
-        modelo.addColumn("Estatus");
+       
         
         try {
            Conexion conexion = new Conexion();
@@ -73,7 +75,7 @@ public JPopupMenu menu;
             Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, cp,  nombre, ap, am, calle, numero, telefono,clave,estatus);
            
             modelo.addRow(new Object[]{
-            usuario.getId_usuario(),
+            
             usuario.getNombre(),
             usuario.getAp(),
             usuario.getAm(),
@@ -81,8 +83,8 @@ public JPopupMenu menu;
             usuario.getCp(),
             usuario.getNumero(),
             usuario.getTelefono(),
-            usuario.getClave(),
-            usuario.getEstatus(),
+           
+          
             "Editar"
             });
             
@@ -127,7 +129,9 @@ public JPopupMenu menu;
                 int respuesta = JOptionPane.showConfirmDialog(null, "Estas seguro de que quieres eliminar al usuario?", "Si", JOptionPane.YES_NO_OPTION);
                 if(respuesta == JOptionPane.YES_OPTION){
                     try{
-                    PreparedStatement ps2 = conn.prepareStatement("UPDATE usuario SET estatus='B' WHERE id_usuario=?");
+                    PreparedStatement ps2 = conn.prepareStatement(
+                   "UPDATE usuario SET estatus = 'B' WHERE id_usuario=?");
+
                     ps2.setInt(1, u.getId_usuario());
                     ps2.executeUpdate();
                     mostrarUsuarios();
@@ -138,123 +142,14 @@ public JPopupMenu menu;
             }
         });
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null,"Error al cargar los datos"
-                     +e.getMessage());      
+             //JOptionPane.showMessageDialog(null,"Error al cargar los datos"
+               //      +e.getMessage());      
  }
     }
     
-    public void buscarUsuarios(){
-    DefaultTableModel modelo = new DefaultTableModel();
     
-    modelo.addColumn("Id_Usuario");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Ap");
-        modelo.addColumn("Am");
-        modelo.addColumn("Calle");
-        modelo.addColumn("Cp");
-        modelo.addColumn("Numero");
-        modelo.addColumn("Telefono");
-        modelo.addColumn("Clave");
-        modelo.addColumn("Estatus");
-        
-        try{
-        Conexion conexion = new Conexion();
-        Connection conn = conexion.conn;  
-        
-        String sql = "SELECT * FROM usuario WHERE estatus='A' AND nombre = ?";
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ResultSet datos = ps.executeQuery();
-        
-        ArrayList<Usuarios> GestionDeUsuario = new ArrayList<>();
-        
-        while(datos.next());{
-         int id_usuario = datos.getInt("id_usuario");
-            String nombre = datos.getString("nombre");
-            String ap = datos.getString("ap");
-            String am = datos.getString("am");
-            String calle = datos.getString("calle");
-            int cp = datos.getInt("cp");
-            String numero = datos.getString("numero");
-            String telefono = datos.getString("telefono");
-            String clave = datos.getString("clave");
-            int id_tipo_usuario = datos.getInt("id_tipo_usuario");
-            String estatus = datos.getString("estatus"); 
-            
-            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave);
-            
-            modelo.addRow(new Object[]{
-                
-            usuario.getId_usuario(),
-            usuario.getNombre(),
-            usuario.getAp(),
-            usuario.getAm(),
-            usuario.getCalle(),
-            usuario.getCp(),
-            usuario.getNumero(),
-            usuario.getTelefono(),
-            usuario.getClave(),
-            usuario.getEstatus(),
-            "Editar"
-                
-            });
-            
-            GestionDeUsuario.add(usuario);
-        }
-        tabla_usuarios.setModel(modelo);
-        menu = new JPopupMenu();
-        JMenuItem itemEditar = new JMenuItem("Editar");
-        JMenuItem itemEliminar = new JMenuItem("Eliminar");
-        
-        menu.add(itemEditar);
-        menu.add(itemEliminar);
-        
-        tabla_usuarios.addMouseListener(new java.awt.event.MouseAdapter(){
-        public void mousePressed(java.awt.event.MouseEvent evt) {
-        if (evt.isPopupTrigger()|| evt.getButton() == java.awt.event.MouseEvent.BUTTON3){
-         int fila = tabla_usuarios.rowAtPoint(evt.getPoint());
-         
-         if (fila>=0){
-          tabla_usuarios.setRowSelectionInterval(fila,fila);
-           }
-         }    
-        } 
-        public void mouseReleased(java.awt.event.MouseEvent evt){
-           mousePressed(evt);
-        }
-        });
-        
-        //Editar
-        itemEditar.addActionListener(e ->{
-        int fila = tabla_usuarios.getSelectedRow();
-        if (fila >= 0){
-        Usuarios u = GestionDeUsuario.get(fila);
-        new EditarUsuario(u).setVisible(true);   
-        }
-        });
-        
-        //Eliminar
-        itemEliminar.addActionListener(e ->{
-            int fila = tabla_usuarios.getSelectedRow();
-            if (fila >=0){
-            Usuarios u = GestionDeUsuario.get(fila);
-                int respuesta = JOptionPane.showConfirmDialog(null, "Estas seguro de que quieres eliminar al usuario?", "Si", JOptionPane.YES_NO_OPTION);  
-                if(respuesta == JOptionPane.YES_OPTION){
-                    try{
-                     PreparedStatement ps2 = conn.prepareStatement("UPDATE usuario SET estatus='B' WHERE id_usuario=?");
-                   ps2.setInt(1, u.getId_usuario());
-                    ps2.executeUpdate();
-                    mostrarUsuarios();
-                    }catch(Exception e2){
-                      JOptionPane.showMessageDialog(null, "Error al guardar"+e2.getMessage());  
-                    }
-                }
-            }
-        });
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error al cargar los datos"
-                     +e.getMessage());
-        }
-    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -279,7 +174,8 @@ public JPopupMenu menu;
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_usuarios = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -437,13 +333,7 @@ public JPopupMenu menu;
         ));
         jScrollPane1.setViewportView(tabla_usuarios);
 
-        jButton8.setBackground(new java.awt.Color(42, 138, 127));
-        jButton8.setText("registrar usuario");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
+
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -463,9 +353,9 @@ public JPopupMenu menu;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -521,12 +411,6 @@ GestionProductos gesproducto = new GestionProductos();
      
         dispose();    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
- CrearUsuario cu= new CrearUsuario();
-    cu.setVisible(true);
-    dispose();   
-
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -571,7 +455,8 @@ GestionProductos gesproducto = new GestionProductos();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
