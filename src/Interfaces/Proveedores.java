@@ -295,7 +295,10 @@ public void mostrarProveedor(){
        String telefono = datos.getString("telefono");
        String estatus = datos.getString("estatus");
        Proveedor proveedor = new Proveedor(id,nombre,telefono,estatus);
-       modelo.addRow(new Object[]{nombre,telefono});
+       modelo.addRow(new Object[]{
+           nombre,
+           telefono
+       });   
       
      Proveedores.add(proveedor);
      
