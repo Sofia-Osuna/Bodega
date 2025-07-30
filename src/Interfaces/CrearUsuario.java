@@ -113,6 +113,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(42, 138, 127));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Sistema de inventario - Administrador: ...");
 
         jPanel5.setBackground(new java.awt.Color(25, 39, 52));
@@ -120,6 +121,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton8.setBackground(new java.awt.Color(25, 39, 52));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Producto");
         jButton8.setBorderPainted(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +132,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton9.setBackground(new java.awt.Color(25, 39, 52));
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Usuario");
         jButton9.setBorderPainted(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +143,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton10.setBackground(new java.awt.Color(25, 39, 52));
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Movimientos");
         jButton10.setBorderPainted(false);
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +154,8 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton11.setBackground(new java.awt.Color(25, 39, 52));
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton11.setText("Reporte Diario");
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
+        jButton11.setText("Reporte diario");
         jButton11.setBorderPainted(false);
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +165,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton12.setBackground(new java.awt.Color(25, 39, 52));
         jButton12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
         jButton12.setText("Proveedores");
         jButton12.setBorderPainted(false);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +176,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton13.setBackground(new java.awt.Color(25, 39, 52));
         jButton13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
         jButton13.setText("Categorias");
         jButton13.setBorderPainted(false);
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +220,7 @@ public class CrearUsuario extends javax.swing.JFrame {
 
         jButton14.setBackground(new java.awt.Color(25, 39, 52));
         jButton14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
         jButton14.setText("Salir");
         jButton14.setBorderPainted(false);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -304,8 +312,7 @@ public class CrearUsuario extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(178, 178, 178)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jLabel5))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(105, 105, 105)
                                         .addComponent(txtapaterno)))
