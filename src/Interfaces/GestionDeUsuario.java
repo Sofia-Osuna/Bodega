@@ -29,9 +29,11 @@ public JPopupMenu menu;
     public GestionDeUsuario() {
         initComponents();
         mostrarUsuarios();
+
         this.setLocationRelativeTo(null);
         this.setTitle("Gestion de Los usuarios");
        
+
     }
     public void mostrarUsuarios() {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -51,7 +53,7 @@ public JPopupMenu menu;
         Connection conn = conexion.conn;
         //texto
         
-        String sql = "SELECT * FROM usuario  ";
+        String sql = "SELECT * FROM usuario WHERE estatus='A'  ";
         PreparedStatement ps = conn.prepareStatement(sql);
         //parametro
         ResultSet datos = ps.executeQuery();
@@ -70,7 +72,7 @@ public JPopupMenu menu;
             int id_tipo_usuario = datos.getInt("id_tipo_usuario");
             String estatus = datos.getString("estatus");
             
-            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, nombre,  ap, am, calle, cp, numero, telefono, clave);
+            Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, cp,  nombre, ap, am, calle, numero, telefono,clave,estatus);
            
             modelo.addRow(new Object[]{
             
@@ -129,6 +131,7 @@ public JPopupMenu menu;
                     try{
                     PreparedStatement ps2 = conn.prepareStatement(
                    "UPDATE usuario SET estatus = 'B' WHERE id_usuario=?");
+
                     ps2.setInt(1, u.getId_usuario());
                     ps2.executeUpdate();
                     mostrarUsuarios();
@@ -145,6 +148,8 @@ public JPopupMenu menu;
     }
     
     
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,6 +174,8 @@ public JPopupMenu menu;
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_usuarios = new javax.swing.JTable();
+
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -326,6 +333,8 @@ public JPopupMenu menu;
         ));
         jScrollPane1.setViewportView(tabla_usuarios);
 
+
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -335,12 +344,18 @@ public JPopupMenu menu;
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(220, 220, 220))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
@@ -396,6 +411,7 @@ GestionProductos gesproducto = new GestionProductos();
      
         dispose();    }//GEN-LAST:event_jButton1ActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -439,6 +455,8 @@ GestionProductos gesproducto = new GestionProductos();
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

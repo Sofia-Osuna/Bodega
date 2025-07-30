@@ -30,9 +30,11 @@ public class GestionCategoria extends javax.swing.JFrame {
     public GestionCategoria() {
         initComponents();
         mostrarCategoria();
+
        
         this.setLocationRelativeTo(null);
           this.setTitle ("Gestion de las categoria");
+
     }
 
     
@@ -58,6 +60,8 @@ public class GestionCategoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+
+
         jButton9 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_categoria = new javax.swing.JTable();
@@ -198,6 +202,8 @@ public class GestionCategoria extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
+
+
         jButton9.setBackground(new java.awt.Color(42, 138, 127));
         jButton9.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
@@ -235,6 +241,7 @@ public class GestionCategoria extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(1097, 1097, 1097)
+
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -247,7 +254,9 @@ public class GestionCategoria extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86))
@@ -310,10 +319,18 @@ GestionCategoria gestcat = new GestionCategoria();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
- AgregarCategoria agreCat = new AgregarCategoria();
+        AgregarCategoria agreCat = new AgregarCategoria();
         agreCat.setVisible(true);
-        dispose(); 
-              }//GEN-LAST:event_jButton9ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void txtbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
     public void mostrarCategoria(){
      DefaultTableModel modelo = new DefaultTableModel();
      
@@ -402,7 +419,9 @@ GestionCategoria gestcat = new GestionCategoria();
                      +e.getMessage());      
  }
     }
+
     
+
     /**
      * @param args the command line arguments
      */
@@ -434,5 +453,6 @@ GestionCategoria gestcat = new GestionCategoria();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla_categoria;
+    private javax.swing.JButton txtbuscar;
     // End of variables declaration//GEN-END:variables
 }

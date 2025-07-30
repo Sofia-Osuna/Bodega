@@ -19,8 +19,10 @@ public class CrearProveedor extends javax.swing.JFrame {
      */
     public CrearProveedor() {
         initComponents();
+
         this.setLocationRelativeTo(null);
           this.setTitle("Registrar Provedores");
+
     }
 
     /**
@@ -197,7 +199,6 @@ public class CrearProveedor extends javax.swing.JFrame {
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(188, 188, 188));
-        txtNombre.setText("Proveedor...");
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
@@ -209,7 +210,6 @@ public class CrearProveedor extends javax.swing.JFrame {
 
         txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(188, 188, 188));
-        txtTelefono.setText("Ingresa numero del proveedor");
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);

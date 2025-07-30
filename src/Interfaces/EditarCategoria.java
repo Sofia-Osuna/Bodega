@@ -21,7 +21,8 @@ Categoria categoria ;
      */
     public EditarCategoria(Categoria u) {
         initComponents();
-               
+                               this.setLocationRelativeTo(null);
+
 
         this.categoria= u;
         //mostrara el id en la consola

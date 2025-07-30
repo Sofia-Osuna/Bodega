@@ -28,7 +28,9 @@ public class RegistrarSalida extends javax.swing.JFrame {
         cargarUsuariosSol();
         cargarUsuariosOP();
         this.setLocationRelativeTo(null);
+
         this.setTitle("Registrar una salida");
+
     }
 
     public void cargarUsuariosSol(){

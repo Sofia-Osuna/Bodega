@@ -32,7 +32,9 @@ public class Proveedores extends javax.swing.JFrame {
         initComponents();
         mostrarProveedor();
         this.setLocationRelativeTo(null);
+
         this.setTitle("Gestion de los proveedores");
+
     }
 
     /**
@@ -252,7 +254,9 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
+
                 .addGap(18, 35, Short.MAX_VALUE)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -359,6 +363,8 @@ public void mostrarProveedor(){
                      +e.getMessage());      
  }
     }
+
+
     private void botonreportediarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonreportediarioActionPerformed
         ReporteDiario rep = new ReporteDiario();
         rep.setVisible(true);

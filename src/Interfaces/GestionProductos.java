@@ -37,8 +37,10 @@ public class GestionProductos extends javax.swing.JFrame {
         initComponents();
         mostrarProductos();
         this.setLocationRelativeTo(null);
+
         this.setTitle("Gestion de los productos");
         
+
     }
     
     public void mostrarProductos(){
@@ -131,9 +133,8 @@ public class GestionProductos extends javax.swing.JFrame {
            if(respuesta == JOptionPane.YES_OPTION){
            try{
                //no se porque el conn me lo pide como con.... checar eso
-           PreparedStatement ps2 = con.prepareStatement("UPDATE producto SET estatus='B' WHERE id_producto=?");
+           PreparedStatement ps2 = con.prepareStatement("UPDATE producto SET estatus='B' WHERE id_producto=?;");
            ps2.setInt(1, u.getId_producto());
-           //ps2.setInt(1, u.getId());
            ps2.executeUpdate();
            mostrarProductos();
           }catch(Exception e2){
@@ -157,6 +158,8 @@ public class GestionProductos extends javax.swing.JFrame {
     }
     
     
+
+
         
         
     /** This method is called from within the constructor to
@@ -369,7 +372,9 @@ public class GestionProductos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addGap(37, 37, 37)
+
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );

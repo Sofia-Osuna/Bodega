@@ -49,6 +49,11 @@
                   <Component id="jScrollPane1" min="-2" pref="990" max="-2" attributes="0"/>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButton8" min="-2" pref="131" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -361,6 +366,8 @@
             </Component>
           </SubComponents>
         </Container>
+
+
       </SubComponents>
     </Container>
   </SubComponents>

@@ -29,7 +29,9 @@ public class ReporteDiario extends javax.swing.JFrame {
         initComponents();
         MostrarReporte();
         this.setLocationRelativeTo(null);
+
         this.setTitle("Reporte sobre los productos");
+
     }
     
     public void MostrarReporte(){

@@ -26,6 +26,7 @@ Usuarios usuario;
     public EditarUsuario(Usuarios u) {
         initComponents();
         cargarTipoUsuario();
+        this.setLocationRelativeTo(null);
         this.usuario = u;
         System.out.println(u.getId_usuario());
         txtnombre.setText(u.getNombre());
@@ -478,6 +479,9 @@ Usuarios usuario;
 
         if(usuario2.actualizar()){
             JOptionPane.showMessageDialog(null,"Datos Actualizados");
+            GestionDeUsuario ges = new GestionDeUsuario();
+            ges.setVisible(true);
+            dispose();
             
             
             

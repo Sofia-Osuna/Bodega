@@ -27,8 +27,10 @@ public class FormularioProducto extends javax.swing.JFrame {
     public FormularioProducto() {
         initComponents();
         cargarCategoria();
+
          this.setLocationRelativeTo(null);
           this.setTitle("Registar Un producto");
+
     }
     
     public void cargarCategoria(){

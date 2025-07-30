@@ -133,6 +133,20 @@ public class Usuarios{
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
+
+    public Usuarios(int id_usuario, int id_tipo_usuario, int cp, String nombre, String ap, String am, String calle, String numero, String telefono, String clave, String estatus) {
+        this.id_usuario = id_usuario;
+        this.id_tipo_usuario = id_tipo_usuario;
+        this.cp = cp;
+        this.nombre = nombre;
+        this.ap = ap;
+        this.am = am;
+        this.calle = calle;
+        this.numero = numero;
+        this.telefono = telefono;
+        this.clave = clave;
+        this.estatus = estatus;
+    }
         
 
     
@@ -204,5 +218,6 @@ return true;
         JOptionPane.showMessageDialog(null, "Error al actualizar"+e.getMessage());
         return false;
        }
-    }    
+    } 
+    
 }
