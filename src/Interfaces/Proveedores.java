@@ -275,6 +275,7 @@ public class Proveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 public void mostrarProveedor(){
      DefaultTableModel modelo = new DefaultTableModel();
+
      modelo.addColumn("Nombre");
      modelo.addColumn("Telefono");
      
@@ -291,8 +292,10 @@ public void mostrarProveedor(){
        String nombre = datos.getString("nombre_proveedor");
        String telefono = datos.getString("telefono");
        String estatus = datos.getString("estatus");
+
        Proveedor proveedor = new Proveedor( nombre,telefono,estatus);
        modelo.addRow(new Object[]{nombre,telefono});
+
       
      Proveedores.add(proveedor);
      
