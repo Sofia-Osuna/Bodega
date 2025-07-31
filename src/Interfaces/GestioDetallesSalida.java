@@ -48,8 +48,8 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
     modelo.addColumn("hora");
     modelo.addColumn("producto");
     modelo.addColumn("cantidad");
-    modelo.addColumn("estatus");
-    modelo.addColumn("Acciones");
+   
+
     
     try {
         Conexion conexion = new Conexion();
@@ -83,8 +83,8 @@ public class GestioDetallesSalida extends javax.swing.JFrame {
                 
                 producto,
                 cantidad,
-                estatus,
-                "Editar"
+                
+    
                 
                 });
              detalle.add(detalleS);

@@ -46,6 +46,7 @@ public JPopupMenu menu;
         modelo.addColumn("Codigo postal");
         modelo.addColumn("Numero");
         modelo.addColumn("Telefono");
+        modelo.addColumn("Tipo de usuario");
        
         
         try {
@@ -53,7 +54,7 @@ public JPopupMenu menu;
         Connection conn = conexion.conn;
         //texto
         
-        String sql = "SELECT * FROM usuario WHERE estatus='A'  ";
+        String sql = "SELECT *, ts.tipo FROM usuario u INNER JOIN tipo_usuario ts ON  u.id_tipo_usuario= ts.id_tipo_usuario WHERE estatus='A' ; ";
         PreparedStatement ps = conn.prepareStatement(sql);
         //parametro
         ResultSet datos = ps.executeQuery();
@@ -70,6 +71,7 @@ public JPopupMenu menu;
             String telefono = datos.getString("telefono");
             String clave = datos.getString("clave");
             int id_tipo_usuario = datos.getInt("id_tipo_usuario");
+            String tipo = datos.getString("ts.tipo");
             String estatus = datos.getString("estatus");
             
             Usuarios usuario = new Usuarios(id_usuario, id_tipo_usuario, cp,  nombre, ap, am, calle, numero, telefono,clave,estatus);
@@ -83,6 +85,7 @@ public JPopupMenu menu;
             usuario.getCp(),
             usuario.getNumero(),
             usuario.getTelefono(),
+            tipo,
            
           
             "Editar"

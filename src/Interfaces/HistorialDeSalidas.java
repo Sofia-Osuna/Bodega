@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  * @author pedro
  */
 public class HistorialDeSalidas extends javax.swing.JFrame {
-
+ public JPopupMenu menu;
     /**
      * Creates new form HistorialDeMovimientos
      */
@@ -99,16 +99,59 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
             }
         });
             
-        
+        menu = new JPopupMenu();
+       JMenuItem itemagregar = new JMenuItem("Agregar productos extras a esta salida");
+     
+       
+       menu.add(itemagregar);
+       
+       
+       tabla_salidas.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mousePressed(java.awt.event.MouseEvent evt){
+           if (evt.isPopupTrigger() || evt.getButton()== java.awt.event.MouseEvent.BUTTON3){
+           int fila = tabla_salidas.rowAtPoint(evt.getPoint());
+           
+           if(fila>=0){
+               tabla_salidas.setRowSelectionInterval(fila,fila);
+               menu.show(tabla_salidas,    evt.getX(), evt.getY());
+           }
+           }
+       }
+       });
+       
+       itemagregar.addActionListener(e -> {
+            int filaSeleccionada = tabla_salidas.getSelectedRow();
+            if (filaSeleccionada >= 0) {
+                SalidaProducto salidaSeleccionada = historialSal.get(filaSeleccionada);
+                int idSalida = salidaSeleccionada.getId_salida();
+                
+                // Confirmar antes de abrir la ventana
+                int confirmacion = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Desea agregar más productos a la salida del " + 
+                    salidaSeleccionada.getFecha_salida() + " a las " + 
+                    salidaSeleccionada.getHora_salida() + "?",
+                    "Confirmar acción",
+                    JOptionPane.YES_NO_OPTION
+                );
+                
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    // Abrir AgregarProductoS pasando el ID de la salida
+                    AgregarProductoS agregarProductos = new AgregarProductoS(idSalida);
+                    agregarProductos.setVisible(true);
+                    dispose();
+               }
       
         }
-     catch (Exception e){
+       });
+               }
+               catch (Exception e){
          JOptionPane.showMessageDialog(null, "Error al cargar los datos"+e.getMessage());
 
      }
     
     }
-    
+               
 
     /**
      * This method is called from within the constructor to initialize the form.
