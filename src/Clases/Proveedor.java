@@ -63,6 +63,12 @@ public Proveedor(int id, String nombre,String telefono, String estatus){
         this.nombre_proveedor = nombre_proveedor;
         this.telefono = telefono;
     }
+
+    public Proveedor(String nombre_proveedor, String telefono, String estatus) {
+        this.nombre_proveedor = nombre_proveedor;
+        this.telefono = telefono;
+        this.estatus = estatus;
+    }
     
     
     

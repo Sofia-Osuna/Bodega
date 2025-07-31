@@ -82,6 +82,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(42, 138, 127));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Sistema de inventario - Administrador: ...");
 
         jPanel2.setBackground(new java.awt.Color(25, 39, 52));
@@ -90,7 +91,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botonreportediarios.setBackground(new java.awt.Color(25, 39, 52));
         botonreportediarios.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonreportediarios.setForeground(new java.awt.Color(255, 255, 255));
-        botonreportediarios.setText("Reporte Diario");
+        botonreportediarios.setText("Reporte diario");
         botonreportediarios.setBorderPainted(false);
         botonreportediarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +123,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(25, 39, 52));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Usuario");
         jButton2.setBorderPainted(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +171,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(botonreportediarios)
                 .addGap(18, 18, 18)
                 .addComponent(botonhistorialdemovimeintos)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -280,6 +282,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("historia de entradas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,6 +290,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("historia de salida");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,7 +312,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(botonregistrarsalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(botonRegistrarsalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
                 .addGap(210, 210, 210))

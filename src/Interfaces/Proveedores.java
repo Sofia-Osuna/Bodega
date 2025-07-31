@@ -69,6 +69,7 @@ public class Proveedores extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(42, 138, 127));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Proveedores");
 
         jPanel2.setBackground(new java.awt.Color(25, 39, 52));
@@ -77,7 +78,7 @@ public class Proveedores extends javax.swing.JFrame {
         botonreportediario.setBackground(new java.awt.Color(25, 39, 52));
         botonreportediario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         botonreportediario.setForeground(new java.awt.Color(255, 255, 255));
-        botonreportediario.setText("Reporte Diario");
+        botonreportediario.setText("Reporte diario");
         botonreportediario.setBorderPainted(false);
         botonreportediario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,9 +255,7 @@ public class Proveedores extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-
                 .addGap(18, 35, Short.MAX_VALUE)
-
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
         );
@@ -276,7 +275,7 @@ public class Proveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 public void mostrarProveedor(){
      DefaultTableModel modelo = new DefaultTableModel();
-    
+
      modelo.addColumn("Nombre");
      modelo.addColumn("Telefono");
      
@@ -290,15 +289,13 @@ public void mostrarProveedor(){
                  ArrayList<Proveedor>Proveedores= new ArrayList<>();
        
      while (datos.next()){
-       int id = datos.getInt("id_proveedor");
        String nombre = datos.getString("nombre_proveedor");
        String telefono = datos.getString("telefono");
        String estatus = datos.getString("estatus");
-       Proveedor proveedor = new Proveedor(id,nombre,telefono,estatus);
-       modelo.addRow(new Object[]{
-           nombre,
-           telefono
-       });   
+
+       Proveedor proveedor = new Proveedor( nombre,telefono,estatus);
+       modelo.addRow(new Object[]{nombre,telefono});
+
       
      Proveedores.add(proveedor);
      
