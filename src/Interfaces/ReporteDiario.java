@@ -45,7 +45,7 @@ public class ReporteDiario extends javax.swing.JFrame {
         Conexion conexion = new Conexion();
         Connection con = conexion.conn;
         
-        String sql = "SELECT c.nombre_categoria, COUNT(p.id_producto) AS prod_registrados, SUM(p.precio) AS total_cat FROM categoria c INNER JOIN producto p ON c.id_categoria=p.id_categoria GROUP BY c.nombre_categoria";
+        String sql = "SELECT c.nombre_categoria, COUNT(p.id_producto) AS prod_registrados, SUM(p.precio*p.stock) AS total_cat FROM categoria c INNER JOIN producto p ON c.id_categoria=p.id_categoria GROUP BY c.nombre_categoria;";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet datos = ps.executeQuery();
         //Array aqui

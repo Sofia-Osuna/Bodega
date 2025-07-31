@@ -32,16 +32,15 @@ public class DeProductos extends javax.swing.JFrame {
         cargarProductos();
         this.setLocationRelativeTo(null);
         this.id_entrada = -1;
-         this.setLocationRelativeTo(null);
-          this.setTitle("Agregar Productos a una Entrada");
+        
     }
  public DeProductos(int idEntrada) {
         initComponents();
         cargarProductos();
         this.id_entrada = idEntrada;
-        
-        // Opcional: Mostrar el ID de la salida en la ventana
-        this.setTitle("Agregar Productos - Entrada ID: " + idEntrada);
+         this.setLocationRelativeTo(null);
+          this.setTitle("Agregar Productos a una Entrada");
+      
     }
  
  public void cargarProductos(){

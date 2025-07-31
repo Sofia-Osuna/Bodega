@@ -19,7 +19,7 @@ import javax.swing.JMenuItem;
  * @author braya
  */
 public class HistorialEntrada extends javax.swing.JFrame {
-
+ public JPopupMenu menu;
     /**
      * Creates new form HistorialEntrada
      */
@@ -31,6 +31,14 @@ public class HistorialEntrada extends javax.swing.JFrame {
         this.setTitle("historial de las entradas");
 
     }
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -326,7 +334,7 @@ public void mostrarEntrada(){
      
       try{Conexion conexion = new Conexion();
        Connection conn = conexion.conn;
-       String sql = "SELECT p.nombre_proveedor, u.nombre, e.fecha_entrada, e.hora_entrada\n" +
+       String sql = "SELECT e.id_entrada, p.nombre_proveedor, u.nombre, e.fecha_entrada, e.hora_entrada\n" +
 "FROM entrada e INNER JOIN usuario u ON u.id_usuario=e.id_usuario_operador INNER JOIN proveedor p ON e.id_proveedor=p.id_proveedor\n" +
 "WHERE u.id_tipo_usuario= '1' AND e.estatus='A'";
      PreparedStatement ps = conn.prepareStatement(sql);
@@ -334,13 +342,13 @@ public void mostrarEntrada(){
               ArrayList<EntradaProducto> Historial= new ArrayList<>();
               
                       while(datos.next()){
-          
+          int id_entrada = datos.getInt("e.id_entrada");
                 String Proveedor = datos.getString("nombre_proveedor");
             String Usuario_operador = datos.getString("nombre");
             String Fecha_entrada = datos.getString("Fecha_entrada");
             String Hora_entrada = datos.getString("Hora_entrada");
             
-            EntradaProducto entrada = new EntradaProducto(Fecha_entrada,Hora_entrada);
+            EntradaProducto entrada = new EntradaProducto(id_entrada, Fecha_entrada,Hora_entrada);
             
             modelo.addRow(new Object[]{
                 
@@ -356,7 +364,10 @@ public void mostrarEntrada(){
         }
      tabla_entrada.setModel(modelo);
     
-     
+             menu = new JPopupMenu();
+       JMenuItem itemagregar = new JMenuItem("Agregar productos extras a esta entrada");
+         
+       menu.add(itemagregar);
      
       tabla_entrada.addMouseListener(new java.awt.event.MouseAdapter(){
         public void mouseClicked(java.awt.event.MouseEvent evt){
@@ -374,7 +385,45 @@ public void mostrarEntrada(){
             }
         }
     }); 
-              
+      
+        tabla_entrada.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mousePressed(java.awt.event.MouseEvent evt){
+           if (evt.isPopupTrigger() || evt.getButton()== java.awt.event.MouseEvent.BUTTON3){
+           int fila = tabla_entrada.rowAtPoint(evt.getPoint());
+           
+           if(fila>=0){
+               tabla_entrada.setRowSelectionInterval(fila,fila);
+               menu.show(tabla_entrada,    evt.getX(), evt.getY());
+           }
+           }
+       }
+       });
+      
+            itemagregar.addActionListener(e -> {
+            int filaSeleccionada = tabla_entrada.getSelectedRow();
+            if (filaSeleccionada >= 0) {
+                EntradaProducto entradaSeleccionada = Historial.get(filaSeleccionada);
+                int idEntrada = entradaSeleccionada.getId_entrada();
+                
+                // Confirmar antes de abrir la ventana
+                int confirmacion = JOptionPane.showConfirmDialog(
+                    null,
+                    "¿Desea agregar más productos a la entrada del " + 
+                    entradaSeleccionada.getFecha_entrada()+ " a las " + 
+                    entradaSeleccionada.getHora_entrada()+ "?",
+                    "Confirmar acción",
+                    JOptionPane.YES_NO_OPTION
+                );
+                
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    // Abrir AgregarProductoS pasando el id de la entrada
+                    DeProductos agregarProductos = new DeProductos(idEntrada);
+                    agregarProductos.setVisible(true);
+                    dispose();
+               }
+      
+        }
+       });   
               
               
               

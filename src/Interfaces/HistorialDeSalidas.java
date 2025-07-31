@@ -98,7 +98,7 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
                 }
             }
         });
-            
+            //esto tambienn para lo del menu
         menu = new JPopupMenu();
        JMenuItem itemagregar = new JMenuItem("Agregar productos extras a esta salida");
      
@@ -118,7 +118,7 @@ public class HistorialDeSalidas extends javax.swing.JFrame {
            }
        }
        });
-       
+       //esto es lo de agregar un nuevo producto a un salida
        itemagregar.addActionListener(e -> {
             int filaSeleccionada = tabla_salidas.getSelectedRow();
             if (filaSeleccionada >= 0) {
