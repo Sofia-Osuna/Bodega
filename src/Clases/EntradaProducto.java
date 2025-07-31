@@ -64,7 +64,8 @@ public class EntradaProducto {
         this.id_usuario_operador = id_usuario_operador;
     }
 
-    public EntradaProducto(String fecha_entrada, String hora_entrada) {
+    public EntradaProducto(int id_entrada, String fecha_entrada, String hora_entrada) {
+        this.id_entrada= id_entrada;
         this.fecha_entrada = fecha_entrada;
         this.hora_entrada = hora_entrada;
     }
